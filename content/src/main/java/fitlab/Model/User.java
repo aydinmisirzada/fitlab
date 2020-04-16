@@ -54,5 +54,12 @@ public class User {
         Role = role;
     }
 
+    public String getPassword() {
+        return Password;
+    }
+
+    public void setPassword(String password) {
+        Password = password;
+    }
 }
 
