@@ -1,5 +1,6 @@
 package fitlab.Model;
 
+import javax.jws.soap.SOAPBinding;
 import javax.persistence.*;
 
 // User entity
@@ -16,6 +17,17 @@ public class User {
     private String Password;
     private String Phone;
     private String Role;
+
+    public User() {
+    }
+
+    public User(String username, String email, String password, String phone, String role) {
+        Username = username;
+        Email = email;
+        Password = password;
+        Phone = phone;
+        Role = role;
+    }
 
     public Integer getId() {
         return id;
