@@ -10,12 +10,25 @@ public class Subject {
     private Integer id;
 
     private String name;
+    private Semester semester;
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    private String code;
 
     public Subject() {
     }
 
-    public Subject(String Name) {
+    public Subject(String Code, String Name, Semester Semester) {
+        semester = Semester;
         name = Name;
+        code = Code;
     }
 
     public String getName() {

@@ -82,13 +82,20 @@
 
     <ul id="myUL">
         <tr th:each="subject : ${subject}">
-            <li><a><td  th:text="${subject.getName()}">Name</td>
+            <li><a th:href="${'subjects/' + subject.getCode()}"><td  th:text="${subject.getName()}">Name</td>
             </a>
             </li>
-            <script>myFunction1();</script>
         </tr>
     </ul>
 
+</div>
+<div class="adder">
+    <form method="post">
+        <input type="text" name="code" placeholder="Enter the code" >
+        <input type="text" name="name" placeholder="Enter the name" >
+        <input type="text" name="semester" placeholder="Summer/Winter" >
+        <button type="submit">Add subject</button>
+    </form>
 </div>
 
 

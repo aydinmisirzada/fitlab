@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -17,7 +19,7 @@ public class SubjectController {
 
     @RequestMapping("/subjects/{subject}")
     public String Search(@PathVariable String subject, Model model) {
-        Subject sub = repo.findByName(subject);
+        Subject sub = repo.findByCode(subject);
 
         if(subject != null) {
             model.addAttribute("subject",sub);
@@ -25,4 +27,6 @@ public class SubjectController {
 
         return "subject";
     }
+
+
 }

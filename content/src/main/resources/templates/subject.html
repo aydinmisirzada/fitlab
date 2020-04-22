@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Subject</title>
+    <title th:text="${subject.getCode() + ' - ' + subject.getName()}">Name</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,9 +42,10 @@
 </header>
 <div id="features" class="features-section">
     <div class="container text-center">
-        Description:
+        <a style="font-size: 35px;"><td  th:text="${subject.getName()}">Name</td></a>
     </div>
 </div>
+
 
 </body>
 </html>
