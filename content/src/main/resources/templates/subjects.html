@@ -36,18 +36,6 @@
         }
     }
 
-    function myFunction1() {
-        var ul, li,a, i, txtValue;
-        ul = document.getElementById("myUL");
-        li = ul.getElementsByTagName('li');
-        for (i = 0; i < li.length; i++) {
-            a = li[i].getElementsByTagName("a")[0];
-            txtValue = a.textContent || a.innerText;
-            li[i].getElementsByTagName("a")[0].href = "/subjects/" + txtValue;
-
-        }
-
-    }
 
 </script>
 <body>
@@ -82,7 +70,10 @@
 
     <ul id="myUL">
         <tr th:each="subject : ${subject}">
-            <li><a th:href="${'subjects/' + subject.getCode()}"><td  th:text="${subject.getName()}">Name</td>
+            <li><a th:href="${'subjects/' + subject.getCode()}">
+                <td  th:text="${subject.getName()}">
+                    Name
+                </td>
             </a>
             </li>
         </tr>

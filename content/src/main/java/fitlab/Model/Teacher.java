@@ -4,8 +4,20 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "teacher")
-public class Teacher {
+public class Teacher extends Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    public Teacher() {
+    }
+
+    public Teacher(String name, String surname, String username ) {
+        Name = name;
+        Surname = surname;
+        Username = username;
+    }
+
+
+
 }

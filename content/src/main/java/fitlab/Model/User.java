@@ -6,13 +6,12 @@ import javax.persistence.*;
 // User entity
 @Entity
 @Table(name = "user")
-public class User {
+public class User extends Person{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String Username;
     private String Email;
     private String Password;
     private String Phone;
@@ -21,7 +20,9 @@ public class User {
     public User() {
     }
 
-    public User(String username, String email, String password, String phone, String role) {
+    public User(String username, String email, String password, String phone, String role, String name, String surname) {
+        Name = name;
+        Surname = surname;
         Username = username;
         Email = email;
         Password = password;
