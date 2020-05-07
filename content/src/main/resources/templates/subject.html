@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title th:text="${subject.getCode() + ' - ' + subject.getName()}">Name</title>
@@ -45,6 +46,103 @@
         <a style="font-size: 35px;"><td  th:text="${subject.getName()}">Name</td></a>
     </div>
 </div>
+
+
+<div  class="adder">
+    <h3><td th:text="${subject.getDescription()}">Description</td></h3>
+    <form method="post">
+        <input type="text" name="description" placeholder="Edit a description">
+        <button type="submit">Add a description</button>
+    </form>
+</div>
+
+<!-- Add a Homework -->
+<div class="container1" style="margin-left:10%;margin-right: 10%;margin-bottom: 20px;">
+<h3 style="text-align: center;">Homework</h3>
+
+<ul id="myUL">
+    <tr th:each="content : ${content}">
+        <span th:if="${content.type.toString() == 'HOMEWORK'}">
+        <li><a th:href="${subject.getCode() + '/homework/' + content.getId()}">
+            <td  th:text="${content.getTitle()}">
+                Name
+            </td>
+
+        </a>
+        </li>
+            </span>
+    </tr>
+</ul>
+
+<h4 style="text-align: center; margin: 10px;">Add a homework</h4>
+<div  class="adder">
+    <form method="post">
+        <input type="text" name="title" placeholder="Title">
+        <input type="text"  name="type" value="HOMEWORK" style="visibility: hidden">
+        <button type="submit">Add a page</button>
+    </form>
+</div>
+</div>
+<!-- END a Homework -->
+
+<!-- Add a Test -->
+<div class="container1" style="margin-left:10%;margin-right: 10%;margin-bottom: 20px;">
+    <h3 style="text-align: center;">Tests</h3>
+
+    <ul id="myUL">
+        <tr th:each="content : ${content}">
+        <span th:if="${content.type.toString() == 'TEST'}">
+        <li><a th:href="${ subject.getCode() + '/test/' + content.getId() }">
+            <td  th:text="${content.getTitle()}">
+                Name
+            </td>
+
+        </a>
+        </li>
+            </span>
+        </tr>
+    </ul>
+
+    <h4 style="text-align: center; margin: 10px;">Add a Test</h4>
+    <div  class="adder">
+        <form method="post">
+            <input type="text" name="title" placeholder="Title">
+            <input type="text"  name="type" value="TEST" style="visibility: hidden">
+            <button type="submit">Add a page</button>
+        </form>
+    </div>
+</div>
+<!-- END Test -->
+
+<!-- Add a Exam -->
+<div class="container1" style="margin-left:10%;margin-right: 10%;margin-bottom: 20px;">
+    <h3 style="text-align: center;">Exams</h3>
+
+    <ul id="myUL">
+        <tr th:each="content : ${content}">
+        <span th:if="${content.type.toString() == 'EXAM'}">
+        <li><a th:href="${ subject.getCode() + '/exam/' + content.getId()}">
+            <td  th:text="${content.getTitle()}">
+                Name
+            </td>
+
+        </a>
+        </li>
+            </span>
+        </tr>
+    </ul>
+
+    <h4 style="text-align: center; margin: 10px;">Add an exam</h4>
+    <div  class="adder">
+        <form method="post" >
+
+            <input type="text"  name="title" placeholder="Title">
+            <input type="text"  name="type" value="EXAM" style="visibility: hidden">
+            <button type="submit">Add a page</button>
+        </form>
+    </div>
+</div>
+<!-- END a Exam -->
 
 
 </body>

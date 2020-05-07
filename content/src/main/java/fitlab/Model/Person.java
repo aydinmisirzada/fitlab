@@ -1,7 +1,14 @@
 package fitlab.Model;
 
-public class Person {
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import javax.persistence.MappedSuperclass;
+
+@MappedSuperclass
+public abstract  class Person {
     public String Name;
+
     public String Surname;
     public String Username;
 

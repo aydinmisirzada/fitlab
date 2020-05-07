@@ -31,10 +31,14 @@ public class MainPageController {
     @PostMapping("/subjects")
     public String add(@RequestParam String code, @RequestParam String name, @RequestParam Semester semester, Model model) {
         repo.save(new Subject(code,name,semester));
-        List<Subject> subjects =  repo.findAll();
-        model.addAttribute("subject", subjects);
-        return "subjects";
+        return "redirect:/subjects";
     }
 
+
+    @PostMapping(value = "/subjects" , params = "id")
+    public String delSubjects(@RequestParam int  id, Model model) {
+        repo.delete(repo.getOne(id));
+        return "redirect:/subjects";
+    }
 
 }

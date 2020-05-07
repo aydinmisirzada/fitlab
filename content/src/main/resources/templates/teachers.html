@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Subjects</title>
+    <title>Teachers</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -66,18 +66,18 @@
 </header>
 
 <div id="features" class="container1">
-    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for subjects...">
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for teachers...">
 
     <ul id="myUL">
-        <tr th:each="subject1 : ${subject}">
-            <li><a th:href="${'subjects/' + subject1.getCode()}">
-                <td  th:text="${subject1.getName()}">
+        <tr th:each="teacher : ${teacher}">
+
+            <li><a >
+                <td  th:text="${teacher.getName()} + ' ' +  ${teacher.getSurname()}">
                     Name
                 </td>
                 <form method="post">
-                    <button type="submit" style="position: absolute; right: 11%;" >Delete</button>
-                    <input type="text"  name="id" th:value="${subject1.getId()}" style="visibility: hidden;height: 0" >
-
+                    <button type="submit"  style="position: absolute; right: 11%;" >Delete</button>
+                    <input type="text"  name="id" th:value="${teacher.getId()}" style="visibility: hidden;height: 0" >
                 </form>
             </a>
             </li>
@@ -87,10 +87,10 @@
 </div>
 <div class="adder">
     <form method="post">
-        <input type="text" name="code" placeholder="Enter the code" >
-        <input type="text" name="name" placeholder="Enter the name" >
-        <input type="text" name="semester" placeholder="Summer/Winter" >
-        <button type="submit">Add subject</button>
+        <input type="text" name="name" placeholder="Enter name" >
+        <input type="text" name="surname" placeholder="Enter surname" >
+        <input type="text" name="username" placeholder="Enter username" >
+        <button type="submit">Add a teacher</button>
     </form>
 </div>
 
