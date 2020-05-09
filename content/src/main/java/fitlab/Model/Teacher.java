@@ -1,6 +1,5 @@
 package fitlab.Model;
 
-import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 

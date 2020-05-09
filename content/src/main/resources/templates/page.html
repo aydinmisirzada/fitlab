@@ -46,14 +46,13 @@
         <tr th:each="message : ${messages}">
             <li>
                 <a>
-                    <td  th:text="${message.getAuthor()} + ':'">
+                    <td  th:text="${message.getMyObj()} + ' ' + ${message.getAuthor()} + ':' ">
                         Name           </td>
                     <h4>
                     </h4>
                     <td  th:text="${message.getText()}">
                         Name
                     </td>
-
                 </a>
             </li>
             <p>
@@ -65,8 +64,20 @@
 
 <div  class="adder">
     <form method="post">
+        <table width="100%">
+            <tr>
+                <td width="10%">Enter your name:</td>
+                <td>
         <input type="text" name="author" placeholder="Author">
+                </td>
+            </tr>
+            <tr>
+                <td width="10%">Enter text</td>
+                <td>
         <input type="text" name="text" placeholder="Text">
+                </td>
+            </tr>
+        </table>
         <button type="submit">Add a message</button>
     </form>
 </div>

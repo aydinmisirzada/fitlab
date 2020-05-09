@@ -1,11 +1,8 @@
 package fitlab.Model;
 
-import com.sun.javafx.beans.IDProperty;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "content")

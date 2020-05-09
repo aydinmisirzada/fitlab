@@ -1,6 +1,5 @@
 package fitlab.Model;
 
-import javax.jws.soap.SOAPBinding;
 import javax.persistence.*;
 
 // User entity

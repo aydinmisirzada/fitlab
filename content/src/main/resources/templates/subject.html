@@ -51,8 +51,18 @@
 <div  class="adder">
     <h3><td th:text="${subject.getDescription()}">Description</td></h3>
     <form method="post">
-        <input type="text" name="description" placeholder="Edit a description">
-        <button type="submit">Add a description</button>
+        <table width="100%">
+            <tr>
+                <td width="10%">
+                    Edit a description:
+                </td>
+                <td>
+                    <input type="text" name="description" placeholder="Type here">
+                </td>
+            </tr>
+        </table>
+        <button type="submit">Edit a description</button>
+
     </form>
 </div>
 
@@ -77,7 +87,15 @@
 <h4 style="text-align: center; margin: 10px;">Add a homework</h4>
 <div  class="adder">
     <form method="post">
+        <table width="100%">
+            <tr>
+                <td width="10%">
+                    Add a homework:</td>
+                <td>
         <input type="text" name="title" placeholder="Title">
+                </td>
+            </tr>
+        </table>
         <input type="text"  name="type" value="HOMEWORK" style="visibility: hidden">
         <button type="submit">Add a page</button>
     </form>
@@ -106,7 +124,16 @@
     <h4 style="text-align: center; margin: 10px;">Add a Test</h4>
     <div  class="adder">
         <form method="post">
+            <table width="100%">
+                <tr>
+                    <td width="10%">
+                        Add a test:</td>
+                    <td>
+
             <input type="text" name="title" placeholder="Title">
+                    </td>
+                </tr>
+            </table>
             <input type="text"  name="type" value="TEST" style="visibility: hidden">
             <button type="submit">Add a page</button>
         </form>
@@ -135,8 +162,15 @@
     <h4 style="text-align: center; margin: 10px;">Add an exam</h4>
     <div  class="adder">
         <form method="post" >
-
+            <table width="100%">
+                <tr>
+                    <td width="10%">
+                        Add an exam:</td>
+                    <td>
             <input type="text"  name="title" placeholder="Title">
+                    </td>
+                </tr>
+            </table>
             <input type="text"  name="type" value="EXAM" style="visibility: hidden">
             <button type="submit">Add a page</button>
         </form>

@@ -69,14 +69,14 @@
     <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for subjects...">
 
     <ul id="myUL">
-        <tr th:each="subject1 : ${subject}">
-            <li><a th:href="${'subjects/' + subject1.getCode()}">
-                <td  th:text="${subject1.getName()}">
+        <tr th:each="subject : ${subject}">
+            <li><a th:href="${'subjects/' + subject.getCode()}">
+                <td  th:text=" ${subject.getCode()} + ' - '  + ${subject.getName()} + ' Semeter:' + ${subject.getSemester()}">
                     Name
                 </td>
                 <form method="post">
                     <button type="submit" style="position: absolute; right: 11%;" >Delete</button>
-                    <input type="text"  name="id" th:value="${subject1.getId()}" style="visibility: hidden;height: 0" >
+                    <input type="text"  name="id" th:value="${subject.getId()}" style="visibility: hidden;height: 0" >
 
                 </form>
             </a>
@@ -87,10 +87,33 @@
 </div>
 <div class="adder">
     <form method="post">
-        <input type="text" name="code" placeholder="Enter the code" >
-        <input type="text" name="name" placeholder="Enter the name" >
-        <input type="text" name="semester" placeholder="Summer/Winter" >
-        <button type="submit">Add subject</button>
+        <table>
+            <tr>
+                <td style="width: 10%">Enter the code: </td>
+                <td>
+        <input type="text" name="code" placeholder="Type here" >
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 10%">Enter the name: </td>
+                <td>
+        <input type="text" name="name" placeholder="Type here" >
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 10%">Select semester: </td>
+                <td>
+        <p>
+        <select name="semester" style="margin: 15px">
+            <option value="SUMMER">Summer</option>
+            <option value="WINTER">Winter</option>
+        </select>
+        </p>
+                </td>
+            </tr>
+
+        </table>
+        <button type="submit">Add a subject</button>
     </form>
 </div>
 

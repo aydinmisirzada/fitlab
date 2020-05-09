@@ -1,43 +1,38 @@
 package fitlab.Controller;
 
+import fitlab.BussinessLogic.SubjectListLogic;
 import fitlab.Model.Semester;
-import fitlab.Model.Subject;
-import fitlab.Repository.SubjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.List;
 
 @Controller
 public class MainPageController {
 
     @Autowired
-    SubjectRepository repo;
-
+    SubjectListLogic s_repo;
 
     @GetMapping("/subjects")
     public String Search(Model model) {
-        List<Subject> subjects =  repo.findAll();
-        model.addAttribute("subject", subjects);
+        model.addAttribute("subject", s_repo.SearchList());
         return "subjects";
     }
 
 
     @PostMapping("/subjects")
-    public String add(@RequestParam String code, @RequestParam String name, @RequestParam Semester semester, Model model) {
-        repo.save(new Subject(code,name,semester));
+    public String add(@RequestParam String code, @RequestParam String name, @RequestParam Semester semester) {
+        s_repo.addSubject(code, name, semester);
         return "redirect:/subjects";
     }
 
 
     @PostMapping(value = "/subjects" , params = "id")
-    public String delSubjects(@RequestParam int  id, Model model) {
-        repo.delete(repo.getOne(id));
+    public String delSubjects(@RequestParam int  id) {
+        s_repo.delSubject(id);
         return "redirect:/subjects";
     }
 
