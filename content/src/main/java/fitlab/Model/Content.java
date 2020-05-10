@@ -4,6 +4,7 @@ package fitlab.Model;
 import javax.persistence.*;
 import java.util.List;
 
+// Assignment entity ( name will be changed from content to assignment )
 @Entity
 @Table(name = "content")
 public class Content {
