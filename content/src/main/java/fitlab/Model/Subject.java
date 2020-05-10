@@ -3,6 +3,8 @@ package fitlab.Model;
 import javax.persistence.*;
 import java.util.List;
 
+
+// Subject model is called a "course" in the documentation
 @Entity
 @Table(name = "subject")
 public class Subject {
