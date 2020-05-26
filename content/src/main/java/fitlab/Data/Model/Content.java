@@ -1,4 +1,4 @@
-package fitlab.Model;
+package fitlab.Data.Model;
 
 
 import javax.persistence.*;
@@ -12,14 +12,29 @@ public class Content {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @OneToMany(mappedBy = "content")
+    private List<Message> messageList;
+
     public ContentType type;
+
+    @ManyToOne
+    @JoinColumn(name = "subject_id")
+    private Subject subject;
+
+    private String title;
+
+    public Content(){}
+
+    public Content(String Title, ContentType Type) {
+        type = Type;
+        title = Title;
+    }
 
     public ContentType getType() {
         return type;
     }
 
-    @OneToMany(mappedBy = "content")
-    private List<Message> messageList;
+
 
     public void setType(ContentType type) {
         this.type = type;
@@ -33,17 +48,8 @@ public class Content {
         this.messageList = messageList;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "subject_id")
-    private Subject subject;
 
-    private String title;
 
-    public Content(){}
-    public Content(String Title, ContentType Type) {
-        type = Type;
-        title = Title;
-    }
 
     public String getTitle() {
         return title;

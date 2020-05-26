@@ -46,7 +46,7 @@
         <tr th:each="message : ${messages}">
             <li>
                 <a>
-                    <td  th:text="${message.getMyObj()} + ' ' + ${message.getAuthor()} + ':' ">
+                    <td  th:text="${message.getdate()} + ' ' + ${message.getAuthor()} + ':' ">
                         Name           </td>
                     <h4>
                     </h4>

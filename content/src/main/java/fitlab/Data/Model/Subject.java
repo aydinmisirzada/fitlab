@@ -1,4 +1,4 @@
-package fitlab.Model;
+package fitlab.Data.Model;
 
 import javax.persistence.*;
 import java.util.List;
@@ -15,6 +15,19 @@ public class Subject {
     private String name;
     private Semester semester;
     private String Description;
+    private String code;
+    @OneToMany(mappedBy = "subject")
+    private List<Content> contentList;
+
+    public Subject() {
+    }
+
+    public Subject(String Code, String Name, Semester Semester) {
+        semester = Semester;
+        name = Name;
+        code = Code;
+    }
+
 
     public Integer getId() {
         return id;
@@ -23,9 +36,6 @@ public class Subject {
     public void setId(Integer id) {
         this.id = id;
     }
-
-    @OneToMany(mappedBy = "subject")
-    private List<Content> contentList;
 
     public List<Content> getContentList() {
         return contentList;
@@ -59,16 +69,7 @@ public class Subject {
         this.code = code;
     }
 
-    private String code;
 
-    public Subject() {
-    }
-
-    public Subject(String Code, String Name, Semester Semester) {
-        semester = Semester;
-        name = Name;
-        code = Code;
-    }
 
     public String getName() {
         return name;

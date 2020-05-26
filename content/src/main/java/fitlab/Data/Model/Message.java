@@ -1,4 +1,4 @@
-package fitlab.Model;
+package fitlab.Data.Model;
 import java.time.LocalDate;
 import javax.persistence.*;
 
@@ -11,18 +11,26 @@ public class Message {
 
     private String text;
 
-
+    LocalDate date;
     private String author;
 
     private String filename;
 
-    public Message() {
-    }
-    LocalDate myObj;
-
     @ManyToOne
     @JoinColumn(name = "content_id")
     private Content content;
+
+    public Message() {
+    }
+
+    public Message(String text, String user, Content content) {
+
+        date = LocalDate.now();
+        this.content = content;
+        this.author = user;
+        this.text = text;
+    }
+
 
     public Content getContent() {
 
@@ -33,21 +41,14 @@ public class Message {
         this.content = content;
     }
 
-    public String getMyObj() {
-        return myObj != null ?  myObj.toString() : "null" ;
+    public String getdate() {
+        return date != null ?  date.toString() : "null" ;
     }
 
-    public void setMyObj(LocalDate myObj) {
-        this.myObj = myObj;
+    public void setdate(LocalDate date) {
+        this.date = date;
     }
 
-    public Message(String text, String user, Content content) {
-
-        myObj = LocalDate.now();
-        this.content = content;
-        this.author = user;
-        this.text = text;
-    }
 
     public String getAuthor() {
         return author;

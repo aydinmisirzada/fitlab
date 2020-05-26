@@ -1,7 +1,7 @@
 package fitlab.Controller;
 
-import fitlab.BussinessLogic.SubjectListLogic;
-import fitlab.Model.Semester;
+import fitlab.BussinessLogic.Logic.SubjectLogic;
+import fitlab.Data.Model.Semester;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class MainPageController {
 
     @Autowired
-    SubjectListLogic s_repo;
+    SubjectLogic s_repo;
 
     @GetMapping("/subjects")
     public String Search(Model model) {

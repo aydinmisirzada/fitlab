@@ -1,6 +1,6 @@
-package fitlab.Repository;
+package fitlab.Data.Repository;
 
-import fitlab.Model.Subject;
+import fitlab.Data.Model.Subject;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

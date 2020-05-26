@@ -1,4 +1,4 @@
-package fitlab.Model;
+package fitlab.Data.Model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -6,11 +6,13 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "event")
 public class Event {
-    // To do
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    public Event() {
+    }
     public Integer getId() {
         return id;
     }
@@ -19,6 +21,4 @@ public class Event {
         this.id = id;
     }
 
-    public Event() {
-    }
 }

@@ -1,11 +1,15 @@
 package fitlab.Controller;
 
-import fitlab.BussinessLogic.ContentLogic;
-import fitlab.BussinessLogic.MessageLogic;
+import fitlab.BussinessLogic.Logic.ContentLogic;
+import fitlab.BussinessLogic.Interfaces.MessageLogicConf;
+import fitlab.Data.Model.Message;
+import fitlab.Data.Model.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @Controller
@@ -13,11 +17,18 @@ public class ContentPageController {
     @Autowired
     ContentLogic c_repo;
     @Autowired
-    MessageLogic m_repo;
+    MessageLogicConf m_repo;
 
     @RequestMapping("/subjects/{subject}/{type}/{page_id}")
     public String page(@PathVariable String subject, @PathVariable String type, @PathVariable int page_id, Model model) {
-        return c_repo.pageContent(subject,type,page_id,model);
+        Subject sub = c_repo.contentSubject(subject);
+        List<Message> messages = c_repo.contentMessageList(page_id);
+
+        if(sub == null) return "errorpage";
+
+        model.addAttribute("subject",sub);
+        model.addAttribute("messages",messages);
+        return "page";
     }
 
     @PostMapping("/subjects/{subject}/{type}/{page_id}")

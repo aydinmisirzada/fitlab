@@ -1,6 +1,8 @@
 package fitlab.Controller;
 
-import fitlab.BussinessLogic.SubjectLogic;
+import fitlab.BussinessLogic.Logic.SubjectLogic;
+import fitlab.Data.Model.ContentType;
+import fitlab.Data.Model.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,17 +19,44 @@ public class SubjectController {
 
     @RequestMapping("/subjects/{subject}")
     public String Search(@PathVariable String subject, Model model) {
-        return sub.SearchSubjects(subject,model);
+        Subject sub1 = sub.SearchSubjects(subject);
+
+        if(sub1 != null) {
+            model.addAttribute("subject",sub1);
+            model.addAttribute("content",sub1.getContentList());
+            return "subject";
+        } else {
+            return "errorpage";
+        }
     }
 
     @PostMapping(value = "/subjects/{subject}", params = {"description"})
     public String EditDescription(@PathVariable String subject, @RequestParam String description, Model model) {
-        return sub.SubjectEditDescription(subject,description,model);
+        Subject sub1 = sub.SubjectEditDescription(subject,description);
+        model.addAttribute("subject",sub1);
+        model.addAttribute("content",sub1.getContentList());
+        return "subject";
     }
 
     @PostMapping(value = "/subjects/{subject}")
     public String AddPage(@PathVariable String subject, @RequestParam String title,@RequestParam String type, Model model) {
-        return sub.SubjectAddPage(subject,title,type,model);
+        if(title.isEmpty()) return "errorpage";
+        ContentType Type = ContentType.HOMEWORK;
+        switch (type) {
+            case "HOMEWORK":
+                Type = ContentType.HOMEWORK;break;
+            case "TEST":
+                Type = ContentType.TEST;break;
+            case "EXAM":
+                Type = ContentType.EXAM;break;
+            default:
+                return "errorpage";
+        }
+        Subject sub1 = sub.SubjectAddPage(subject,title,Type);
+        model.addAttribute("subject",sub1);
+        model.addAttribute("content",sub1.getContentList());
+        return "subject";
+
     }
 
 

@@ -1,7 +1,6 @@
 package fitlab.Config;
 
-import fitlab.Model.Subject;
-import fitlab.Repository.SubjectRepository;
+import fitlab.Data.Repository.SubjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;

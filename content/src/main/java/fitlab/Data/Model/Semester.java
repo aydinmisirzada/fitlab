@@ -1,4 +1,4 @@
-package fitlab.Model;
+package fitlab.Data.Model;
 
 public enum Semester {
     SUMMER,

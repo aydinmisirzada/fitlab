@@ -1,13 +1,14 @@
-package fitlab.BussinessLogic;
+package fitlab.BussinessLogic.Logic;
 
-import fitlab.Model.Message;
-import fitlab.Repository.ContentRepository;
-import fitlab.Repository.MessageRepository;
+import fitlab.BussinessLogic.Interfaces.MessageLogicConf;
+import fitlab.Data.Model.Message;
+import fitlab.Data.Repository.ContentRepository;
+import fitlab.Data.Repository.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MessageLogic {
+public class MessageLogic implements MessageLogicConf {
     @Autowired
     ContentRepository con_repo;
     @Autowired
