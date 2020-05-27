@@ -31,7 +31,7 @@ public class SubjectListController {
 
 
     @PostMapping(value = "/subjects" , params = "id")
-    public String delSubjects(@RequestParam int  id) {
+    public String delSubject(@RequestParam int  id) {
         s_repo.delSubject(id);
         return "redirect:/subjects";
     }
