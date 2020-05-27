@@ -18,7 +18,7 @@ public class SubjectController {
     SubjectLogic sub;
 
     @RequestMapping("/subjects/{subject}")
-    public String Search(@PathVariable String subject, Model model) {
+    public String subjectPage(@PathVariable String subject, Model model) {
         Subject sub1 = sub.SearchSubjects(subject);
 
         if(sub1 != null) {
