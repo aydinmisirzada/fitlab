@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-public class MainPageController {
+public class SubjectListController {
 
     @Autowired
     SubjectLogic s_repo;
