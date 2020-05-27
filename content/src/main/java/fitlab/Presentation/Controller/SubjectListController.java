@@ -17,7 +17,7 @@ public class SubjectListController {
     SubjectLogic s_repo;
 
     @GetMapping("/subjects")
-    public String Search(Model model) {
+    public String subjectList(Model model) {
         model.addAttribute("subject", s_repo.SearchList());
         return "subjects";
     }
