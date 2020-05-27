@@ -1,4 +1,4 @@
-package fitlab.Config;
+package fitlab.Presentation.Config;
 
 import fitlab.Data.Repository.SubjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;

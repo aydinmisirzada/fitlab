@@ -1,4 +1,4 @@
-package fitlab.Controller;
+package fitlab.Presentation.Controller;
 
 import fitlab.BussinessLogic.Logic.TeacherLogic;
 import fitlab.Data.Model.Teacher;

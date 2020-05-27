@@ -1,4 +1,4 @@
-package fitlab.Controller;
+package fitlab.Presentation.Controller;
 
 import fitlab.BussinessLogic.Logic.ContentLogic;
 import fitlab.BussinessLogic.Interfaces.MessageLogicConf;
