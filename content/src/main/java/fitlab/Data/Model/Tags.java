@@ -12,6 +12,7 @@ public class Tags {
 
     @ManyToOne
     private Tags parent;
+
     @OneToMany(mappedBy="parent")
     private Collection<Tags> children;
 
