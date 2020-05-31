@@ -1,0 +1,7 @@
+fitlab
+fitlab.BussinessLogic.Interfaces
+fitlab.BussinessLogic.Logic
+fitlab.Data.Model
+fitlab.Data.Repository
+fitlab.Presentation.Config
+fitlab.Presentation.Controller
