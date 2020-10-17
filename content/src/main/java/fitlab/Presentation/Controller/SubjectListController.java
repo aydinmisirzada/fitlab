@@ -36,6 +36,8 @@ public class SubjectListController {
      */
     @PostMapping("/subjects")
     public String add(@RequestParam String code, @RequestParam String name, @RequestParam Semester semester) {
+        if(!s_repo.subDuplicate(code,name) || code.isEmpty() || name.isEmpty())
+            return "errorpage";
         s_repo.addSubject(code, name, semester);
         return "redirect:/subjects";
     }

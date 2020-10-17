@@ -21,6 +21,18 @@ public class Content {
     @JoinColumn(name = "subject_id")
     private Subject subject;
 
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
+    @OneToOne
+    @JoinColumn(name = "teacher_id")
+    private Teacher teacher;
+
     private String title;
 
     public Content(){}

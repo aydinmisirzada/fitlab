@@ -19,8 +19,13 @@ public class Subject {
     @OneToMany(mappedBy = "subject")
     private List<Content> contentList;
 
+//    @ManyToMany
+//    private  List<Teacher> teacherList;
+
     public Subject() {
     }
+
+
 
     public Subject(String Code, String Name, Semester Semester) {
         semester = Semester;

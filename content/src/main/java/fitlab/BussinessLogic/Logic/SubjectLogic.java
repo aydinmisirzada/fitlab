@@ -1,6 +1,7 @@
 package fitlab.BussinessLogic.Logic;
 
 import fitlab.BussinessLogic.Interfaces.SubjectLogicConf;
+import fitlab.Data.Model.Content;
 import fitlab.Data.Model.ContentType;
 import fitlab.Data.Model.Semester;
 import fitlab.Data.Model.Subject;
@@ -30,12 +31,10 @@ public class SubjectLogic implements SubjectLogicConf {
 
 
     public Subject SubjectAddPage(String subject, String title, ContentType type) {
-
         Subject  sub = repo.findByCode(subject);
         con.addContent(title,type,sub);
         repo.save(sub);
         return sub;
-
     }
 
     public List<Subject> SearchList() {
@@ -48,7 +47,15 @@ public class SubjectLogic implements SubjectLogicConf {
 
 
     public void delSubject(int  id) {
-        repo.delete(repo.getOne(id));
+        Subject subject = repo.findById(id);
+        List<Content> contents = subject.getContentList();
+        for (int i = 0; i < contents.size(); i++)  {
+            con.delContent(contents.get(i));
+        }
+        repo.delete(repo.findById(id));
     }
 
+    public Boolean subDuplicate(String code,String name) {
+        return (repo.findByName(name) == null && repo.findByCode(code) == null);
+    }
 }

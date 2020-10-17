@@ -1,5 +1,6 @@
 package fitlab.Presentation.Controller;
 
+import fitlab.BussinessLogic.Interfaces.TeacherLogicConf;
 import fitlab.BussinessLogic.Logic.ContentLogic;
 import fitlab.BussinessLogic.Interfaces.MessageLogicConf;
 import fitlab.Data.Model.Message;
@@ -19,7 +20,8 @@ public class ContentPageController {
     ContentLogic c_repo;
     @Autowired
     MessageLogicConf m_repo;
-
+    @Autowired
+    TeacherLogicConf t_repo;
     /**
      * The method is used to return a content page
      * @param subject This is the subject name from the link
@@ -35,7 +37,6 @@ public class ContentPageController {
 
         if(sub == null) return "errorpage";
 
-        model.addAttribute("subject",sub);
         model.addAttribute("messages",messages);
         return "page";
     }
@@ -51,8 +52,27 @@ public class ContentPageController {
      */
     @PostMapping("/subjects/{subject}/{type}/{page_id}")
     public String pageAddMessage(@PathVariable String subject, @PathVariable String type, @PathVariable int page_id, @RequestParam String author, @RequestParam String text) {
-        m_repo.pageAddMessage(subject,type,page_id,author,text);
-        return "redirect:" + "/subjects/" + subject + "/" + type + "/" + page_id;
+        m_repo.pageAddMessage(page_id,author,text);
+        return "redirect:" + "/subjects/" + subject + "/" + type + '/' + page_id;
+    }
+    @RequestMapping("/teachers/{id}/reviews")
+    public String teacherContentPage(@PathVariable int id,  Model model) {
+        model.addAttribute("messages",t_repo.getContent(id).getMessageList());
+        return "page";
+    }
+
+    @PostMapping("/teachers/{id}/reviews")
+    public String pageAddMessageTeacher(@PathVariable int id, @RequestParam String author, @RequestParam String text) {
+        int tmp = t_repo.getContent(id).getId();
+        m_repo.pageAddMessage(tmp,author,text);
+        return "redirect:" + "/teachers/" + id + "/reviews";
+    }
+
+
+    @PostMapping(value = "/subjects/{subject}" , params = "id")
+    public String delSubject(@PathVariable String subject, @RequestParam int  id) {
+        c_repo.delContent(c_repo.getCon(id));
+        return "redirect:/subjects/" + subject;
     }
 
 

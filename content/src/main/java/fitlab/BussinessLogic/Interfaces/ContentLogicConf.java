@@ -1,5 +1,6 @@
 package fitlab.BussinessLogic.Interfaces;
 
+import fitlab.Data.Model.Content;
 import fitlab.Data.Model.ContentType;
 import fitlab.Data.Model.Message;
 import fitlab.Data.Model.Subject;
@@ -33,4 +34,7 @@ public interface ContentLogicConf {
       * @return subject object
       */
      Subject contentSubject(String code);
+
+     void delContent(Content con);
+     Content getCon(int id);
 }

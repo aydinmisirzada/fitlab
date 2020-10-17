@@ -70,6 +70,8 @@ public class SubjectController {
                 Type = ContentType.TEST;break;
             case "EXAM":
                 Type = ContentType.EXAM;break;
+            case "REVIEW":
+                break;
             default:
                 return "errorpage";
         }
@@ -79,6 +81,8 @@ public class SubjectController {
         return "subject";
 
     }
+
+
 
 
 

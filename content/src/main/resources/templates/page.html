@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title th:text="${subject.getCode() + ' - ' + subject.getName()}">Name</title>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,6 +44,7 @@
 <div id="features" class="container1" style="margin-top: 20px;">
     <ul id="myUL">
         <tr th:each="message : ${messages}">
+
             <li>
                 <a>
                     <td  th:text="${message.getdate()} + ' ' + ${message.getAuthor()} + ':' ">

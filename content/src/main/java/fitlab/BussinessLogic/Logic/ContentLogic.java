@@ -1,10 +1,7 @@
 package fitlab.BussinessLogic.Logic;
 
 import fitlab.BussinessLogic.Interfaces.ContentLogicConf;
-import fitlab.Data.Model.Content;
-import fitlab.Data.Model.ContentType;
-import fitlab.Data.Model.Message;
-import fitlab.Data.Model.Subject;
+import fitlab.Data.Model.*;
 import fitlab.Data.Repository.ContentRepository;
 import fitlab.Data.Repository.MessageRepository;
 import fitlab.Data.Repository.SubjectRepository;
@@ -24,13 +21,18 @@ public class ContentLogic implements ContentLogicConf {
     MessageRepository mes_repo;
     @Autowired
     SubjectRepository s_repo;
-
+    @Autowired
+    MessageLogic mes;
     public void addContent( String title, ContentType type, Subject sub) {
         Content con = new Content(title, type);
         con.setSubject(sub);
         repo.save(con);
     }
-
+    public void addContent( String title, ContentType type, Teacher tec) {
+        Content con = new Content(title, type);
+        con.setTeacher(tec);
+        repo.save(con);
+    }
 
     public List<Message> contentMessageList(int page_id) {
         return repo.findById(page_id).getMessageList();
@@ -40,4 +42,16 @@ public class ContentLogic implements ContentLogicConf {
         return  s_repo.findByCode(code);
     }
 
+    public void delContent(Content con) {
+
+        List<Message> messages = con.getMessageList();
+        for (int i = 0; i < messages.size(); i++)  {
+            mes.delMessage(messages.get(i));
+        }
+        repo.delete(con);
+    }
+
+    public Content getCon(int id) {
+        return repo.findById(id);
+    }
 }

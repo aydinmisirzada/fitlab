@@ -5,9 +5,38 @@ import javax.persistence.*;
 // User entity
 @Entity
 @Table(name = "user")
-public class User extends Person{
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    private String Name;
 
+    private String Surname;
+    private String Username;
 
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        Name = name;
+    }
+
+    public String getSurname() {
+        return Surname;
+    }
+
+    public void setSurname(String surname) {
+        Surname = surname;
+    }
+
+    public String getUsername() {
+        return Username;
+    }
+
+    public void setUsername(String username) {
+        Username = username;
+    }
     private String Email;
     private String Password;
     private String Phone;
@@ -30,13 +59,6 @@ public class User extends Person{
         return id;
     }
 
-    public String getUsername() {
-        return Username;
-    }
-
-    public void setUsername(String username) {
-        Username = username;
-    }
 
     public String getEmail() {
         return Email;

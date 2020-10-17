@@ -20,6 +20,17 @@ public class Message {
     @JoinColumn(name = "content_id")
     private Content content;
 
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+
+
     public Message() {
     }
 
