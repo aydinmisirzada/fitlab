@@ -71,7 +71,7 @@
     <ul id="myUL">
         <tr th:each="teacher : ${teacher}">
 
-            <li><a >
+            <li><a th:href="${'teachers/' + teacher.getId()}">
                 <td  th:text="${teacher.getName()} + ' ' +  ${teacher.getSurname()}">
                     Name
                 </td>

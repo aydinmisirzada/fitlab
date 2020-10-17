@@ -15,9 +15,13 @@ public class MessageLogic implements MessageLogicConf {
     MessageRepository mes_repo;
 
 
-    public void pageAddMessage( String subject,String type, int page_id, String author, String text) {
+    public void pageAddMessage(int page_id, String author, String text) {
         Message message = new Message(text,author,con_repo.findById(page_id));
         mes_repo.save(message);
         con_repo.save(con_repo.findById(page_id));
+    }
+
+    public void delMessage(Message mes) {
+        mes_repo.delete(mes);
     }
 }

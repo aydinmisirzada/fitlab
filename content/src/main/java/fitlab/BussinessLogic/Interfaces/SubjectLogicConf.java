@@ -54,4 +54,6 @@ public interface SubjectLogicConf {
       * @param id This is id of the subject which is to be deleted
       */
      void delSubject(int  id);
+
+     Boolean subDuplicate(String code,String name);
 }

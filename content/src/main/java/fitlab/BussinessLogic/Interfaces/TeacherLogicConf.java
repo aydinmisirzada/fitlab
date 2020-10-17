@@ -1,5 +1,7 @@
 package fitlab.BussinessLogic.Interfaces;
 
+import fitlab.Data.Model.Content;
+import fitlab.Data.Model.Subject;
 import fitlab.Data.Model.Teacher;
 import org.springframework.ui.Model;
 
@@ -28,4 +30,10 @@ public interface TeacherLogicConf {
       * @param id This is id of the teacher which is to be deleted
       */
      void delTeacher(int  id);
+
+
+     Boolean tecDuplicate(String username);
+     Teacher SearchTeacher(int id);
+     Content getContent(int id);
+
 }

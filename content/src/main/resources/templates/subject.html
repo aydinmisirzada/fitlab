@@ -77,7 +77,11 @@
             <td  th:text="${content.getTitle()}">
                 Name
             </td>
+            <form method="post">
+                    <button type="submit" style="position: absolute; right: 11%;" >Delete</button>
+                    <input type="text"  name="id" th:value="${content.getId()}" style="visibility: hidden;height: 0" >
 
+                </form>
         </a>
         </li>
             </span>
@@ -114,7 +118,11 @@
             <td  th:text="${content.getTitle()}">
                 Name
             </td>
+ <form method="post">
+                    <button type="submit" style="position: absolute; right: 11%;" >Delete</button>
+                    <input type="text"  name="id" th:value="${content.getId()}" style="visibility: hidden;height: 0" >
 
+                </form>
         </a>
         </li>
             </span>
@@ -132,6 +140,7 @@
 
             <input type="text" name="title" placeholder="Title">
                     </td>
+
                 </tr>
             </table>
             <input type="text"  name="type" value="TEST" style="visibility: hidden">
@@ -152,7 +161,11 @@
             <td  th:text="${content.getTitle()}">
                 Name
             </td>
+ <form method="post">
+                    <button type="submit" style="position: absolute; right: 11%;" >Delete</button>
+                    <input type="text"  name="id" th:value="${content.getId()}" style="visibility: hidden;height: 0" >
 
+                </form>
         </a>
         </li>
             </span>
