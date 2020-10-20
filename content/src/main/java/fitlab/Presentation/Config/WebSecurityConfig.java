@@ -21,12 +21,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
+        http    .csrf().disable()
                 .authorizeRequests()
-                    .antMatchers("/", "/styles.css","/assets/**", "/images/**").permitAll()
+                    .antMatchers("/", "/registration", "/styles.css","/assets/**", "/images/**")
+                    .permitAll()
                     .anyRequest().authenticated()
                 .and()
-                    .formLogin();
+                    .formLogin()
+                    .loginPage("/login")
+                    .defaultSuccessUrl("/")
+                    .permitAll()
+                .and()
+                    .logout()
+                    .permitAll();
         /*http
                 .authorizeRequests()
                     .antMatchers("/").permitAll()
@@ -39,6 +46,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .logout()
                     .permitAll();*/
     }
+   /* @Bean
+    @Override
+    public UserDetailsService userDetailsService() {
+        UserDetails user =
+                User.withDefaultPasswordEncoder()
+                        .username("us")
+                        .password("p")
+                        .roles("USER")
+                        .build();
+
+        return new InMemoryUserDetailsManager(user);
+    }*/
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception{
