@@ -1,6 +1,7 @@
 package fitlab.Data.Model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 // User entity
 @Entity
@@ -12,7 +13,7 @@ public class User {
     private String Name;
 
     private String Surname;
-    private String Username;
+    private String username;
 
     public String getName() {
         return Name;
@@ -31,24 +32,28 @@ public class User {
     }
 
     public String getUsername() {
-        return Username;
+        return username;
     }
 
     public void setUsername(String username) {
-        Username = username;
+        this.username = username;
     }
     private String Email;
     private String Password;
     private String Phone;
-    private String Role;
+    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
+    @CollectionTable(name="user_role", joinColumns = @JoinColumn(name="user_id"))
+    @Enumerated(EnumType.STRING)
+    private Set<Role> Role;
 
     public User() {
     }
 
-    public User(String username, String email, String password, String phone, String role, String name, String surname) {
+    public User(Integer id, String name, String surname, String username, String email, String password, String phone, Set<fitlab.Data.Model.Role> role) {
+        this.id = id;
         Name = name;
         Surname = surname;
-        Username = username;
+        this.username = username;
         Email = email;
         Password = password;
         Phone = phone;
@@ -77,11 +82,15 @@ public class User {
         Phone = phone;
     }
 
-    public String getRole() {
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Set<fitlab.Data.Model.Role> getRole() {
         return Role;
     }
 
-    public void setRole(String role) {
+    public void setRole(Set<fitlab.Data.Model.Role> role) {
         Role = role;
     }
 
