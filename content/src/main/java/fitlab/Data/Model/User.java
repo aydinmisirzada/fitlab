@@ -41,15 +41,12 @@ public class User {
     private String Email;
     private String Password;
     private String Phone;
-    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
-    @CollectionTable(name="user_role", joinColumns = @JoinColumn(name="user_id"))
-    @Enumerated(EnumType.STRING)
-    private Set<Role> Role;
+    private String Role;
 
     public User() {
     }
 
-    public User(Integer id, String name, String surname, String username, String email, String password, String phone, Set<fitlab.Data.Model.Role> role) {
+    public User(Integer id, String name, String surname, String username, String email, String password, String phone, String role) {
         this.id = id;
         Name = name;
         Surname = surname;
@@ -86,11 +83,11 @@ public class User {
         this.id = id;
     }
 
-    public Set<fitlab.Data.Model.Role> getRole() {
+    public String getRole() {
         return Role;
     }
 
-    public void setRole(Set<fitlab.Data.Model.Role> role) {
+    public void setRole(String role) {
         Role = role;
     }
 

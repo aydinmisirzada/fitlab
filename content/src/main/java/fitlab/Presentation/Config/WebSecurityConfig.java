@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 import javax.sql.DataSource;
@@ -18,12 +19,20 @@ import javax.sql.DataSource;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+    /*@Autowired
+    private DataSource dataSource;*/
     @Autowired
-    private DataSource dataSource;
+    UserDetailsService userDetailsService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                .authorizeRequests()
+                    .antMatchers("/").permitAll()
+                    .anyRequest().authenticated()
+                .and()
+                    .formLogin();
+        /*http
                 .authorizeRequests()
                     .antMatchers("/").permitAll()
                     .anyRequest().authenticated()
@@ -33,15 +42,25 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .permitAll()
                 .and()
                     .logout()
-                    .permitAll();
+                    .permitAll();*/
     }
 
     @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception{
+        auth.userDetailsService(userDetailsService);
+    }
+
+    @Bean
+    public PasswordEncoder getPasswordEncoder(){
+        return NoOpPasswordEncoder.getInstance();
+    }
+
+    /*@Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception{
         auth.jdbcAuthentication()
                 .dataSource(dataSource)
                 .passwordEncoder(NoOpPasswordEncoder.getInstance())
                 .usersByUsernameQuery("select username, password from user where username=?")
-                .authoritiesByUsernameQuery("select username, roles from user inner join user_role");
-    }
+                .authoritiesByUsernameQuery("select username, roles from user inner join user_rol");
+    }*/
 }
