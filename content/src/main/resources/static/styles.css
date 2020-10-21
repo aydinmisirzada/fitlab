@@ -1,4 +1,4 @@
-
+/*
 body {
   font-family: 'Open Sans', arial, sans-serif;
   color: #494d55;
@@ -104,7 +104,8 @@ a.btn-cta {
   margin: 0;
   margin-right: 5px;
 }
-/* ======= Header ======= */
+
+// ======= Header =======
 .header {
   position: fixed;
   width: 100%;
@@ -240,7 +241,7 @@ a.btn-cta {
   padding-left: 5px;
   padding-right: 5px;
 }
-/* ====== Footer ====== */
+// ====== Footer ======
 .footer {
     background: #26282c;
     color: rgba(255, 255, 255, 0.6);
@@ -252,7 +253,7 @@ a.btn-cta {
 .footer .fa-heart {
   color: #EA5395;
 }
-/* ======= Hero Section ======= */
+// ======= Hero Section =======
 .hero-section {
   min-height: 560px;
   background: #494d55;
@@ -320,7 +321,7 @@ background-color: yellow;
   margin-top: 15px;
 }
 
-/* ======= Features Section ======= */
+// ======= Features Section =======
 .features-section {
   padding-top: 90px;
   padding-bottom: 90px;
@@ -363,7 +364,7 @@ background-color: yellow;
   color: #40babd;
 }
 
-/* Extra small devices (phones, less than 768px) */
+// Extra small devices (phones, less than 768px)
 @media (max-width: 767px) {
   .navbar-collapse {
     border-top: none;
@@ -446,7 +447,7 @@ background-color: yellow;
     min-height: inherit;
   }
 }
-/* Small devices (tablets, 768px and up) */
+// Small devices (tablets, 768px and up)
 @media (min-width: 768px) {
   .feature-nav {
     text-align: left;
@@ -468,7 +469,7 @@ background-color: yellow;
     min-height: 515px;
   }
 }
-/* Medium devices (desktops, 992px and up) */
+// Medium devices (desktops, 992px and up)
 @media (min-width: 992px) {
   .feature-nav {
     margin-top: 30px;
@@ -495,7 +496,7 @@ background-color: yellow;
     min-height: 390px;
   }
 }
-/* Large devices (large desktops, 1200px and up) */
+// Large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
   .hero-section .figure-holder .figure-image {
     width: 570px;
@@ -598,7 +599,7 @@ background-color: yellow;
         opacity:0;
     }
 
-/* style the container */
+// style the container
 .container1 {
   position: relative;
   border-radius: 5px;
@@ -606,7 +607,7 @@ background-color: yellow;
   padding: 20px 0 30px 0;
 }
 
-/* style inputs and link buttons */
+// style inputs and link buttons
 input,
 .btn {
   width: 100%;
@@ -618,7 +619,7 @@ input,
   display: inline-block;
   font-size: 17px;
   line-height: 20px;
-  text-decoration: none; /* remove underline from anchors */
+  text-decoration: none; // remove underline from anchors
 }
 
 input:hover,
@@ -626,7 +627,7 @@ input:hover,
   opacity: 1;
 }
 
-/* Two-column layout */
+// Two-column layout
 .col {
   float: left;
   width: 50%;
@@ -635,14 +636,14 @@ input:hover,
   margin-top: 6px;
 }
 
-/* Clear floats after the columns */
+// Clear floats after the columns *
 .row:after {
   content: "";
   display: table;
   clear: both;
 }
 
-/* vertical line */
+// vertical line
 .vl {
   position: absolute;
   left: 50%;
@@ -651,7 +652,7 @@ input:hover,
   height: 175px;
 }
 
-/* text inside the vertical line */
+// text inside the vertical line
 .inner {
   position: absolute;
   top: 50%;
@@ -662,53 +663,54 @@ input:hover,
   padding: 8px 10px;
 }
 
-/* hide some text on medium and large screens */
+// hide some text on medium and large screens
 .hide-md-lg {
   display: none;
 }
 
-/* bottom container */
+// bottom container
 .bottom-container1 {
   text-align: center;
   background-color: #666;
   border-radius: 0px 0px 4px 4px;
 }
 #myInput {
-  background-image: url('/css/searchicon.png'); /* Add a search icon to input */
-  background-position: 10px 12px; /* Position the search icon */
-  background-repeat: no-repeat; /* Do not repeat the icon image */
-  width: 80%; /* Full-width */
+  background-image: url('/css/searchicon.png'); // Add a search icon to input
+  background-position: 10px 12px; // Position the search icon
+  background-repeat: no-repeat; // Do not repeat the icon image
+  width: 80%; // Full-width
   margin-left: 10%;
   margin-right: 10%;
   margin-top: 3%;
   position: center;
-  font-size: 16px; /* Increase font-size */
-  padding: 12px 20px 12px 40px; /* Add some padding */
-  border: 1px solid #ddd; /* Add a grey border */
-  margin-bottom: 12px; /* Add some space below the input */
+  font-size: 16px; // Increase font-size
+  padding: 12px 20px 12px 40px; // Add some padding
+  border: 1px solid #ddd; // Add a grey border
+  margin-bottom: 12px; // Add some space below the input
 }
 
 #myUL {
-  /* Remove default list styling */
+  // Remove default list styling
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
 
 #myUL li a {
-  border: 1px solid #ddd; /* Add a border to all links */
-  margin-top: -1px; /* Prevent double borders */
-  background-color: #f6f6f6; /* Grey background color */
-  padding: 12px; /* Add some padding */
-  text-decoration: none; /* Remove default text underline */
-  font-size: 18px; /* Increase the font-size */
-  color: black; /* Add a black text color */
-  display: block; /* Make it into a block element to fill the whole list */
-  width: 80%; /* Full-width */
+  border: 1px solid #ddd; // Add a border to all links
+  margin-top: -1px; // Prevent double borders
+  background-color: #f6f6f6; // Grey background color
+  padding: 12px; // Add some padding
+  text-decoration: none; // Remove default text underline
+  font-size: 18px; // Increase the font-size
+  color: black; // Add a black text color
+  display: block; // Make it into a block element to fill the whole list
+  width: 80%; // Full-width
   margin-left: 10%;
   margin-right: 10%;
 
   color: #494d55;
+
 
 
 }
@@ -723,9 +725,9 @@ input:hover,
   border-bottom: 4px solid purple;
 }
 #myUL li a:hover:not(.header) {
-  background-color: #eee; /* Add a hover effect to all links, except for headers */
+  background-color: #eee; // Add a hover effect to all links, except for headers
 }
-/* Responsive layout - when the screen is less than 650px wide, make the two columns stack on top of each other instead of next to each other */
+// Responsive layout - when the screen is less than 650px wide, make the two columns stack on top of each other instead of next to each other
 
 
 .adder {
@@ -734,6 +736,8 @@ input:hover,
   margin-bottom: 10px;
 
 }
+*/
+//new styles
 
 body {
   padding-top: 56px;
