@@ -16,9 +16,7 @@ public class RegistrationLogic {
     public String addUser(User user){
         Optional<User> u = userRepository.findByUsername(user.getUsername());
         if(!u.equals(Optional.empty())) return "username";
-        System.err.println("username\n");
         u = userRepository.findByEmail(user.getEmail());
-        System.err.println("email\n");
         if(!u.equals(Optional.empty())) return "email";
 
         user.setRole("USER");

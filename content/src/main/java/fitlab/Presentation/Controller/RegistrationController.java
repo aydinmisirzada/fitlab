@@ -25,7 +25,6 @@ public class RegistrationController {
         String s = rl.addUser(user);
         if(s.equals("username")){
             s = "User with this username already exists!";
-//            Object o = s;
             model.addAttribute("error", s);
             return "registration";
         }
