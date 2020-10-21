@@ -1,176 +1,182 @@
 ﻿<!DOCTYPE html>
+<html lang="en">
 
-<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->  
 <head>
-    <title>FitLab</title>
-    <base href="/" />
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Responsive HTML5 website landing page for developers and startups">
-    <meta name="author" content="Xiaoying Riley at 3rd Wave Media">
-    <link rel="shortcut icon" href="/assets/favicon.png">
-    <link rel="stylesheet" href="/assets/plugins/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/plugins/font-awesome/css/font-awesome.css">
-    <link id="theme-style" rel="stylesheet" href="/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>FITLab</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/modern-business.css" rel="stylesheet">
 
 </head>
 
 <body>
-    <!-- ******HEADER****** -->
-    <header id="header" class="header">
-        <div class="container">
-            <h1 class="logo">
-                <a href="/">
-                    <span class="logo-icon-wrapper"><img class="logo-icon" src="/images/logo.png" alt=""></span>
-                    <span class="text"><span class="highlight">FitLab</span></span>
-                </a>
-            </h1><!--//logo-->
-            <nav class="main-nav navbar-right" role="navigation">
-                <div class="navbar-header">
-                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-                <div id="navbar-collapse" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="nav-item"><a href="subjects">Subjects</a></li>
-                        <li class="nav-item"><a href="teachers">Teachers</a></li>
-                        <li class="nav-item"><a href="login">Log In</a></li>
-                    </ul>
-                </div>
-            </nav>
+
+  <!-- Navigation -->
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">FITLab Logo</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="subjects">Subjects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="teachers">Teachers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="LogIn">Log In</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header>
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <!-- Slide One - Set the background image for this slide in the line below -->
+        <div class="carousel-item active" style="background-image: url('http://placehold.it/1900x1080')">
+          <div class="carousel-caption d-none d-md-block">
+            <h3>First Slide</h3>
+            <p>This is a description for the first slide.</p>
+          </div>
         </div>
-    </header>
-
-    <div id="hero" class="hero-section">
-
-        <div id="hero-carousel" class="hero-carousel carousel carousel-fade slide" data-ride="carousel" data-interval="10000">
-
-            <div class="figure-holder-wrapper">
-                <div class="container">
-                    <div class="row">
-                    </div>
-                </div>
-            </div>
-
-            <ol class="carousel-indicators">
-                <li class="active" data-slide-to="0" data-target="#hero-carousel"></li>
-                <li data-slide-to="1" data-target="#hero-carousel"></li>
-                <li data-slide-to="2" data-target="#hero-carousel"></li>
-            </ol>
-
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner">
-                <!-- Item 1 -->
-                <div class="item item-1 active">
-                    <div class="item-content container">
-                        <div class="item-content-inner">
-                            <h2 class="heading">FitLab is a good place<br class="hidden-xs">for students</h2>
-                            <p class="intro">It will help you with studies!</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 2 -->
-                <div class="item item-2">
-                    <div class="item-content container">
-                        <div class="item-content-inner">
-
-                            <h2 class="heading">Need some help with test, exams or homework?</h2>
-                            <p class="intro">FitLab Can help you!</p>
-
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 3 -->
-                <div class="item item-3">
-                    <div class="item-content container">
-                        <div class="item-content-inner">
-
-                            <h2 class="heading">Want to choose subjects?</h2>
-                            <p class="intro">It is easy now!</p>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+        <!-- Slide Two - Set the background image for this slide in the line below -->
+        <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
+          <div class="carousel-caption d-none d-md-block">
+            <h3>Second Slide</h3>
+            <p>This is a description for the second slide.</p>
+          </div>
         </div>
+        <!-- Slide Three - Set the background image for this slide in the line below -->
+        <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
+          <div class="carousel-caption d-none d-md-block">
+            <h3>Third Slide</h3>
+            <p>This is a description for the third slide.</p>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <h1 class="my-4">Welcome to FITLab</h1>
+
+    <!-- Marketing Icons Section -->
+    <div class="row">
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">PA1</h4>
+          <div class="card-body">
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+          </div>
+          <div class="card-footer">
+            <a href="#" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">SI1.2</h4>
+          <div class="card-body">
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ipsam eos, nam perspiciatis natus commodi similique totam consectetur praesentium molestiae atque exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.</p>
+          </div>
+          <div class="card-footer">
+            <a href="#" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">TJV</h4>
+          <div class="card-body">
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+          </div>
+          <div class="card-footer">
+            <a href="#" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.row -->
+
+
+
+    <!-- Features Section -->
+    <div class="row">
+      <div class="col-lg-6">
+        <h2>Why FITLab?</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        <ul>
+          <li>
+            <strong>Easy to use</strong>
+          </li>
+          <li>Help and get help from other students</li>
+          <li>Review the subject before enrolling</li>
+          <li>Find info on a specific teacher, and what students think of him</li>
+        </ul>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia dolorum ducimus unde.</p>
+      </div>
+      <div class="col-lg-6">
+        <img class="img-fluid rounded" src="http://placehold.it/700x450" alt="">
+      </div>
+    </div>
+    <!-- /.row -->
+
+    <hr>
+
+    <!-- Call to Action Section -->
+    <div class="row mb-4">
+      <div class="col-md-8">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, expedita, saepe, vero rerum deleniti beatae veniam harum neque nemo praesentium cum alias asperiores commodi.</p>
+      </div>
+      <div class="col-md-4">
+        <a class="btn btn-lg btn-secondary btn-block" href="#">Call to Action</a>
+      </div>
     </div>
 
+  </div>
+  <!-- /.container -->
 
-    <div id="features" class="features-section">
-        <div class="container text-center">
-            <h2 class="section-title">How does it work</h2>
-            <p class="intro">FitLab will help you with your studies</p>
-
-            <div class="tabbed-area row">
-
-                <!-- Nav tabs -->
-                <ul class="feature-nav nav nav-pill nav-stacked text-left col-md-4 col-sm-6 col-xs-12 col-md-push-8 col-sm-push-6 col-xs-push-0" role="tablist">
-                    <li role="presentation" class="active"><a href="#feature-1" aria-controls="feature-1" role="tab" data-toggle="tab">Register at the site</a></li>
-                    <li role="presentation"><a href="#feature-2" aria-controls="feature-2" role="tab" data-toggle="tab">Browse courses</a></li>
-                    <li role="presentation"><a href="#feature-3" aria-controls="feature-3" role="tab" data-toggle="tab">Browse teachers</a></li>
-
-                    <li role="presentation"><a href="#feature-4" aria-controls="feature-4" role="tab" data-toggle="tab">View your timetable</a></li>
-
-                    <li role="presentation"><a href="#feature-5" aria-controls="feature-5" role="tab" data-toggle="tab">Chat with others on the forum</a></li>
-
-                    <li role="presentation"><a href="#feature-6" aria-controls="feature-6" role="tab" data-toggle="tab">Put reviews and rate for other students</a></li>
-
-                </ul>
-
-                <!-- Tabs -->
-                <div class="feature-content tab-content col-md-8 col-sm-6 col-xs-12 col-md-pull-4 col-sm-pull-6 col-xs-pull-0">
-                    <div role="tabpanel" class="tab-pane fade in active" id="feature-1">
-                        <a ><img class="img-responsive" style="height: 400px;" src="content/src/main/resources/static/images/feature-1.png" alt="screenshot"></a>
-                    </div>
-                    <div role="tabpanel" class="tab-pane fade" id="feature-2">
-                        <a><img class="img-responsive" style="height: 400px;" src="content/src/main/resources/static/images/feature-2.png" alt="screenshot"></a>
-                    </div>
-                    <div role="tabpanel" class="tab-pane fade" id="feature-3">
-                        <a ><img class="img-responsive" style="height: 400px;" src="content/src/main/resources/static/images/feature-3.png" alt="screenshot"></a>
-                    </div>
-                    <div role="tabpanel" class="tab-pane fade" id="feature-4">
-                        <a ><img class="img-responsive" style="height: 400px;"  src="content/src/main/resources/static/images/feature-4.png" alt="screenshot"></a>
-                    </div>
-                    <div role="tabpanel" class="tab-pane fade" id="feature-5">
-                        <a><img class="img-responsive" style="height: 400px;" src="content/src/main/resources/static/images/feature-5.png" alt="screenshot"></a>
-                    </div>
-                    <div role="tabpanel" class="tab-pane fade" id="feature-6">
-                        <a><img class="img-responsive" style="height: 400px;" src="content/src/main/resources/static/images/feature-6.png" alt="screenshot"></a>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; FITLab 2020</p>
     </div>
+    <!-- /.container -->
+  </footer>
 
-
-
-
-    <section id="social-media">
-        <div class="container text-center">
-            <p>Contact us</p>
-            <div class="social-icons">
-                <a href="#"><img src="content/src/main/resources/static/images/face.png" /></a>
-                <a href="#"><img src="content/src/main/resources/static/images/tel.png" /></a>
-                <a href="#"><img src="content/src/main/resources/static/images/inst.png" /></a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Javascript -->
-    <script type="text/javascript" src="content/src/main/resources/static/assets/plugins/jquery-1.12.3.min.js"></script>
-    <script type="text/javascript" src="content/src/main/resources/static/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="content/src/main/resources/static/assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>
-    <script type="text/javascript" src="content/src/main/resources/static/assets/js/main.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
-</html> 
 
+</html>
