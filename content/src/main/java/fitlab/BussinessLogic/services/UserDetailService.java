@@ -1,4 +1,4 @@
-package fitlab.Data.service;
+package fitlab.BussinessLogic.services;
 
 import fitlab.Data.Model.OwnUserDetails;
 import fitlab.Data.Model.User;
