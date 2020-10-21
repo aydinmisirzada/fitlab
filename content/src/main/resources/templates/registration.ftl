@@ -1,15 +1,13 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Log In</title>
-</head>
-<body>
-<!--<span th:text="${error}">-->
-<!--<a th:text="${error}">-->
+<#import "parts/common.ftl" as c>
+
+<@c.page>
+    <br>    <br>
+    <br>
+    <br>
+    <br>
 <form action="/registration" method="post">
     <h4>REGISTRATION</h4>
-<!--    <label th:value="${error}" >[[${error}]]</label>-->
-    <p th:text="${error}">Username will be rendered here</p>
+    <p >${error}</p>
     <div><label> User Name : <input type="text" name="username"/> </label></div>
     <div><label> Password: <input type="password" name="password"/> </label></div>
 
@@ -20,5 +18,5 @@
     <div><input type="submit" value="Register"/></div>
 </form>
 <a href="/login">Log in</a>
-</body>
-</html>
+
+</@c.page>
