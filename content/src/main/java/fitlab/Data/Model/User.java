@@ -1,7 +1,6 @@
 package fitlab.Data.Model;
 
 import javax.persistence.*;
-import java.util.Set;
 
 // User entity
 @Entity
@@ -10,29 +9,29 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String Name;
+    private String name;
 
-    private String Surname;
+    private String surname;
     private String username;
 
-    private String Email;
-    private String Password;
-    private String Phone;
-    private String Role;
+    private String email;
+    private String password;
+    private String phone;
+    private String role;
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getSurname() {
-        return Surname;
+        return surname;
     }
 
     public void setSurname(String surname) {
-        Surname = surname;
+        this.surname = surname;
     }
 
     public String getUsername() {
@@ -49,13 +48,13 @@ public class User {
 
     public User(Integer id, String name, String surname, String username, String email, String password, String phone, String role) {
         this.id = id;
-        Name = name;
-        Surname = surname;
+        this.name = name;
+        this.surname = surname;
         this.username = username;
-        Email = email;
-        Password = password;
-        Phone = phone;
-        Role = role;
+        this.email = email;
+        this.password = password;
+        this.phone = phone;
+        this.role = role;
     }
 
     public Integer getId() {
@@ -64,20 +63,20 @@ public class User {
 
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
 
     public String getPhone() {
-        return Phone;
+        return phone;
     }
 
     public void setPhone(String phone) {
-        Phone = phone;
+        this.phone = phone;
     }
 
     public void setId(Integer id) {
@@ -85,19 +84,19 @@ public class User {
     }
 
     public String getRole() {
-        return Role;
+        return role;
     }
 
     public void setRole(String role) {
-        Role = role;
+        this.role = role;
     }
 
     public String getPassword() {
-        return Password;
+        return password;
     }
 
     public void setPassword(String password) {
-        Password = password;
+        this.password = password;
     }
 }
 

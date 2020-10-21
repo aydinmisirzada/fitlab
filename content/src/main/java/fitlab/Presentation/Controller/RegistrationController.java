@@ -15,15 +15,28 @@ public class RegistrationController {
     RegistrationLogic rl;
 
     @RequestMapping(method = RequestMethod.GET, value = "/registration")
-    public String registration(){
+    public String registration(Model model){
+        model.addAttribute("error", "");
         return "registration";
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public String addUser(User user, Model model){
-        Boolean b = rl.addUser(user);
-        if(!b) model.addAttribute("error", "User with this email or username already exists!");
-        model.addAttribute("user", user);
+        String s = rl.addUser(user);
+        if(s.equals("username")){
+            s = "User with this username already exists!";
+//            Object o = s;
+            model.addAttribute("error", s);
+            return "registration";
+        }
+        if(s.equals("email")){
+            s = "User with this email already exists!";
+            model.addAttribute("error", s);
+            return "registration";
+
+        }
+
+//        model.addAttribute("user", user);
         return "redirect:/login";
     }
 
