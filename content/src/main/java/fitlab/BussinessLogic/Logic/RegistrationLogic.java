@@ -34,7 +34,7 @@ public class RegistrationLogic implements RegistrationLogicInterface {
                     "Welcome to FitLab, %s\n" +
                     "Use this link to activate your account\n" +
                     "http://localhost:8080/activate/%s", user.getUsername(), user.getActivationCode());
-            mailSender.send(user.getEmail(), "Activation code", message);
+            mailSender.send(user.getEmail(),message, "Activation code");
         }
         return "t";
     }
@@ -43,7 +43,7 @@ public class RegistrationLogic implements RegistrationLogicInterface {
         Optional<User> u = userRepository.findByActivationCode(activationCode);
         if(u.equals(Optional.empty())) return false;
 
-        u.get().setActivationCode(null);
+        u.get().setActivationCode("");
         userRepository.save(u.get());
         return true;
     }
