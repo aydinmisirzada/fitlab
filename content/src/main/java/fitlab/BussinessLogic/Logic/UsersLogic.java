@@ -18,4 +18,18 @@ public class UsersLogic {
 
         return u.get();
     }
+
+    public String editUserByEmail(User user) {
+        Optional<User> u = userRepository.findByEmail(user.getEmail());
+        if(u.equals(Optional.empty())) return "une"; //user not exist
+
+        if(!u.get().getPathId().equals(user.getPathId())){
+            Optional<User> tmp = userRepository.findByPathId(user.getPathId());
+            if(!tmp.equals(Optional.empty()))
+                return "path";  //path exist
+        }
+        u.get().setUser(user);
+        userRepository.save(u.get());
+        return "true";
+    }
 }

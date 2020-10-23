@@ -21,6 +21,14 @@ public class User {
     private String activationCode;
     private String pathId;
 
+
+    public void setUser(User user) {
+        this.name = user.getName();
+        this.surname = user.getSurname();
+        this.username = user.getUsername();
+        this.pathId = user.getPathId();
+    }
+
     public String getPathId() {
         return pathId;
     }

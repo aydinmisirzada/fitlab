@@ -22,8 +22,22 @@ public class UsersController {
         /*if(u==null)      // If user is not exist return "USER NOT FOUND" page
             return "errorpage";*/
 
+        model.addAttribute("error", "");
         model.addAttribute("user", u);
         return "userPage";
+    }
+
+    @RequestMapping(value = "/userEdit", method = RequestMethod.POST)
+    public String editUserInfo(User user, Model model){
+        String s = usersLogic.editUserByEmail(user);
+        if(s.equals("une"))
+            return "errorpage";
+        else if(s.equals("path")) {
+            model.addAttribute("error", "User with same URL exist, choose another one!");
+            return "userPage";
+        }
+
+        return "redirect:/users/"+user.getPathId();
     }
 
 }

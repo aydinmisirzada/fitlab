@@ -26,7 +26,7 @@ public class RegistrationLogic implements RegistrationLogicInterface {
         if(!u.equals(Optional.empty())) return "email";
 
         user.setRole("USER");
-        user.setPathId(user.getUsername()+user.getId());
+        user.setPathId(user.getUsername()+UUID.randomUUID().toString());
         user.setActivationCode(UUID.randomUUID().toString());
         userRepository.save(user);
 
