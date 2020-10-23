@@ -15,5 +15,6 @@ known = Session.SPRING_SECURITY_CONTEXT??
     name = "unknown"
     isAdmin = false
     logged = false
+    pathId = "unknown"
     >
 </#if>

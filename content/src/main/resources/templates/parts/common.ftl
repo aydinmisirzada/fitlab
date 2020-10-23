@@ -1,4 +1,5 @@
 <#import "navbar.ftl" as nav>
+<#import "footer.ftl" as foot>
 <#macro page>
 
 <!DOCTYPE html>
@@ -26,12 +27,7 @@
 <#nested>
 
 <!-- Footer -->
-<footer class="py-5 bg-dark">
-    <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; FITLab 2020</p>
-    </div>
-    <!-- /.container -->
-</footer>
+<@foot.f/>
 
 <!-- Bootstrap core JavaScript -->
 <script src="assets/vendor/jquery/jquery.min.js"></script>
