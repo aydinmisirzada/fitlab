@@ -25,5 +25,5 @@ public class UsersController {
         model.addAttribute("user", u);
         return "userPage";
     }
-    
+
 }
