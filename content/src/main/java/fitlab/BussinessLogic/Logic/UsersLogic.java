@@ -1,8 +1,12 @@
 package fitlab.BussinessLogic.Logic;
 
+import fitlab.Data.Model.OwnUserDetails;
 import fitlab.Data.Model.User;
 import fitlab.Data.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -28,8 +32,15 @@ public class UsersLogic {
             if(!tmp.equals(Optional.empty()))
                 return "path";  //path exist
         }
+        else if(!u.get().getUsername().equals(user.getUsername())){
+            Optional<User> tmp = userRepository.findByUsername(user.getUsername());
+            if(!tmp.equals(Optional.empty()))
+                return "username";  //path exist
+        }
         u.get().setUser(user);
         userRepository.save(u.get());
+//        SecurityContextHolder.getContext().getAuthentication();
+//        SecurityContextHolder.getContext().setAuthentication((Authentication) u.map(OwnUserDetails::new).get());
         return "true";
     }
 }
