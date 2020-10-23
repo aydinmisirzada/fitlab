@@ -2,8 +2,10 @@ package fitlab.Data.Model;
 
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Vector;
+import java.util.function.Supplier;
 @Entity
 @Table(name="teacher")
 public class Teacher  {
@@ -15,12 +17,34 @@ public class Teacher  {
     private String surname;
     private String username;
 
-/*    @ManyToMany(mappedBy = "teacherList")
-    private List<Subject> subjectList;*/
+    @OneToMany(mappedBy = "teacher")
+    private List<Review> reviewList;
 
+    public List<Review> getReviewList() {
+        return reviewList;
+    }
+
+    public void setReviewList(List<Review> reviewList) {
+        this.reviewList = reviewList;
+    }
 
     @OneToOne(mappedBy = "teacher")
     private Content content;
+
+    public void addReview(Review review) {
+        reviewList.add(review);
+    }
+
+    public int averageRating() {
+        int x = 0;
+        for (Review y : reviewList) {
+            x += y.getRating();
+        }
+        if(reviewList.size() > 0)
+            x /= reviewList.size();
+
+        return  x;
+    }
 
     public Content getContent() {
         return content;

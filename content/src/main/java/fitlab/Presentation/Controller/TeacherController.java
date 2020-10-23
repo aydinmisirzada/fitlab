@@ -3,10 +3,11 @@ package fitlab.Presentation.Controller;
 import fitlab.BussinessLogic.Logic.TeacherLogic;
 import fitlab.Data.Model.Teacher;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.security.core.Authentication;
 import java.util.List;
 
 //The class controls teacher list
@@ -64,6 +65,7 @@ public class TeacherController {
         model.addAttribute("teacher",teacher);
         return "teacher_page";
     }
+
 
 
 }

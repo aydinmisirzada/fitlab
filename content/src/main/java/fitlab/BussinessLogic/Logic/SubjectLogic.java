@@ -58,4 +58,13 @@ public class SubjectLogic implements SubjectLogicConf {
     public Boolean subDuplicate(String code,String name) {
         return (repo.findByName(name) == null && repo.findByCode(code) == null);
     }
+
+    public int averageRating( List<Integer> ratings ) {
+        int x = 0;
+        for (Integer rat : ratings) {
+            x += rat;
+        }
+        x /= ratings.size();
+        return x;
+    }
 }

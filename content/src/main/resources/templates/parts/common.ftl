@@ -1,5 +1,5 @@
 <#import "navbar.ftl" as nav>
-<#macro page>
+<#macro page title>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>FITLab</title>
+    <title>${title}</title>
 
     <!-- Bootstrap core CSS -->
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">

@@ -1,6 +1,6 @@
 <#import "parts/common.ftl" as c>
 
-<@c.page>
+<@c.page "FitLab login">
     <br>    <br>
     <br>
     <br>
