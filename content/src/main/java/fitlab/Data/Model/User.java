@@ -19,6 +19,15 @@ public class User {
     private String phone;
     private String role;
     private String activationCode;
+    private String pathId;
+
+    public String getPathId() {
+        return pathId;
+    }
+
+    public void setPathId(String pathId) {
+        this.pathId = pathId;
+    }
 
     public String getActivationCode() {
         return activationCode;

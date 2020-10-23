@@ -23,7 +23,10 @@
                     </li>
                 <#else>
                     <li class="nav-item">
-                        <a class="nav-link" href="/logout">Log Out, ${name}</a>
+                        <a class="nav-link" href="/users/${pathId}">${name}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Log Out</a>
                     </li>
                 </#if>
             </ul>

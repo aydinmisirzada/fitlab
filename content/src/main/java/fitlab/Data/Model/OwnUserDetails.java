@@ -13,12 +13,14 @@ public class OwnUserDetails implements UserDetails {
 
     private String username;
     private String password;
+    private String pathId;
     private boolean activated;
     private List<GrantedAuthority> authorities;
 
     public OwnUserDetails(User user) {
         this.username = user.getUsername();
         this.password = user.getPassword();
+        this.pathId = user.getPathId();
         this.activated = user.getActivationCode().isEmpty();
         this.authorities = Arrays.stream(user.getRole().split(","))
                                     .map(SimpleGrantedAuthority::new)
@@ -41,6 +43,14 @@ public class OwnUserDetails implements UserDetails {
     @Override
     public String getUsername() {
         return username;
+    }
+
+    public String getPathId() {
+        return pathId;
+    }
+
+    public boolean isActivated() {
+        return activated;
     }
 
     @Override
