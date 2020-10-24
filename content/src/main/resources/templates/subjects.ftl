@@ -7,10 +7,10 @@
         <div style="padding-top: 100px"></div>
 
         <#list subject?chunk(3) as row>
-            <div class="row" style="padding-bottom: 50px">
+            <div class="row" style="padding-bottom: 30px">
                 <#list row as s>
                     <#assign path>${s.getCode()}</#assign>
-                    <div class="col">
+                    <div class="col-sm-4">
                         <div class="card" style="width: 18rem;">
                             <div class="card-body">
                                 <h5 class="card-title">${s.getCode()}</h5>
