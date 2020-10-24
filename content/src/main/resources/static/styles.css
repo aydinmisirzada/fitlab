@@ -753,7 +753,8 @@ input:hover,
   margin-bottom: 30px;
 }
 
-#subjectsSection {
+#subjectsSection,#loginSection, #registrationSection {
   min-height: 850px;
 }
+
 
