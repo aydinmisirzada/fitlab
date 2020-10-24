@@ -1,6 +1,6 @@
 <#import "parts/common.ftl" as c>
 
-<@c.page teacher.getName() + " " + teacher.getSurname()>
+<@c.page "FITLab | " + teacher.getName() + " " + teacher.getSurname()>
     <div id="features" class="features-section">
         <div class="container text-center">
             <a style="font-size: 35px;"><td>${teacher.getName() + ' ' + teacher.getSurname()}</td></a>
