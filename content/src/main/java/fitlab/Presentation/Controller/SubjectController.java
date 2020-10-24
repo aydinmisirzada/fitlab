@@ -29,7 +29,8 @@ public class SubjectController {
 
         if(sub1 != null) {
             model.addAttribute("subject",sub1);
-            model.addAttribute("content",sub1.getContentList());
+            model.addAttribute("contents",sub1.getContentList());
+            model.addAttribute("error","");
             return "subject";
         } else {
             return "errorpage";
@@ -45,10 +46,18 @@ public class SubjectController {
      */
     @PostMapping(value = "/subjects/{subject}", params = {"description"})
     public String EditDescription(@PathVariable String subject, @RequestParam String description, Model model) {
-        Subject sub1 = sub.SubjectEditDescription(subject,description);
-        model.addAttribute("subject",sub1);
-        model.addAttribute("content",sub1.getContentList());
-        return "subject";
+        if(description.length() == 0) {
+            Subject sub1 = sub.SearchSubjects(subject);
+            String s = "Enter text before editing";
+            model.addAttribute("error", s);
+            model.addAttribute("subject",sub1);
+            model.addAttribute("contents",sub1.getContentList());
+
+            return "subject";
+        }
+        sub.SubjectEditDescription(subject,description);
+
+        return "redirect:/subjects/" + subject;
     }
 
     /**
@@ -77,7 +86,7 @@ public class SubjectController {
         }
         Subject sub1 = sub.SubjectAddPage(subject,title,Type);
         model.addAttribute("subject",sub1);
-        model.addAttribute("content",sub1.getContentList());
+        model.addAttribute("contents",sub1.getContentList());
         return "subject";
 
     }

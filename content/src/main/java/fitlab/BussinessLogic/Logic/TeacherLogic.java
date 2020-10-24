@@ -63,7 +63,16 @@ public class TeacherLogic implements TeacherLogicConf {
 
     public Teacher getTeacher(int id) {
         return  repo.findById(id);
-
     }
 
+    public boolean  findDup( int id, String username ) {
+        User u = user.findByUsername(username).get();
+        List<Review> rev = repo.findById(id).getReviewList();
+
+        for (Review r : rev) {
+            if(r.getUser().getUsername() == u.getUsername()) return false;
+        }
+
+        return true;
+    }
 }

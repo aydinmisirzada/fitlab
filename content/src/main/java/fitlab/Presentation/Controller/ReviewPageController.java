@@ -20,15 +20,24 @@ public class ReviewPageController {
 
 
     @RequestMapping("/teachers/{id}/reviews")
-    public String teacherContentPage(@PathVariable int id, Model model) {
+    public String teacherContentPage(@PathVariable int id, Model model,  Authentication auth) {
+
         model.addAttribute("reviews",t_repo.getReviews(id));
+        model.addAttribute("user",auth.getName());
         model.addAttribute("teacher",t_repo.getTeacher(id));
         return "review";
     }
 
 
     @PostMapping(value = "/teachers/{id}/reviews", params = "rating")
-    public String teacherRating(@PathVariable int id, @RequestParam int rating, @RequestParam String text, Authentication auth) {
+    public String teacherRating(@PathVariable int id, @RequestParam int rating, @RequestParam String text, Authentication auth, Model model) {
+        if(t_repo.findDup(id,auth.getName()) == false)  {
+            model.addAttribute("error", "You can't add more reviews");
+            model.addAttribute("reviews",t_repo.getReviews(id));
+            model.addAttribute("user",auth.getName());
+            model.addAttribute("teacher",t_repo.getTeacher(id));
+            return "review";
+        }
         t_repo.addRating(id, rating, text, auth.getName());
         return "redirect:/teachers/" + id + "/reviews";
     }

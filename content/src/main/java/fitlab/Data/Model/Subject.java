@@ -58,6 +58,7 @@ public class Subject {
 
     public String getDescription() {
         return Description;
+
     }
 
     public void setDescription(String description) {

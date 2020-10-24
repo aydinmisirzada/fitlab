@@ -1,9 +1,6 @@
 package fitlab.BussinessLogic.Interfaces;
 
-import fitlab.Data.Model.Content;
-import fitlab.Data.Model.Review;
-import fitlab.Data.Model.Subject;
-import fitlab.Data.Model.Teacher;
+import fitlab.Data.Model.*;
 import org.springframework.ui.Model;
 
 import java.util.List;
@@ -39,4 +36,5 @@ public interface TeacherLogicConf {
      void addRating(int id, int rate, String text, String username);
      List<Review> getReviews(int id);
      Teacher getTeacher(int id);
+     boolean findDup(int id, String username);
 }

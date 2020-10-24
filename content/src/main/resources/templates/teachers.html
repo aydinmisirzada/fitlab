@@ -75,7 +75,7 @@
                 <td  th:text="${teacher.getName()} + ' ' +  ${teacher.getSurname()}">
                     Name
                 </td>
-                <form method="post">
+                <form method="post" >
                     <button type="submit"  style="position: absolute; right: 11%;" >Delete</button>
                     <input type="text"  name="id" th:value="${teacher.getId()}" style="visibility: hidden;height: 0" >
                 </form>

@@ -64,13 +64,37 @@
         <button type="submit">Submit</button>
     </form>
 </div>
+<span th:text="${error}">text</span>
+
+<h1>Your review: </h1>
+<div  class="container1" style="margin-top: 20px;">
+    <ul>
+        <tr th:each="review : ${reviews}">
+
+            <li th:if="${review.getUser().getUsername() == user}">
+                <a>
+                    <td  th:text="${review.getUser().getName()} + ' ' + ${review.getUser().getSurname()} + ' : ' ">
+                        Name           </td>
+                    <h4>
+                    </h4>
+                    <td  th:text="${review.getText()}">
+                        Name
+                    </td>
+                </a>
+            </li>
+            <p>
+
+            </p>
+        </tr>
+    </ul>
+</div>
 
 
 <div id="features" class="container1" style="margin-top: 20px;">
     <ul id="myUL">
         <tr th:each="review : ${reviews}">
 
-            <li>
+            <li th:if="${review.getUser().getUsername() != user}">
                 <a>
                     <td  th:text="${review.getUser().getName()} + ' ' + ${review.getUser().getSurname()} + ' : ' ">
                         Name           </td>
