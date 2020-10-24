@@ -5,7 +5,7 @@
     <br>
     <br>
     <br>
-
+<#--    <p >${error}</p>-->
     <form action="/login" method="post">
     <div><label> User Name : <input type="text" name="username" value="user" /> </label></div>
     <div><label> Password: <input type="password" name="password" value="u"/> </label></div>

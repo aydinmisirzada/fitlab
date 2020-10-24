@@ -8,7 +8,7 @@
     <form action="/registration" method="post">
         <h4>REGISTRATION</h4>
         <p >${error}</p>
-        <div><label> User Name : <input type="text" name="username"/> </label></div>
+        <div><label> Username : <input type="text" name="username"/> </label></div>
         <div><label> Password: <input type="password" name="password"/> </label></div>
 
         <div><label> Name : <input type="text" name="name" value="MUHA"/> </label></div>
