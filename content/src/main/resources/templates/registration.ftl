@@ -28,7 +28,6 @@
                     </div>
 
                     <br/>
-                    <br/>
 
                     <div class="form-group">
                         <input type="text" class="form-control" name="username" placeholder="Username">
@@ -41,7 +40,11 @@
                     </div>
                     <div class="text-center">
                         <button type="submit" class="btn btn-secondary">Sign Up</button>
+                        <br/>
+                        <br/>
+                        <small><a href="/login">Registered user? Log in.</a></small>
                     </div>
+
                 </form>
             </div>
         </div>
