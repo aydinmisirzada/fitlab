@@ -1,24 +1,27 @@
 package fitlab.Data.Model;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
 public class OwnUserDetails implements UserDetails {
 
     private String username;
     private String password;
+    private String pathId;
+    private boolean activated;
     private List<GrantedAuthority> authorities;
 
     public OwnUserDetails(User user) {
         this.username = user.getUsername();
         this.password = user.getPassword();
+        this.pathId = user.getPathId();
+        this.activated = user.getActivationCode().isEmpty();
         this.authorities = Arrays.stream(user.getRole().split(","))
                                     .map(SimpleGrantedAuthority::new)
                                     .collect(Collectors.toList());
@@ -42,6 +45,14 @@ public class OwnUserDetails implements UserDetails {
         return username;
     }
 
+    public String getPathId() {
+        return pathId;
+    }
+
+    public boolean isActivated() {
+        return activated;
+    }
+
     @Override
     public boolean isAccountNonExpired() {
         return true;
@@ -49,7 +60,7 @@ public class OwnUserDetails implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return true;
+        return activated;
     }
 
     @Override

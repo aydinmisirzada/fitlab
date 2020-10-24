@@ -14,8 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    /*@Autowired
-    private DataSource dataSource;*/
+
     @Autowired
     UserDetailsService userDetailsService;
 
@@ -23,7 +22,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http    .csrf().disable()
                 .authorizeRequests()
-                    .antMatchers("/", "/registration", "/styles.css","/assets/**", "/images/**")
+                    .antMatchers("/", "/registration","/activate/*", "/styles.css","/assets/**", "/images/**")
                     .permitAll()
                     .anyRequest().authenticated()
                 .and()
@@ -34,17 +33,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                     .logout()
                     .permitAll();
-        /*http
-                .authorizeRequests()
-                    .antMatchers("/").permitAll()
-                    .anyRequest().authenticated()
-                .and()
-                    .formLogin()
-                    .loginPage("/login")
-                    .permitAll()
-                .and()
-                    .logout()
-                    .permitAll();*/
     }
    /* @Bean
     @Override
@@ -68,13 +56,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public PasswordEncoder getPasswordEncoder(){
         return NoOpPasswordEncoder.getInstance();
     }
-
-    /*@Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception{
-        auth.jdbcAuthentication()
-                .dataSource(dataSource)
-                .passwordEncoder(NoOpPasswordEncoder.getInstance())
-                .usersByUsernameQuery("select username, password from user where username=?")
-                .authoritiesByUsernameQuery("select username, roles from user inner join user_rol");
-    }*/
 }

@@ -5,6 +5,7 @@ import fitlab.Data.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -13,6 +14,7 @@ public class RegistrationController {
 
     @Autowired
     RegistrationLogic rl;
+
 
     @RequestMapping(method = RequestMethod.GET, value = "/registration")
     public String registration(Model model){
@@ -34,8 +36,19 @@ public class RegistrationController {
             return "registration";
 
         }
+        
+        return "redirect:/login";
+    }
 
-//        model.addAttribute("user", user);
+    @RequestMapping(method = RequestMethod.GET, value = "/activate/{activationCode}")
+    public String accountActivation(@PathVariable String activationCode, Model model){
+        boolean isActivated = rl.checkActivation(activationCode);
+
+        if(isActivated)
+            model.addAttribute("error", "User activated successfully!");
+        else
+            model.addAttribute("error", "User activation FAILED!");
+
         return "redirect:/login";
     }
 

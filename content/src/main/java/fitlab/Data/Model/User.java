@@ -18,6 +18,33 @@ public class User {
     private String password;
     private String phone;
     private String role;
+    private String activationCode;
+    private String pathId;
+
+
+    public void setUser(User user) {
+        this.name = user.getName();
+        this.surname = user.getSurname();
+        this.username = user.getUsername();
+        this.pathId = user.getPathId();
+    }
+
+    public String getPathId() {
+        return pathId;
+    }
+
+    public void setPathId(String pathId) {
+        this.pathId = pathId;
+    }
+
+    public String getActivationCode() {
+        return activationCode;
+    }
+
+    public void setActivationCode(String activationCode) {
+        this.activationCode = activationCode;
+    }
+
     public String getName() {
         return name;
     }
