@@ -6,8 +6,8 @@
         <div style="padding-top: 100px"></div>
         <div class="row">
 
-            <div class="col">
-                <div class="card mx-auto align-items-center shadow p-3 mb-5 bg-white rounded" style="width: 25rem;">
+            <div class="col-4">
+                <div class="card mx-auto align-items-center shadow p-3 mb-5 bg-white rounded">
                     <br/>
                     <img src="images/user.svg" style="max-height: 80px; max-width: 80px;">
                     <div class="card-body">
@@ -16,7 +16,8 @@
 
                             <div class="form-row">
                                 <div class="col">
-                                    <input type="text" name="name" class="form-control myform nameform" value="${user.getName()}"
+                                    <input type="text" name="name" class="form-control myform nameform"
+                                           value="${user.getName()}"
                                            spellcheck="false" style="text-align: right;"/>
                                 </div>
                                 <div class="col">
@@ -26,22 +27,26 @@
                             </div>
                             <div class="form-row">
                                 <div class="col">
-                                    <input type="text" class="form-control myform" name="username" value="${user.getUsername()}" style="text-align: center">
+                                    <input type="text" class="form-control myform" name="username"
+                                           value="${user.getUsername()}" style="text-align: center">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="col">
-                                    <input type="text" class="form-control myform" name="email" value="${user.getEmail()}" style="text-align: center" readonly>
+                                    <input type="text" class="form-control myform" name="email"
+                                           value="${user.getEmail()}" style="text-align: center" readonly>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="col">
-                                    <input type="text" class="form-control myform" name="phone" value="${user.getPhone()}" style="text-align: center" readonly>
+                                    <input type="text" class="form-control myform" name="phone"
+                                           value="${user.getPhone()}" style="text-align: center" readonly>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="col">
-                                    <input type="text" class="form-control myform" name="pathId" value="${user.getPathId()}" style="text-align: center">
+                                    <input type="text" class="form-control myform" name="pathId"
+                                           value="${user.getPathId()}" style="text-align: center">
                                 </div>
                             </div>
                             <br/>
@@ -58,6 +63,50 @@
                         </form>
                     </div>
 
+                </div>
+            </div>
+            <div class="col-8">
+                <div class="card mx-auto align-items-center shadow p-3 mb-5 bg-white rounded">
+                    <div class="card-body">
+                        <h5 class="card-title">My Subjects</h5>
+                        <div class="row">
+                            <div class="col">
+                                <div class="card shadow-sm p-1 mb-2 bg-white rounded">
+                                    <div class="card-body">
+                                        <h5 class="card-title">BIE-SI1</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card shadow-sm p-1 mb-2 bg-white rounded">
+                                    <div class="card-body">
+                                        <h5 class="card-title">BIE-SP1</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card shadow-sm p-1 mb-2 bg-white rounded">
+                                    <div class="card-body">
+                                        <h5 class="card-title">BIE-SP2</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card shadow-sm p-1 mb-2 bg-white rounded">
+                                    <div class="card-body">
+                                        <h5 class="card-title">BIE-PA1</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card shadow-sm p-1 mb-2 bg-white rounded">
+                                    <div class="card-body">
+                                        <h5 class="card-title">BIE-OSY</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
