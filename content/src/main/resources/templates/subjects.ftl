@@ -10,7 +10,7 @@
     </style>
 </#if>
 
-<@c.page>
+<@c.page "FITLab | Subjects">
 
     <div class="container">
 
@@ -34,10 +34,6 @@
             </div>
         </#list>
 
-        <!-- 1st row of subjects cards-->
-
-
-        <!-- 2nd row of subjects cards-->
 
         <!-- list of all subjects -->
         <div class="row" style="padding: 0 0 30px 0">
