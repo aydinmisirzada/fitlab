@@ -1,55 +1,33 @@
 <#import "parts/common.ftl" as c>
 
-<style>
-    footer {
-        width: 100%;
-        position: fixed; !important;
-        bottom:0;!important;
-    }
-</style>
-
 <@c.page>
 
     <div class="container">
 
-        <!-- 1st row of subjects cards-->
-        <div class="row" style="padding-top: 100px">
+        <div style="padding-top: 100px"></div>
 
-            <#list subject?filter(s -> s.getId() <= 3) as s>
-                <#assign path>${s.getCode()}</#assign>
-                <div class="col">
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">${s.getCode()}</h5>
-                            <p class="card-text">${s.getName()}</p>
-                            <p class="card-text">Semester: ${s.getSemester()}</p>
-                            <a href="subjects/${path}" class="btn btn-primary">Learn More</a>
+        <#list subject?chunk(3) as row>
+            <div class="row" style="padding-bottom: 50px">
+                <#list row as s>
+                    <#assign path>${s.getCode()}</#assign>
+                    <div class="col">
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">${s.getCode()}</h5>
+                                <p class="card-text">${s.getName()}</p>
+                                <p class="card-text">Semester: ${s.getSemester()}</p>
+                                <a href="subjects/${path}" class="btn btn-primary">Learn More</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </#list>
+                </#list>
+            </div>
+        </#list>
 
-        </div>
+        <!-- 1st row of subjects cards-->
+
 
         <!-- 2nd row of subjects cards-->
-        <div class="row" style="padding: 30px 0 20px 0">
-
-            <#list subject?filter(s -> s.getId() >= 4) as s>
-                <#assign path>${s.getCode()}</#assign>
-                <div class="col">
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">${s.getCode()}</h5>
-                            <p class="card-text">${s.getName()}</p>
-                            <p class="card-text">Semester: ${s.getSemester()}</p>
-                            <a href="subjects/${path}" class="btn btn-primary">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-
-            </#list>
-
-        </div>
 
         <!-- list of all subjects -->
     <div class="row" style="padding: 0 0 30px 0">
