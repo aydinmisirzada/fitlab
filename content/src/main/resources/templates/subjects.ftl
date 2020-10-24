@@ -1,5 +1,16 @@
 <#import "parts/common.ftl" as c>
 
+<#if subject?size < 7>
+    <style>
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</#if>
+
+
 <@c.page>
 
     <div class="container">
