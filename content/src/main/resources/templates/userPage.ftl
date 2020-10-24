@@ -1,6 +1,6 @@
 <#import "parts/common.ftl" as c>
 
-<@c.page>
+<@c.page "My account">
     <br>    <br>
     <br>
     <br>
