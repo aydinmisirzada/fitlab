@@ -17,7 +17,7 @@
         <div style="padding-top: 100px"></div>
 
         <#list subject?chunk(3) as row>
-            <div class="row" style="padding-bottom: 30px">
+            <div class="row" style=>
                 <#list row as s>
                     <#assign path>${s.getCode()}</#assign>
                     <div class="col-sm-4">
