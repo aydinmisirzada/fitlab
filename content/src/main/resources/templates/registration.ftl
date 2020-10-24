@@ -5,7 +5,7 @@
     <div class="container" id="registrationSection">
         <div style="padding-top: 100px"></div>
 
-        <div class="card mx-auto align-items-center" style="width: 18rem;">
+        <div class="card mx-auto align-items-center" style="width: 25rem;">
 
             <div class="card-body">
                 <h4 class="card-title text-center">Registration</h4>
@@ -13,27 +13,27 @@
                 <br/>
                 <form action="/registration" method="post">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="name" placeholder="Name">
+                        <input type="text" class="form-control" name="name" placeholder="Name" required>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" name="surname" placeholder="Last Name">
-                    </div>
-
-                    <div class="form-group">
-                        <input type="email" class="form-control" name="email" placeholder="Email">
+                        <input type="text" class="form-control" name="surname" placeholder="Last Name" required>
                     </div>
 
                     <div class="form-group">
-                        <input type="text" class="form-control" name="phone" placeholder="Phone">
+                        <input type="email" class="form-control" name="email" placeholder="Email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="phone" placeholder="Phone" required>
                     </div>
 
                     <br/>
 
                     <div class="form-group">
-                        <input type="text" class="form-control" name="username" placeholder="Username">
+                        <input type="text" class="form-control" name="username" placeholder="Username" required>
                     </div>
                     <div class="form-group">
-                        <input type="password" name="password" class="form-control" placeholder="Password"/>
+                        <input type="password" name="password" class="form-control" placeholder="Password" required>
                     </div>
                     <div class="form-group">
                         <input type="password" class="form-control" placeholder="Confirm Password"/>
