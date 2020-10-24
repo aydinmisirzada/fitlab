@@ -34,7 +34,7 @@
     </dependency>  
     <dependency> 
       <groupId>mysql</groupId>  
-      <artifactId>mysql-connector-java</artifactId> 
+      <artifactId>mysql-connector-java</artifactId>
     </dependency>  
     <dependency> 
       <groupId>org.springframework.boot</groupId>  
@@ -64,11 +64,11 @@
       <scope>runtime</scope>  
       <optional>true</optional> 
     </dependency>  
-    <dependency> 
-      <groupId>com.h2database</groupId>  
-      <artifactId>h2</artifactId>  
-      <scope>runtime</scope> 
-    </dependency>  
+    <!--<dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+      <scope>runtime</scope>
+    </dependency>-->
     <dependency> 
       <groupId>com.microsoft.azure</groupId>  
       <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>  
@@ -92,7 +92,29 @@
       <groupId>org.springframework.cloud</groupId>  
       <artifactId>spring-cloud-starter-sleuth</artifactId>  
       <version>2.2.2.RELEASE</version> 
-    </dependency> 
+    </dependency>
+
+    <!--security-->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-security</artifactId>
+    </dependency>
+    <!--<dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-test</artifactId>
+      <scope>test</scope>
+    </dependency>-->
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-freemarker</artifactId>
+    </dependency>
+
+    <!--mail sender-->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-mail</artifactId>
+    </dependency>
   </dependencies>  
   <build> 
     <finalName>FitLab</finalName>  
@@ -140,7 +162,7 @@
       <plugin> 
         <groupId>org.apache.maven.plugins</groupId>  
         <artifactId>maven-compiler-plugin</artifactId>  
-        <version>3.8.1</version> 
+        <version>3.8.1</version>
       </plugin> 
     </plugins> 
   </build> 

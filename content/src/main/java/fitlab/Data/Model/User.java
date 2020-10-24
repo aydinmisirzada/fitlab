@@ -9,50 +9,79 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String Name;
+    private String name;
 
-    private String Surname;
-    private String Username;
+    private String surname;
+    private String username;
+
+    private String email;
+    private String password;
+    private String phone;
+    private String role;
+    private String activationCode;
+    private String pathId;
+
+
+    public void setUser(User user) {
+        this.name = user.getName();
+        this.surname = user.getSurname();
+        this.username = user.getUsername();
+        this.pathId = user.getPathId();
+    }
+
+    public String getPathId() {
+        return pathId;
+    }
+
+    public void setPathId(String pathId) {
+        this.pathId = pathId;
+    }
+
+    public String getActivationCode() {
+        return activationCode;
+    }
+
+    public void setActivationCode(String activationCode) {
+        this.activationCode = activationCode;
+    }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getSurname() {
-        return Surname;
+        return surname;
     }
 
     public void setSurname(String surname) {
-        Surname = surname;
+        this.surname = surname;
     }
 
     public String getUsername() {
-        return Username;
+        return username;
     }
 
     public void setUsername(String username) {
-        Username = username;
+        this.username = username;
     }
-    private String Email;
-    private String Password;
-    private String Phone;
-    private String Role;
+
 
     public User() {
     }
 
-    public User(String username, String email, String password, String phone, String role, String name, String surname) {
-        Name = name;
-        Surname = surname;
-        Username = username;
-        Email = email;
-        Password = password;
-        Phone = phone;
-        Role = role;
+    public User(Integer id, String name, String surname, String username, String email, String password, String phone, String role) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.phone = phone;
+        this.role = role;
     }
 
     public Integer getId() {
@@ -61,36 +90,44 @@ public class User {
 
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
 
     public String getPhone() {
-        return Phone;
+        return phone;
     }
 
     public void setPhone(String phone) {
-        Phone = phone;
+        this.phone = phone;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getRole() {
-        return Role;
+        return role;
     }
 
     public void setRole(String role) {
-        Role = role;
+        this.role = role;
     }
 
     public String getPassword() {
-        return Password;
+        return password;
     }
 
     public void setPassword(String password) {
-        Password = password;
+        this.password = password;
     }
+
+    /*public boolean isAdmin(){
+        return !role.equals("USER");
+    }*/
 }
 
