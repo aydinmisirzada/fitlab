@@ -1,23 +1,15 @@
 <#import "parts/common.ftl" as c>
 
-<#if subject?size < 7>
-    <style>
-        footer {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
-</#if>
+
 
 <@c.page "FITLab | Subjects">
 
-    <div class="container">
+    <div class="container" id="subjectsSection">
 
         <div style="padding-top: 100px"></div>
 
         <#list subject?chunk(3) as row>
-            <div class="row" style=>
+            <div class="row">
                 <#list row as s>
                     <#assign path>${s.getCode()}</#assign>
                     <div class="col-sm-4">

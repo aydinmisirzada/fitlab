@@ -739,9 +739,6 @@ input:hover,
 */
 /*new styles
 */
-body {
-  padding-top: 56px;
-}
 
 .carousel-item {
   height: 65vh;
@@ -755,5 +752,9 @@ body {
 
 .portfolio-item {
   margin-bottom: 30px;
+}
+
+#subjectsSection {
+  min-height: 850px;
 }
 
