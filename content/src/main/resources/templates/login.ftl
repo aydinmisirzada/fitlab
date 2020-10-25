@@ -1,6 +1,38 @@
 <#import "parts/common.ftl" as c>
 
-<@c.page "FitLab login">
+<@c.page "FITLab | Log In">
+
+    <div class="container" id="loginSection">
+        <div style="padding-top: 100px"></div>
+
+        <div class="card mx-auto align-items-center" style="width: 22rem;">
+
+            <div class="card-body">
+                <h4 class="card-title text-center">Welcome to FITLab!</h4>
+                <br/>
+                <form action="/login" method="post">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="username" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" class="form-control" placeholder="Password"/>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-secondary">Log In</button>
+                        <br/>
+                        <br/>
+                        <small><a href="/registration">New to FITLab? Register.</a></small>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+</@c.page>
+
+<!--
+
     <br>    <br>
     <br>
     <br>
@@ -15,4 +47,6 @@
 <form action="/logout" method="post">
     <div><input type="submit" value="Sign out"/></div>
 </form>
-</@c.page>
+
+
+-->

@@ -1,10 +1,124 @@
 <#import "parts/common.ftl" as c>
 
-<@c.page "My account">
-    <br>    <br>
-    <br>
-    <br>
-    <br>
+<@c.page "FITLab | My profile">
+
+    <div class="container" id="profileSection">
+        <div style="padding-top: 100px"></div>
+        <div class="row">
+
+            <div class="col-4">
+                <div class="card mx-auto align-items-center shadow p-3 mb-5 bg-white rounded">
+                    <br/>
+                    <img src="images/user.svg" style="max-height: 80px; max-width: 80px;">
+                    <div class="card-body">
+
+                        <form action="/users/userEdit" method="post">
+
+                            <div class="form-row">
+                                <div class="col">
+                                    <input type="text" name="name" class="form-control myform nameform"
+                                           value="${user.getName()}"
+                                           spellcheck="false" style="text-align: right;"/>
+                                </div>
+                                <div class="col">
+                                    <input type="text" name="surname" class="form-control myform nameform"
+                                           value="${user.getSurname()}" spellcheck="false"/>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <input type="text" class="form-control myform" name="username"
+                                           value="${user.getUsername()}" style="text-align: center">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <input type="text" class="form-control myform" name="email"
+                                           value="${user.getEmail()}" style="text-align: center" readonly>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <input type="text" class="form-control myform" name="phone"
+                                           value="${user.getPhone()}" style="text-align: center" readonly>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <input type="text" class="form-control myform" name="pathId"
+                                           value="${user.getPathId()}" style="text-align: center">
+                                </div>
+                            </div>
+                            <br/>
+
+                            <div class="form-row">
+
+                                <div class="col">
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-secondary">Save</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-8">
+                <div class="card mx-auto align-items-center shadow p-3 mb-5 bg-white rounded">
+                    <div class="card-body">
+                        <h5 class="card-title">My Subjects</h5>
+                        <div class="row">
+                            <div class="col">
+                                <div class="card shadow-sm p-1 mb-2 bg-white rounded">
+                                    <div class="card-body">
+                                        <h5 class="card-title">BIE-SI1</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card shadow-sm p-1 mb-2 bg-white rounded">
+                                    <div class="card-body">
+                                        <h5 class="card-title">BIE-SP1</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card shadow-sm p-1 mb-2 bg-white rounded">
+                                    <div class="card-body">
+                                        <h5 class="card-title">BIE-SP2</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card shadow-sm p-1 mb-2 bg-white rounded">
+                                    <div class="card-body">
+                                        <h5 class="card-title">BIE-PA1</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card shadow-sm p-1 mb-2 bg-white rounded">
+                                    <div class="card-body">
+                                        <h5 class="card-title">BIE-OSY</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</@c.page>
+
+
+<!--
 
     <p >${error}</p>
     <form action="/users/userEdit" method="post">
@@ -17,4 +131,5 @@
         <div><label> Phone: <input type="text" name="phone" value="${user.getPhone()}" readonly/> </label></div>
         <div><input type="submit" value="Save"/></div>
     </form>
-</@c.page>
+
+-->

@@ -739,10 +739,6 @@ input:hover,
 */
 /*new styles
 */
-body {
-  padding-top: 56px;
-}
-
 .carousel-item {
   height: 65vh;
   min-height: 300px;
@@ -755,5 +751,31 @@ body {
 
 .portfolio-item {
   margin-bottom: 30px;
+}
+
+#subjectsSection,#loginSection, #registrationSection, #profileSection {
+  min-height: 850px;
+}
+
+.myform{
+  border: none transparent;
+  outline: none; color: black;
+  padding: 0px;
+  font-size: 1.2em;
+}
+
+.myform:focus {
+  box-shadow:none;
+}
+
+.myform[readonly]{
+  background-color: transparent;
+}
+
+.nameform{
+  font-weight: 600;
+  font-size:1.5em;
+  position: relative;
+  left:-10px;
 }
 
