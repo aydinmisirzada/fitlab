@@ -2,7 +2,7 @@
 
 <@c.page "| Admin Dashboard">
 
-    <div class="container" id="profileSection">
+    <div class="container" id="cardSection">
         <div style="padding-top: 100px"></div>
         <div class="row">
             <!-- Requests -->

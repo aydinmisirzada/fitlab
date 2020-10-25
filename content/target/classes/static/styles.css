@@ -753,7 +753,7 @@ input:hover,
   margin-bottom: 30px;
 }
 
-#subjectsSection,#loginSection, #registrationSection, #profileSection {
+#cardSection {
   min-height: 850px;
 }
 
