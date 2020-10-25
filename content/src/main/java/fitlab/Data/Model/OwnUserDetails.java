@@ -12,6 +12,7 @@ public class OwnUserDetails implements UserDetails {
     private String username;
     private String password;
     private String pathId;
+    private Integer userId;
     private boolean activated;
     private boolean isAdmin;
     private Role role;
@@ -23,6 +24,7 @@ public class OwnUserDetails implements UserDetails {
         this.activated = user.getActivationCode().isEmpty();
         this.role = user.getRole();
         this.isAdmin = user.getRole().equals(Role.ADMIN);
+        this.userId = user.getId();
     }
 
     public void setOwnUserDetails(User user) {
@@ -32,6 +34,7 @@ public class OwnUserDetails implements UserDetails {
         this.activated = user.getActivationCode().isEmpty();
         this.role = user.getRole();
         this.isAdmin = user.getRole().equals(Role.ADMIN);
+        this.userId = user.getId();
     }
 
     public OwnUserDetails() {
@@ -66,6 +69,14 @@ public class OwnUserDetails implements UserDetails {
 
     public boolean isAdmin() {
         return isAdmin;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public Role getRole() {
+        return role;
     }
 
     @Override

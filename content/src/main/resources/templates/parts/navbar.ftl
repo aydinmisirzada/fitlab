@@ -26,10 +26,10 @@
                             <a class="nav-link" href="/login">Log In</a>
                         </li>
                     <#else>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/users">Users</a>
-                        </li>
                         <#if isAdmin>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/users">Users</a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/admin">Dashboard</a>
                             </li>

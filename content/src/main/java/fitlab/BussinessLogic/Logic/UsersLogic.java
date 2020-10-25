@@ -1,6 +1,7 @@
 package fitlab.BussinessLogic.Logic;
 
 import fitlab.Data.Model.OwnUserDetails;
+import fitlab.Data.Model.Role;
 import fitlab.Data.Model.User;
 import fitlab.Data.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,22 +18,22 @@ public class UsersLogic {
     @Autowired
     UserRepository userRepository;
 
-    Authentication authentication;
+    OwnUserDetails oud;
 
     public User getUserByPath(String path){
-        checkAccount();
         Optional<User> u = userRepository.findByPathId(path);
-        if(u.equals(Optional.empty())) return null;
+
+        if(!checkAccount(u.get().getId()) || u.equals(Optional.empty())) return null;
 
         return u.get();
     }
 
-    private boolean checkAccount(){
-        authentication = SecurityContextHolder.getContext().getAuthentication();
+    private boolean checkAccount(Integer id){
+        oud = (OwnUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if(oud.getUserId().equals(id) || oud.getRole().equals(Role.ADMIN))
+            return true;
 
-        authentication.getName();
-        System.err.println(authentication.getName() + "/////////////\n");
-        return true;
+        return false;
     }
 
     public String editUserById(User user) {
