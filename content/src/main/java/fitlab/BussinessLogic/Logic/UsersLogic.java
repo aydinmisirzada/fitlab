@@ -5,6 +5,7 @@ import fitlab.Data.Model.User;
 import fitlab.Data.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
@@ -16,11 +17,22 @@ public class UsersLogic {
     @Autowired
     UserRepository userRepository;
 
+    Authentication authentication;
+
     public User getUserByPath(String path){
+        checkAccount();
         Optional<User> u = userRepository.findByPathId(path);
         if(u.equals(Optional.empty())) return null;
 
         return u.get();
+    }
+
+    private boolean checkAccount(){
+        authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        authentication.getName();
+        System.err.println(authentication.getName() + "/////////////\n");
+        return true;
     }
 
     public String editUserById(User user) {

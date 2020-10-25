@@ -1,8 +1,7 @@
 <#import "parts/common.ftl" as c>
 <#import "parts/form.ftl" as form>
-
-
-<@c.page "FITLab | Subjects">
+<#include "parts/security.ftl">
+<@c.page "Subjects">
 
     <div class="container" id="cardSection">
 
@@ -27,7 +26,7 @@
             </div>
         </#list>
 
-
+    <#if isAdmin>
         <!-- list of all subjects -->
         <div class="row" style="padding: 0 0 30px 0">
             <div class="col">
@@ -52,7 +51,6 @@
 
 
         <!-- form -->
-
         <div class="row">
             <div class="col">
                 <div class="collapse multi-collapse" id="multiCollapseExample2">
@@ -94,6 +92,7 @@
                 </div>
             </div>
         </div>
+        </#if>
     </div>
     <!-- /.container -->
 </@c.page>

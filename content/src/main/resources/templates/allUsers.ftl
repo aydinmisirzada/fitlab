@@ -1,6 +1,6 @@
 <#import "parts/common.ftl" as c>
 
-<@c.page "| All users">
+<@c.page "All users">
 
 
     <div class="container" id="cardSection">

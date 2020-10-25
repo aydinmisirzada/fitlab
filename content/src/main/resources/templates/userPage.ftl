@@ -1,7 +1,6 @@
 <#import "parts/common.ftl" as c>
 
-<@c.page "| My profile">
-
+<@c.page "All users">
     <div class="container" id="cardSection">
         <div style="padding-top: 100px"></div>
         <div class="row">

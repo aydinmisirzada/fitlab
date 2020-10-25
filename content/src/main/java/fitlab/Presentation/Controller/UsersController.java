@@ -19,6 +19,7 @@ public class UsersController {
     @Autowired
     private UsersLogic usersLogic;
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(method = RequestMethod.GET)
     public String getUsers(Model model){
         List<User> u = usersLogic.getAllUsers();
@@ -28,7 +29,7 @@ public class UsersController {
     }
 
     @RequestMapping(value = "/{pathId}", method = RequestMethod.GET)
-    public String getUserPage(@PathVariable String pathId, Model model){
+    public String getUserPage(@PathVariable String pathId,Integer id, Model model){
         User u = usersLogic.getUserByPath(pathId);
         if(u==null)      // If user is not exist return "USER NOT FOUND" page
             return "errorpage";
