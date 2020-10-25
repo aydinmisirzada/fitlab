@@ -24,7 +24,6 @@
                                     <input type="text" name="id" value="${s.getId()}"
                                            style="visibility: hidden;height: 0">
                                 </form>
-
                             </div>
                         </div>
                     </div>

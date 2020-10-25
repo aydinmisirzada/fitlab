@@ -26,6 +26,9 @@
                             <a class="nav-link" href="/login">Log In</a>
                         </li>
                     <#else>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin">Dashboard</a>
+                        </li>
                         <li class="nav-item dropdown pb-1">
 
                                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
