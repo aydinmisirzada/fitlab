@@ -19,7 +19,6 @@
                                 <p class="card-text">${s.getName()}</p>
                                 <p class="card-text">Semester: ${s.getSemester()}</p>
                                 <@form.form_template path="/subjects" name = "id" value = "${s.getId()}" href ="subjects/${path}" />
-
                             </div>
                         </div>
                     </div>
