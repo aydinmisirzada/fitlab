@@ -50,6 +50,12 @@
                                            value="${user.getPathId()}" style="text-align: center">
                                 </div>
                             </div>
+                            <div class="form-row">
+                                <div class="col" style="text-align: center">
+                                    <input type="checkbox" class="form-check-input" id="userRole">
+                                    <label class="form-check-label" for="userRole">Admin</label>
+                                </div>
+                            </div>
                             <br/>
                             <small class="form-text text-muted text-center pb-1">Click on field to edit it</small>
                             <div class="form-row">
@@ -60,7 +66,7 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <p>${error}</p>
                         </form>
                     </div>
 
@@ -115,10 +121,10 @@
     </div>
 
     <script>
-        $('#username').tooltip({'trigger':'hover focus', 'title': 'Username','placement':'left'});
-        $('#email').tooltip({'trigger':'hover focus', 'title': 'Email','placement':'left'});
-        $('#phone').tooltip({'trigger':'hover focus', 'title': 'Phone','placement':'left'});
-        $('#path').tooltip({'trigger':'hover focus', 'title': 'Path ID','placement':'left'});
+        $('#username').tooltip({'trigger': 'hover focus', 'title': 'Username', 'placement': 'left'});
+        $('#email').tooltip({'trigger': 'hover focus', 'title': 'Email', 'placement': 'left'});
+        $('#phone').tooltip({'trigger': 'hover focus', 'title': 'Phone', 'placement': 'left'});
+        $('#path').tooltip({'trigger': 'hover focus', 'title': 'Path ID', 'placement': 'left'});
     </script>
 
 

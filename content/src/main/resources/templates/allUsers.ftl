@@ -11,6 +11,7 @@
                     <#assign path>${u.getPathId()}</#assign>
                     <div class="col-sm-4">
                         <div class="card shadow p-1 mb-5 bg-white rounded" style="width: 18rem;">
+                            <img src="images/user.svg" class='mx-auto mt-3' style="max-height: 65px; max-width: 65px;">
                             <div class="card-body">
                                 <h5 class="card-title">${u.getName()} ${u.getSurname()}</h5>
                                 <p class="w-100">${u.getEmail()}</p>
