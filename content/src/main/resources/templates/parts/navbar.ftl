@@ -27,7 +27,7 @@
                         </li>
                     <#else>
                         <li class="nav-item">
-                            <a class="nav-link" href="/admin">Dashboard</a>
+                            <a class="nav-link" href="/admin">Admin panel</a>
                         </li>
                         <li class="nav-item dropdown pb-1">
 
