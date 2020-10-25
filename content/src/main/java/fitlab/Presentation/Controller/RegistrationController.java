@@ -49,7 +49,7 @@ public class RegistrationController {
         else
             model.addAttribute("error", "User activation FAILED!");
 
-        return "redirect:/login";
+        return "redirect:/activation";
     }
 
 }
