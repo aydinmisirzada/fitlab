@@ -4,7 +4,7 @@
 
 <@c.page "FITLab | Subjects">
 
-    <div class="container" id="subjectsSection">
+    <div class="container" id="cardSection">
 
         <div style="padding-top: 100px"></div>
 
