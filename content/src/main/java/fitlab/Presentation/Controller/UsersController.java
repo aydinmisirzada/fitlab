@@ -3,15 +3,12 @@ package fitlab.Presentation.Controller;
 import fitlab.BussinessLogic.Logic.UsersLogic;
 import fitlab.Data.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttribute;
 
 @Controller
 @RequestMapping("/users")
@@ -21,12 +18,12 @@ public class UsersController {
     private UsersLogic usersLogic;
 
     @RequestMapping(value = "/{pathId}", method = RequestMethod.GET)
-    public String getUserPage(@PathVariable String pathId, Model model){
+    public String getUserPage(@CookieValue(value = "username", defaultValue = "ses") String username, @PathVariable String pathId, Model model){
         User u = usersLogic.getUserByPath(pathId);
         if(u==null)      // If user is not exist return "USER NOT FOUND" page
             return "errorpage";
 
-        model.addAttribute("error", "");
+        model.addAttribute("error", username);
         model.addAttribute("user", u);
         return "userPage";
     }

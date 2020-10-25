@@ -1,8 +1,11 @@
 package fitlab.BussinessLogic.Logic;
 
+import fitlab.Data.Model.OwnUserDetails;
 import fitlab.Data.Model.User;
 import fitlab.Data.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -35,8 +38,12 @@ public class UsersLogic {
         }
         u.get().setUser(user);
         userRepository.save(u.get());
-//        SecurityContextHolder.getContext().getAuthentication();
-//        SecurityContextHolder.getContext().setAuthentication((Authentication) u.map(OwnUserDetails::new).get());
+
+        //Make changes in authentication of spring security
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        OwnUserDetails userDetails = (OwnUserDetails) authentication.getPrincipal();
+        userDetails.setOwnUserDetails(u.get());
+
         return "true";
     }
 }

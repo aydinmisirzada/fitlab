@@ -27,6 +27,16 @@ public class OwnUserDetails implements UserDetails {
                                     .collect(Collectors.toList());
     }
 
+    public void setOwnUserDetails(User user) {
+        this.username = user.getUsername();
+        this.password = user.getPassword();
+        this.pathId = user.getPathId();
+        this.activated = user.getActivationCode().isEmpty();
+        this.authorities = Arrays.stream(user.getRole().split(","))
+                .map(SimpleGrantedAuthority::new)
+                .collect(Collectors.toList());
+    }
+
     public OwnUserDetails() {
     }
 
