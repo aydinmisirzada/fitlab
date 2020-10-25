@@ -72,4 +72,11 @@ public class TeacherLogic implements TeacherLogicConf {
 
         return true;
     }
+
+    public void editTeacherDetails(int id,String name, String surname, String username){
+        repo.findById(id).setName(name);
+        repo.findById(id).setSurname(surname);
+        repo.findById(id).setUsername(username);
+        repo.save(repo.findById(id));
+    }
 }
