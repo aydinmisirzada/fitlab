@@ -11,10 +11,13 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <base href="/" />
-        <title>${title}</title>
+        <title>FITLab ${title}</title>
 
         <!-- Bootstrap core CSS -->
         <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <script src="assets/vendor/jquery/jquery.js"></script>
+        <script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+
         <link href="styles.css" rel="stylesheet">
     </head>
 

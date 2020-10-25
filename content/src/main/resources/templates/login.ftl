@@ -1,6 +1,6 @@
 <#import "parts/common.ftl" as c>
 
-<@c.page "FITLab | Log In">
+<@c.page "| Log In">
 
     <div class="container" id="loginSection">
         <div style="padding-top: 100px"></div>

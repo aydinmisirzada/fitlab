@@ -1,6 +1,6 @@
 ﻿<#import "parts/common.ftl" as c>
 
-<@c.page "FITLab">
+<@c.page "">
   <header>
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">

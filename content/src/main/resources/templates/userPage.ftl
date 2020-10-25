@@ -1,6 +1,6 @@
 <#import "parts/common.ftl" as c>
 
-<@c.page "FITLab | My profile">
+<@c.page "| My profile">
 
     <div class="container" id="profileSection">
         <div style="padding-top: 100px"></div>
@@ -13,9 +13,9 @@
                     <div class="card-body">
 
                         <form action="/users/userEdit" method="post">
-
                             <div class="form-row">
                                 <div class="col">
+
                                     <input type="text" name="name" class="form-control myform nameform"
                                            value="${user.getName()}"
                                            spellcheck="false" style="text-align: right;"/>
@@ -27,30 +27,30 @@
                             </div>
                             <div class="form-row">
                                 <div class="col">
-                                    <input type="text" class="form-control myform" name="username"
+                                    <input type="text" id="username" class="form-control myform" name="username"
                                            value="${user.getUsername()}" style="text-align: center">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="col">
-                                    <input type="text" class="form-control myform" name="email"
+                                    <input type="text" id="email" class="form-control myform" name="email"
                                            value="${user.getEmail()}" style="text-align: center" readonly>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="col">
-                                    <input type="text" class="form-control myform" name="phone"
+                                    <input type="text" id="phone" class="form-control myform" name="phone"
                                            value="${user.getPhone()}" style="text-align: center" readonly>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="col">
-                                    <input type="text" class="form-control myform" name="pathId"
+                                    <input type="text" id="path" class="form-control myform" name="pathId"
                                            value="${user.getPathId()}" style="text-align: center">
                                 </div>
                             </div>
                             <br/>
-
+                            <small class="form-text text-muted text-center pb-1">Click on field to edit it</small>
                             <div class="form-row">
 
                                 <div class="col">
@@ -113,6 +113,12 @@
 
     </div>
 
+    <script>
+        $('#username').tooltip({'trigger':'hover focus', 'title': 'Username','placement':'left'});
+        $('#email').tooltip({'trigger':'hover focus', 'title': 'Email','placement':'left'});
+        $('#phone').tooltip({'trigger':'hover focus', 'title': 'Phone','placement':'left'});
+        $('#path').tooltip({'trigger':'hover focus', 'title': 'Path ID','placement':'left'});
+    </script>
 
 
 </@c.page>
