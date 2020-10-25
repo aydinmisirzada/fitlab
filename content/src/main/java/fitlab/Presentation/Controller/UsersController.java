@@ -50,7 +50,7 @@ public class UsersController {
             model.addAttribute("error", "User with same URL exist, choose another one!");
             return "userPage";
         }
-        else if(s.equals("user")) {
+        else if(s.equals("username")) {
             model.addAttribute("error", "User with same username exist, choose another one!");
             return "userPage";
         }
