@@ -41,7 +41,10 @@
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <a class="dropdown-item" href="/users/${pathId}">View profile</a>
-                                <a class="dropdown-item" href="/logout">Log Out</a>
+                                <form action="/logout" method="post">
+                                    <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+                                    <button class="dropdown-item">Log Out</button>
+                                </form>
                             </div>
                         </li>
                     </#if>

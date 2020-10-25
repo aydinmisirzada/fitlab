@@ -2,6 +2,7 @@ package fitlab.BussinessLogic.Logic;
 
 import fitlab.BussinessLogic.Interfaces.RegistrationLogicInterface;
 import fitlab.BussinessLogic.services.MailSenderService;
+import fitlab.Data.Model.Role;
 import fitlab.Data.Model.User;
 import fitlab.Data.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ public class RegistrationLogic implements RegistrationLogicInterface {
         u = userRepository.findByEmail(user.getEmail());
         if(!u.equals(Optional.empty())) return "email";
 
-        user.setRole("USER");
+        user.setRole(Role.USER);
         user.setPathId(user.getUsername()+UUID.randomUUID().toString());
         user.setActivationCode(UUID.randomUUID().toString());
         userRepository.save(user);
