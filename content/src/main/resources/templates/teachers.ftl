@@ -2,7 +2,7 @@
 
 
 
-<@c.page "FITLab | Teachers">
+<@c.page "| Teachers">
 
     <div class="container" id="subjectsSection">
 
