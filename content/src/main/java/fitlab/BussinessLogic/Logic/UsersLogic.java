@@ -23,8 +23,8 @@ public class UsersLogic {
         return u.get();
     }
 
-    public String editUserByEmail(User user) {
-        Optional<User> u = userRepository.findByEmail(user.getEmail());
+    public String editUserById(User user) {
+        Optional<User> u = userRepository.findById(user.getId());
         if(u.equals(Optional.empty())) return "une"; //user not exist
 
         if(!u.get().getPathId().equals(user.getPathId())){

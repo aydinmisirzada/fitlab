@@ -43,7 +43,7 @@ public class UsersController {
 
     @RequestMapping(value = "/userEdit", method = RequestMethod.POST)
     public String editUserInfo(User user, Model model){
-        String s = usersLogic.editUserByEmail(user);
+        String s = usersLogic.editUserById(user);
         if(s.equals("une"))
             return "errorpage";
         else if(s.equals("path")) {

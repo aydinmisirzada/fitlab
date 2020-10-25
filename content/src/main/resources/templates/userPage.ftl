@@ -14,6 +14,7 @@
 
                         <form action="/users/userEdit" method="post">
                             <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+                            <input type="hidden" name="id" value="${user.getId()}"/>
                             <div class="form-row">
                                 <div class="col">
 
