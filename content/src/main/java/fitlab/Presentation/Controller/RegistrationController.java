@@ -37,7 +37,7 @@ public class RegistrationController {
 
         }
         
-        return "redirect:/login";
+        return "redirect:/activation";
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/activate/{activationCode}")
@@ -49,7 +49,7 @@ public class RegistrationController {
         else
             model.addAttribute("error", "User activation FAILED!");
 
-        return "redirect:/activation";
+        return "login";
     }
 
 }
