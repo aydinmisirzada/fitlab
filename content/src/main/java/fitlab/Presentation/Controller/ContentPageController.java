@@ -38,6 +38,7 @@ public class ContentPageController {
         if(sub == null) return "errorpage";
 
         model.addAttribute("messages",messages);
+        model.addAttribute("subject",sub);
         return "page";
     }
 
@@ -57,7 +58,7 @@ public class ContentPageController {
     }
 
     @PostMapping(value = "/subjects/{subject}" , params = "id")
-    public String delSubject(@PathVariable String subject, @RequestParam int  id) {
+    public String delContent(@PathVariable String subject, @RequestParam int  id) {
         c_repo.delContent(c_repo.getCon(id));
         return "redirect:/subjects/" + subject;
     }
