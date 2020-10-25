@@ -13,7 +13,7 @@
         <base href="/" />
         <title>FITLab ${title}</title>
 
-        <!-- Bootstrap core CSS -->
+        <!-- Bootstrap core CSS-->
         <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <script src="assets/vendor/jquery/jquery.js"></script>
         <script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
