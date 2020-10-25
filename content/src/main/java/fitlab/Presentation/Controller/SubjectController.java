@@ -1,5 +1,6 @@
 package fitlab.Presentation.Controller;
 
+import fitlab.BussinessLogic.Logic.ContentLogic;
 import fitlab.BussinessLogic.Logic.SubjectLogic;
 import fitlab.Data.Model.ContentType;
 import fitlab.Data.Model.Subject;
@@ -16,7 +17,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class SubjectController {
     @Autowired
     SubjectLogic sub;
-
+    @Autowired
+    ContentLogic con;
     /**
      * The method is used to show a subject page
      * @param subject This is the subject name from the link
@@ -89,7 +91,13 @@ public class SubjectController {
         model.addAttribute("contents",sub1.getContentList());
         model.addAttribute("error","");
         return "subject";
+    }
 
+    @PostMapping(value = "subjects/{subject}", params = {"title", "id"})
+    public String editContent(@PathVariable String subject, @RequestParam String title, @RequestParam int id) {
+        if(title.isEmpty()) return "errorpage";
+        con.changeTitle(id,title);
+        return "redirect:/subjects" + subject;
     }
 
 

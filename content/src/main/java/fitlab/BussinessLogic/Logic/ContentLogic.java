@@ -50,4 +50,9 @@ public class ContentLogic implements ContentLogicConf {
     public Content getCon(int id) {
         return repo.findById(id);
     }
+
+    public void changeTitle(int id,String title) {
+        repo.findById(id).setTitle(title);
+        repo.save(repo.findById(id));
+    }
 }

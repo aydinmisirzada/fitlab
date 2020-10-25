@@ -1,6 +1,7 @@
 package fitlab.Presentation.Controller;
 
 import fitlab.BussinessLogic.Logic.TeacherLogic;
+import fitlab.Data.Model.Semester;
 import fitlab.Data.Model.Teacher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -64,6 +65,12 @@ public class TeacherController {
             return "errorpage";
         model.addAttribute("teacher",teacher);
         return "teacher_page";
+    }
+
+    @PostMapping(value = "/teachers", params = {"id","surname","name","username"})
+    public String editTeac(@RequestParam int id, @RequestParam String name, @RequestParam String surname, @RequestParam String username) {
+        t_repo.editTeacherDetails(id,name,surname,username);
+        return "redirect:/teacher";
     }
 
 
