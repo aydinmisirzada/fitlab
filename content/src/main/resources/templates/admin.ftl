@@ -5,70 +5,98 @@
     <div class="container" id="profileSection">
         <div style="padding-top: 100px"></div>
         <div class="row">
-            <div class="col-4">
-                <div class="card mx-auto align-items-center shadow p-3 mb-5 bg-white rounded">
-                    <div class="card-body">
-                        <h5 class="card-title">Users</h5>
-                        <div class="list-group">
-                            <a href="#" class="list-group-item list-group-item-action active">
-                                Aydin
-                            </a>
-                            <a href="#" class="list-group-item list-group-item-action">Gleb</a>
-                            <a href="#" class="list-group-item list-group-item-action">Karen</a>
-                            <a href="#" class="list-group-item list-group-item-action">Zdenek</a>
+            <!-- Requests -->
+            <div class="col-3 card mx-auto align-items-center shadow p-1 bg-white rounded">
 
-                        </div>
-                    </div>
+                <div class="card-body">
+                    <h4 class="card-title">
+                        Requests
+                    </h4>
+                    <p> @misirayd wants to add new homework</p>
+                    <p> @yarovhli wants to add new homework</p>
+                    <p> @akopikar wants to add new homework</p>
                 </div>
-            </div>
-            <div class="col-8">
-                <div class="card mx-auto align-items-center shadow p-3 mb-5 bg-white rounded">
-                    <div class="card-body">
-                        <h5 class="card-title">Subjects</h5>
-                        <div class="row">
-                            <div class="col">
-                                <div class="card shadow-sm p-1 mb-2 bg-white rounded">
-                                    <div class="card-body">
-                                        <h5 class="card-title">BIE-SI1</h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card shadow-sm p-1 mb-2 bg-white rounded">
-                                    <div class="card-body">
-                                        <h5 class="card-title">BIE-AG1</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-4">
 
             </div>
-            <div class="col-8">
-                <div class="card mx-auto align-items-center shadow p-3 mb-5 bg-white rounded">
-                    <div class="card-body">
-                        <h5 class="card-title">Teachers</h5>
-                        <div class="row">
-                            <div class="col">
-                                <div class="card shadow-sm p-1 mb-2 bg-white rounded">
+
+            <!-- Dashboard and statistics -->
+            <div class="col-9 pl-5">
+                <!-- Dashboard -->
+                <div class="row">
+                    <div class="card shadow w-100 p-1 bg-white rounded">
+
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                Dashboard
+                            </h4>
+                            <div class="card-deck">
+                                <div class="card shadow-sm p-1 bg-white rounded">
+                                    <a href="/subjects">
                                     <div class="card-body">
-                                        <h5 class="card-title">Zdenek Rybola</h5>
+                                        <h6 class="card-title">
+                                            Subjects
+                                        </h6>
                                     </div>
+                                    </a>
                                 </div>
-                            </div>
-                            <div class="col">
-                                <div class="card shadow-sm p-1 mb-2 bg-white rounded">
+                                <div class="card shadow-sm p-1 bg-white rounded">
+                                    <a href="/teachers">
                                     <div class="card-body">
-                                        <h5 class="card-title">Jan Travnicek</h5>
+                                        <h6 class="card-title">
+                                            Teachers
+                                        </h6>
                                     </div>
+                                    </a
+                                        >
+                                </div>
+                                <div class="card shadow-sm p-1 bg-white rounded">
+                                    <a href="/users">
+                                    <div class="card-body">
+                                        <h6 class="card-title">
+                                            Users
+                                        </h6>
+                                    </div>
+                                    </a>
+                                </div>
+                                <div class="card shadow-sm p-1 bg-white rounded">
+                                    <a href="/email">
+                                    <div class="card-body">
+                                        <h6 class="card-title">
+                                            Email
+                                        </h6>
+                                    </div>
+                                    </a>
                                 </div>
                             </div>
                         </div>
+
+                    </div>
+                </div>
+
+                <!-- Statistics -->
+                <div class="row mt-5">
+                    <div class="card shadow w-100 p-1 bg-white rounded">
+
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                Statistics
+                            </h4>
+                            <br/>
+                            <h5>Usage</h5>
+                            <label>Wednesday, October 28</label>
+                            <div class="progress mb-2">
+                                <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
+                            </div>
+                            <label>Thursday, October 29</label>
+                            <div class="progress mb-2">
+                                <div class="progress-bar bg-warning" role="progressbar" style="width: 40%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">40%</div>
+                            </div>
+                            <label>Friday, October 30</label>
+                            <div class="progress">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 77%;" aria-valuenow="77" aria-valuemin="0" aria-valuemax="100">77%</div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -78,19 +106,3 @@
 
 </@c.page>
 
-
-<!--
-
-    <p >${error}</p>
-    <form action="/users/userEdit" method="post">
-        <div><label> User Name : <input type="text" name="username" value="${user.getUsername()}"/> </label></div>
-
-        <div><label> Name : <input type="text" name="name" value="${user.getName()}"/> </label></div>
-        <div><label> Sur Name : <input type="text" name="surname" value="${user.getSurname()}"/> </label></div>
-        <div><label> Personal URL : <input type="text" name="pathId" value="${user.getPathId()}"/> </label></div>
-        <div><label> Email: <input type="text"  name="email" value="${user.getEmail()}" readonly/> </label></div>
-        <div><label> Phone: <input type="text" name="phone" value="${user.getPhone()}" readonly/> </label></div>
-        <div><input type="submit" value="Save"/></div>
-    </form>
-
--->
