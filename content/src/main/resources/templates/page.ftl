@@ -1,6 +1,6 @@
 <#import "parts/common.ftl" as c>
 
-<@c.page "FITLab | " + subject.getCode() + ' - ' + subject.getName()>
+<@c.page " | " + subject.getCode() + ' - ' + subject.getName()>
 
 <div id="features" class="container1" style="margin-top: 20px;">
     <ul id="myUL">

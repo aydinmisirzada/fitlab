@@ -1,7 +1,7 @@
 <#import "parts/common.ftl" as c>
 <#import "parts/form.ftl" as form>
 
-<@c.page subject.getCode()>
+<@c.page " | " + subject.getCode()>
 <div id="features" class="features-section">
     <div class="container text-center">
         <a style="font-size: 35px;">${subject.getName()}</a>

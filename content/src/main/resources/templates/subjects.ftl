@@ -1,7 +1,7 @@
 <#import "parts/common.ftl" as c>
 <#import "parts/form.ftl" as form>
 <#include "parts/security.ftl">
-<@c.page "Subjects">
+<@c.page " | Subjects">
 
     <div class="container" id="cardSection">
 

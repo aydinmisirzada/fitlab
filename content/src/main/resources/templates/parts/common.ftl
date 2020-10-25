@@ -12,7 +12,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <base href="/" />
-        <title>FITLab | ${title}</title>
+        <title>FITLab${title}</title>
 
         <!-- Bootstrap core CSS-->
         <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
