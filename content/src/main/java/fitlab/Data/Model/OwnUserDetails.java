@@ -4,29 +4,25 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class OwnUserDetails implements UserDetails {
-
     private String username;
     private String password;
     private String pathId;
     private boolean activated;
-    private List<GrantedAuthority> authorities;
     private boolean isAdmin;
+    private Role role;
 
     public OwnUserDetails(User user) {
         this.username = user.getUsername();
         this.password = user.getPassword();
         this.pathId = user.getPathId();
         this.activated = user.getActivationCode().isEmpty();
-        this.authorities = Arrays.stream(user.getRole().split(","))
-                                    .map(SimpleGrantedAuthority::new)
-                                    .collect(Collectors.toList());
-        this.isAdmin = user.getRole().equals("ADMIN");
+        this.role = user.getRole();
+        this.isAdmin = user.getRole().equals(Role.ADMIN);
     }
 
     public void setOwnUserDetails(User user) {
@@ -34,10 +30,8 @@ public class OwnUserDetails implements UserDetails {
         this.password = user.getPassword();
         this.pathId = user.getPathId();
         this.activated = user.getActivationCode().isEmpty();
-        this.authorities = Arrays.stream(user.getRole().split(","))
-                .map(SimpleGrantedAuthority::new)
-                .collect(Collectors.toList());
-        this.isAdmin = user.getRole().equals("ADMIN");
+        this.role = user.getRole();
+        this.isAdmin = user.getRole().equals(Role.ADMIN);
     }
 
     public OwnUserDetails() {
@@ -45,8 +39,12 @@ public class OwnUserDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return authorities;
+        List<GrantedAuthority> list = new ArrayList<GrantedAuthority>();
+        list.add(new SimpleGrantedAuthority(role.getAuthority()));
+
+        return list;
     }
+
 
     @Override
     public String getPassword() {
