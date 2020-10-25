@@ -27,10 +27,12 @@
                         </li>
                     <#else>
                         <li class="nav-item">
-                            <a class="nav-link" href="/admin">Admin panel</a>
+                            <a class="nav-link" href="/allUsers">Users</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin">Dashboard</a>
                         </li>
                         <li class="nav-item dropdown pb-1">
-
                                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     ${name}
