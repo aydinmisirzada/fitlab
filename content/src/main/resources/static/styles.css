@@ -779,3 +779,6 @@ input:hover,
   left:-10px;
 }
 
+.tooltip{
+  left:-35px !important;
+}
