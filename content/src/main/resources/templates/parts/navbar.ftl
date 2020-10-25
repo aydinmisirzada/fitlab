@@ -29,18 +29,20 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/users">Users</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin">Dashboard</a>
-                        </li>
+                        <#if isAdmin>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin">Dashboard</a>
+                            </li>
+                        </#if>
                         <li class="nav-item dropdown pb-1">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    ${name}
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="/users/${pathId}">View profile</a>
-                                    <a class="dropdown-item" href="/logout">Log Out</a>
-                                </div>
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                ${name}
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="/users/${pathId}">View profile</a>
+                                <a class="dropdown-item" href="/logout">Log Out</a>
+                            </div>
                         </li>
                     </#if>
                 </ul>

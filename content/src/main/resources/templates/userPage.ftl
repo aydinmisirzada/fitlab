@@ -13,6 +13,7 @@
                     <div class="card-body">
 
                         <form action="/users/userEdit" method="post">
+                            <input type="hidden" name="_csrf" value="${_csrf.token}"/>
                             <div class="form-row">
                                 <div class="col">
 

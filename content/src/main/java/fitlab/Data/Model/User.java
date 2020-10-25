@@ -20,6 +20,7 @@ public class User {
     private String role;
     private String activationCode;
     private String pathId;
+    private String image;
 
 
     public void setUser(User user) {
@@ -27,6 +28,14 @@ public class User {
         this.surname = user.getSurname();
         this.username = user.getUsername();
         this.pathId = user.getPathId();
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getPathId() {

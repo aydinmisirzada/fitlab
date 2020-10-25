@@ -12,6 +12,7 @@
                 <h6 class="card-title text-center">It's quick and easy!</h6>
                 <br/>
                 <form action="/registration" method="post">
+                    <input type="hidden" name="_csrf" value="${_csrf.token}"/>
                     <div class="form-group">
                         <input type="text" class="form-control" name="name" placeholder="Name" required>
                     </div>

@@ -11,6 +11,7 @@
                 <h4 class="card-title text-center">Welcome to FITLab!</h4>
                 <br/>
                 <form action="/login" method="post">
+                    <input type="hidden" name="_csrf" value="${_csrf.token}"/>
                     <div class="form-group">
                         <input type="text" class="form-control" name="username" placeholder="Username">
                     </div>

@@ -15,6 +15,7 @@
 
     <h3>${(subject.getDescription())!"There is no description yet."}</h3>
     <form action="/subjects/${subject.getCode()}" method="post">
+        <input type="hidden" name="_csrf" value="${_csrf.token}"/>
         <table width="100%">
             <tr>
                 <td width="10%">
@@ -53,6 +54,7 @@
     <h4 style="text-align: center; margin: 10px;">Add a homework</h4>
     <div  class="adder">
         <form action="/subjects/${subject.getCode()}" method="post">
+            <input type="hidden" name="_csrf" value="${_csrf.token}"/>
             <table width="100%">
                 <tr>
                     <td width="10%">
@@ -92,6 +94,7 @@
     <h4 style="text-align: center; margin: 10px;">Add a Test</h4>
     <div  class="adder">
         <form action="/subjects/${subject.getCode()}" method="post">
+            <input type="hidden" name="_csrf" value="${_csrf.token}"/>
             <table width="100%">
                 <tr>
                     <td width="10%">
@@ -135,6 +138,7 @@
     <h4 style="text-align: center; margin: 10px;">Add an exam</h4>
     <div  class="adder">
         <form action="/subjects/${subject.getCode()}" method="post" >
+            <input type="hidden" name="_csrf" value="${_csrf.token}"/>
             <table width="100%">
                 <tr>
                     <td width="10%">

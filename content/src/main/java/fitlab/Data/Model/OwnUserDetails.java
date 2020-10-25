@@ -16,6 +16,7 @@ public class OwnUserDetails implements UserDetails {
     private String pathId;
     private boolean activated;
     private List<GrantedAuthority> authorities;
+    private boolean isAdmin;
 
     public OwnUserDetails(User user) {
         this.username = user.getUsername();
@@ -25,6 +26,7 @@ public class OwnUserDetails implements UserDetails {
         this.authorities = Arrays.stream(user.getRole().split(","))
                                     .map(SimpleGrantedAuthority::new)
                                     .collect(Collectors.toList());
+        this.isAdmin = user.getRole().equals("ADMIN");
     }
 
     public void setOwnUserDetails(User user) {
@@ -35,6 +37,7 @@ public class OwnUserDetails implements UserDetails {
         this.authorities = Arrays.stream(user.getRole().split(","))
                 .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());
+        this.isAdmin = user.getRole().equals("ADMIN");
     }
 
     public OwnUserDetails() {
@@ -61,6 +64,10 @@ public class OwnUserDetails implements UserDetails {
 
     public boolean isActivated() {
         return activated;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
     }
 
     @Override

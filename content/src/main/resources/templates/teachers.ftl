@@ -55,6 +55,7 @@
             <div class="col">
                 <div class="collapse multi-collapse" id="multiCollapseExample2">
                     <form method="post">
+                        <input type="hidden" name="_csrf" value="${_csrf.token}"/>
                         <div class="form-group row">
                             <label for="subjectCode" class="col-sm-2 col-form-label">Enter Name:</label>
                             <div class="col-sm-10">
