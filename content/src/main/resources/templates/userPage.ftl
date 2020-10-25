@@ -58,8 +58,12 @@
                             </div>
                             <br/>
                             <small class="form-text text-muted text-center pb-1">Click on field to edit it</small>
+                            <#if error = 1>
+                                <p class="text-center" style="color: #ff0000;">This URL is already in use!</p>
+                            <#elseif error = 2>
+                                <p class="text-center" style="color: #ff0000;">This username is already in use!</p>
+                            </#if>
                             <div class="form-row">
-                                <p class="text-center" style="color: #ff0000;">${error}</p>
                                 <div class="col">
                                     <div class="text-center">
                                         <button type="submit" class="btn btn-secondary">Save</button>
@@ -121,16 +125,17 @@
     </div>
 
     <script>
-        $('#username').tooltip({'trigger':'manual','title': 'Username', 'placement': 'left'}).tooltip('show');
-        $('#email').tooltip({'trigger':'manual','title': 'Email', 'placement': 'left'}).tooltip('show');;
-        $('#phone').tooltip({'trigger':'manual','title': 'Phone', 'placement': 'left'}).tooltip('show');;
-        $('#path').tooltip({trigger:'manual',title: 'URL', placement: 'left'}).tooltip('show');;
+        $('#username').tooltip({'trigger': 'manual', 'title': 'Username', 'placement': 'left'}).tooltip('show');
+        $('#email').tooltip({'trigger': 'manual', 'title': 'Email', 'placement': 'left'}).tooltip('show');
+        ;
+        $('#phone').tooltip({'trigger': 'manual', 'title': 'Phone', 'placement': 'left'}).tooltip('show');
+        ;
+        $('#path').tooltip({trigger: 'manual', title: 'URL', placement: 'left'}).tooltip('show');
+        ;
     </script>
 
 
 </@c.page>
-
-
 
 
 <!--
