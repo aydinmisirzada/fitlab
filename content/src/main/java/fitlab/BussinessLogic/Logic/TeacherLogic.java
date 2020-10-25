@@ -16,8 +16,6 @@ public class TeacherLogic implements TeacherLogicConf {
     @Autowired
     TeacherRepository repo;
     @Autowired
-    ContentLogic con;
-    @Autowired
     ReviewRepository rev;
     @Autowired
     UserRepository user;
@@ -29,16 +27,15 @@ public class TeacherLogic implements TeacherLogicConf {
     public void addTeacher(String name, String surname, String username) {
         Teacher tec = new Teacher(name,surname,username);
         repo.save(tec);
-        con.addContent("Review",ContentType.REVIEW,tec);
         repo.save(tec);
     }
-    public Content getContent(int id){return repo.findById(id).getContent();}
     public void delTeacher(int  id) {
 
         Teacher teacher = repo.findById(id);
-        Content content = teacher.getContent();
-        con.delContent(content);
- 
+
+        for (Review review :teacher.getReviewList())
+            rev.delete(review);
+
         repo.delete(repo.getOne(id));
     }
 

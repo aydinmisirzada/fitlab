@@ -1,4 +1,5 @@
 <#import "parts/common.ftl" as c>
+<#import "parts/form.ftl" as form>
 
 
 
@@ -16,12 +17,7 @@
                         <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
                             <div class="card-body">
                                 <h5 class="card-title">${t.getName()} ${t.getSurname()}</h5>
-                                <form method="post" style="height:0;">
-                                    <a href="teachers/${path}" class="btn btn-secondary">Learn More</a>
-                                    <button type="submit" class="btn btn-danger" style="float: right;">Delete</button>
-                                    <input type="text" name="id" value="${t.getId()}"
-                                           style="visibility: hidden;height: 0">
-                                </form>
+                                <@form.form_template path="/teachers" name = "id" value = "${t.getId()}" href ="teachers/${path}" />
                             </div>
                         </div>
                     </div>

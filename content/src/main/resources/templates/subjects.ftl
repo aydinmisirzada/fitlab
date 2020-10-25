@@ -1,8 +1,8 @@
 <#import "parts/common.ftl" as c>
+<#import "parts/form.ftl" as form>
 
 
-
-<@c.page "| Subjects">
+<@c.page "FITLab | Subjects">
 
     <div class="container" id="subjectsSection">
 
@@ -18,12 +18,8 @@
                                 <h5 class="card-title">${s.getCode()}</h5>
                                 <p class="card-text">${s.getName()}</p>
                                 <p class="card-text">Semester: ${s.getSemester()}</p>
-                                <form method="post" style="height:0;">
-                                    <a href="subjects/${path}" class="btn btn-secondary">Learn More</a>
-                                    <button type="submit" class="btn btn-danger" style="float: right;">Delete</button>
-                                    <input type="text" name="id" value="${s.getId()}"
-                                           style="visibility: hidden;height: 0">
-                                </form>
+                                <@form.form_template path="/subjects" name = "id" value = "${s.getId()}" href ="subjects/${path}" />
+
                             </div>
                         </div>
                     </div>

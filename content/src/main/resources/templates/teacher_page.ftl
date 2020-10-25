@@ -11,14 +11,15 @@
 
     <div id="hero-section">
         <div class="container text-center" >
-            <a style="font-size: 35px;" href="${teacher.getId() + '/reviews'}">Reviews</a>
+            <a style="font-size: 35px;" href="${'/teachers/' + teacher.getId() + '/reviews'}">Reviews</a>
 
             <#assign x = teacher.averageRating()>
+            <#if x != 0>
             <#list 1..x as i>
                 <span>&#9733;</span>
             </#list>
-
-            <#list x..5 as i>
+            </#if>
+            <#list x..4 as i>
                 <span>&#9734;</span>
             </#list>
         </div>

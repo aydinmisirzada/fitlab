@@ -28,8 +28,7 @@ public class Teacher  {
         this.reviewList = reviewList;
     }
 
-    @OneToOne(mappedBy = "teacher")
-    private Content content;
+
 
     public void addReview(Review review) {
         reviewList.add(review);
@@ -37,21 +36,13 @@ public class Teacher  {
 
     public int averageRating() {
         int x = 0;
+        if(reviewList.size() == 0) return 0;
         for (Review y : reviewList) {
             x += y.getRating();
         }
         if(reviewList.size() > 0)
             x /= reviewList.size();
-
         return  x;
-    }
-
-    public Content getContent() {
-        return content;
-    }
-
-    public void setContent(Content content) {
-        this.content = content;
     }
 
 

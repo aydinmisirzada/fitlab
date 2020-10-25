@@ -68,7 +68,7 @@ public class SubjectController {
      * @param model This is a variable used by the framework
      * @return This returns a page of the subject
      */
-    @PostMapping(value = "/subjects/{subject}")
+    @PostMapping(value = "/subjects/{subject}", params = {"title", "type"})
     public String AddPage(@PathVariable String subject, @RequestParam String title,@RequestParam String type, Model model) {
         if(title.isEmpty()) return "errorpage";
         ContentType Type = ContentType.HOMEWORK;
@@ -87,6 +87,7 @@ public class SubjectController {
         Subject sub1 = sub.SubjectAddPage(subject,title,Type);
         model.addAttribute("subject",sub1);
         model.addAttribute("contents",sub1.getContentList());
+        model.addAttribute("error","");
         return "subject";
 
     }

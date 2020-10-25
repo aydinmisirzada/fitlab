@@ -1,4 +1,5 @@
 <#import "parts/common.ftl" as c>
+<#import "parts/form.ftl" as form>
 
 <@c.page subject.getCode() + " - " + subject.getName()>
 <div id="features" class="features-section">
@@ -38,14 +39,11 @@
     <ul id="myUL">
         <#list contents as content>
         <#if content.type.toString() == 'HOMEWORK'>
-        <li><a href="${subject.getCode() + '/homework/' + content.getId()}">
+        <li><a href="${'/subjects/' + subject.getCode() + '/homework/' + content.getId()}">
             <td>
              ${content.getTitle()}
             </td>
-            <form action="/subjects/${subject.getCode()}"  method="post">
-                    <button type="submit" style="position: absolute; right: 11%;" >Delete</button>
-                    <input type="text"  name="id" value="${content.getId()}" style="visibility: hidden;height: 0" >
-            </form>
+                <@form.form_template path="/subjects/${subject.getCode()}" name = "id" value = "${content.getId()}" href=""/>
         </a>
         </li>
             </#if>
@@ -78,15 +76,11 @@
     <ul id="myUL">
         <#list contents as content>
         <#if content.type.toString() == 'TEST'>
-        <li><a href="${subject.getCode() + '/test/' + content.getId() }">
+        <li><a href="${'/subjects/' + subject.getCode() + '/test/' + content.getId() }">
             <td>
                 ${content.getTitle()}
             </td>
- <form action="/subjects/${subject.getCode()}" method="post">
-                    <button type="submit" style="position: absolute; right: 11%;" >Delete</button>
-                    <input type="text"  name="id" value="${content.getId()}" style="visibility: hidden;height: 0" >
-
-                </form>
+                <@form.form_template path="/subjects/${subject.getCode()}" name = "id" value = "${content.getId()}" href=""/>
         </a>
         </li>
         </#if>
@@ -123,15 +117,12 @@
     <ul id="myUL">
         <#list contents as content>
         <#if content.type.toString() == 'EXAM'>
-        <li><a href="${ subject.getCode() + '/exam/' + content.getId()}">
+        <li><a href="${'/subjects/' +  subject.getCode() + '/exam/' + content.getId()}">
             <td >
                 ${content.getTitle()}
             </td>
- <form  action="/subjects/${subject.getCode()}" method="post">
-                    <button type="submit" style="position: absolute; right: 11%;" >Delete</button>
-                    <input type="text"  name="id" value="${content.getId()}" style="visibility: hidden;height: 0" >
+                <@form.form_template path="/subjects/${subject.getCode()}" name = "id" value = "${content.getId()}" href=""/>
 
-                </form>
         </a>
         </li>
             </#if>

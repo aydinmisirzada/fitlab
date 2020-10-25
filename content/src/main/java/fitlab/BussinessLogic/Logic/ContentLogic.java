@@ -28,11 +28,7 @@ public class ContentLogic implements ContentLogicConf {
         con.setSubject(sub);
         repo.save(con);
     }
-    public void addContent( String title, ContentType type, Teacher tec) {
-        Content con = new Content(title, type);
-        con.setTeacher(tec);
-        repo.save(con);
-    }
+
 
     public List<Message> contentMessageList(int page_id) {
         return repo.findById(page_id).getMessageList();

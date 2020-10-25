@@ -1,6 +1,7 @@
 <#import "navbar.ftl" as nav>
 <#macro page title>
 
+
     <!DOCTYPE html>
     <html lang="en">
 
