@@ -34,7 +34,7 @@ public class UsersController {
         if(u==null)      // If user is not exist return "USER NOT FOUND" page
             return "errorpage";
 
-        model.addAttribute("error", "");
+        model.addAttribute("error", 0);
         model.addAttribute("user", u);
         return "userPage";
     }
@@ -45,11 +45,11 @@ public class UsersController {
         if(s.equals("une"))
             return "errorpage";
         else if(s.equals("path")) {
-            model.addAttribute("error", "User with same URL exist, choose another one!");
+            model.addAttribute("error", 1);
             return "userPage";
         }
         else if(s.equals("username")) {
-            model.addAttribute("error", "User with same username exist, choose another one!");
+            model.addAttribute("error", 2);
             return "userPage";
         }
 
