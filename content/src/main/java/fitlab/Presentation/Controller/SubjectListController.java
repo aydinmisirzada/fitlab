@@ -37,10 +37,11 @@ public class SubjectListController {
      */
     @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping("/subjects")
-    public String add(@RequestParam String code, @RequestParam String name, @RequestParam Semester semester) {
+    public String add(@RequestParam String code, @RequestParam String name, @RequestParam(defaultValue = "") String description, @RequestParam Semester semester) {
         if(!s_repo.subDuplicate(code,name) || code.isEmpty() || name.isEmpty())
             return "errorpage";
         s_repo.addSubject(code, name, semester);
+        s_repo.SubjectEditDescription(code, description);
         return "redirect:/subjects";
     }
 
