@@ -23,20 +23,22 @@ public class UsersLogic {
     public User getUserByPath(String path){
         Optional<User> u = userRepository.findByPathId(path);
 
-        if(!checkAccount(u.get().getId()) || u.equals(Optional.empty())) return null;
+        if((!checkAccount(u.get().getId()) && !oud.getRole().equals(Role.ADMIN))
+                || u.equals(Optional.empty())) return null;
 
         return u.get();
     }
 
     private boolean checkAccount(Integer id){
         oud = (OwnUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if(oud.getUserId().equals(id) || oud.getRole().equals(Role.ADMIN))
+//        if(oud.getUserId().equals(id) || oud.getRole().equals(Role.ADMIN))
+        if(oud.getUserId().equals(id))
             return true;
 
         return false;
     }
 
-    public String editUserById(User user) {
+    public String editUserById(User user, Boolean role) {
         Optional<User> u = userRepository.findById(user.getId());
         if(u.equals(Optional.empty())) return "une"; //user not exist
 
@@ -48,15 +50,22 @@ public class UsersLogic {
         else if(!u.get().getUsername().equals(user.getUsername())){
             Optional<User> tmp = userRepository.findByUsername(user.getUsername());
             if(!tmp.equals(Optional.empty()))
-                return "username";  //path exist
+                return "username";  //username exist
         }
+        if(role)
+            user.setRole(Role.ADMIN);
+        else
+            user.setRole(Role.USER);
+
         u.get().setUser(user);
         userRepository.save(u.get());
 
         //Make changes in authentication of spring security
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        OwnUserDetails userDetails = (OwnUserDetails) authentication.getPrincipal();
-        userDetails.setOwnUserDetails(u.get());
+        if(checkAccount(u.get().getId())) {
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            OwnUserDetails userDetails = (OwnUserDetails) authentication.getPrincipal();
+            userDetails.setOwnUserDetails(u.get());
+        }
 
         return "true";
     }

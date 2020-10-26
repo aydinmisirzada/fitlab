@@ -1,7 +1,5 @@
 <#include "security.ftl">
 <#macro navbar>
-    <script src="assets/vendor/jquery/jquery.js"></script>
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
     <!-- Navigation -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">

@@ -5,6 +5,7 @@ import fitlab.BussinessLogic.Logic.SubjectLogic;
 import fitlab.Data.Model.ContentType;
 import fitlab.Data.Model.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -46,6 +47,7 @@ public class SubjectController {
      * @param model This is a variable used by the framework
      * @return This returns a page of the subject
      */
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping(value = "/subjects/{subject}", params = {"description"})
     public String EditDescription(@PathVariable String subject, @RequestParam String description, Model model) {
         if(description.length() == 0) {
@@ -70,6 +72,7 @@ public class SubjectController {
      * @param model This is a variable used by the framework
      * @return This returns a page of the subject
      */
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping(value = "/subjects/{subject}", params = {"title", "type"})
     public String AddPage(@PathVariable String subject, @RequestParam String title,@RequestParam String type, Model model) {
         if(title.isEmpty()) return "errorpage";
@@ -93,6 +96,7 @@ public class SubjectController {
         return "subject";
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping(value = "subjects/{subject}", params = {"title", "id"})
     public String editContent(@PathVariable String subject, @RequestParam String title, @RequestParam int id) {
         if(title.isEmpty()) return "errorpage";

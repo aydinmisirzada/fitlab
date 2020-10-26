@@ -1,3 +1,4 @@
+<#include "security.ftl">
 <#macro form_template path name value href>
     <form action=${path}  method="post">
 
@@ -5,7 +6,9 @@
             <a href="${href}" class="btn btn-secondary">Learn More</a>
         </#if>
         <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+        <#if isAdmin>
         <button onclick="return confirm('Are you sure?')"  class="btn btn-danger" style="float: right;">Delete</button>
+        </#if>
         <input id="tmp" type="text"  name="${name}" value="${value}" style="visibility: hidden;height: 0" >
     </form>
 </#macro>
