@@ -1,6 +1,7 @@
 package fitlab.Presentation.Controller;
 
 import fitlab.BussinessLogic.Logic.UsersLogic;
+import fitlab.Data.Model.Role;
 import fitlab.Data.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -40,8 +41,9 @@ public class UsersController {
     }
 
     @RequestMapping(value = "/userEdit", method = RequestMethod.POST)
-    public String editUserInfo(User user, Model model){
-        String s = usersLogic.editUserById(user);
+    public String editUserInfo(User user, Boolean userRole, Model model){
+        if(userRole == null) userRole = false;
+        String s = usersLogic.editUserById(user, userRole);
         if(s.equals("une"))
             return "errorpage";
         else if(s.equals("path")) {

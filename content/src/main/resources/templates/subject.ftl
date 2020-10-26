@@ -1,6 +1,6 @@
 <#import "parts/common.ftl" as c>
 <#import "parts/form.ftl" as form>
-
+<#include "parts/security.ftl">
 <@c.page " | " + subject.getCode()>
 <div id="features" class="features-section">
     <div class="container text-center">
