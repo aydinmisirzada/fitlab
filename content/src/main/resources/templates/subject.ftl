@@ -19,7 +19,7 @@
                         <input type="text" id="description" class="form-control" name="description"
                                placeholder="Type here">
                     </div>
-                    <p style="red"> ${error}</p>
+                    <p style="color:red"> ${error}</p>
                     <button type="submit" class="btn btn-secondary ">Edit description</button>
 
                 </form>
