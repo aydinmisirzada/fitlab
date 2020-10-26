@@ -1,15 +1,15 @@
 <#import "parts/common.ftl" as c>
 
-<@c.page "All users">
+<@c.page " | "+ user.getUsername()>
     <div class="container" id="cardSection">
         <div style="padding-top: 100px"></div>
         <div class="row">
 
             <div class="col-4">
-                <div class="card mx-auto align-items-center shadow p-3 mb-5 bg-white rounded">
+                <div class="card mx-auto align-items-center shadow p-3 mb-5 bg-white rounded" id="formCard">
                     <br/>
                     <img src="images/user.svg" style="max-height: 80px; max-width: 80px;">
-                    <div class="card-body">
+                    <div class="card-body w-100">
 
                         <form action="/users/userEdit" method="post">
                             <input type="hidden" name="_csrf" value="${_csrf.token}"/>
@@ -58,15 +58,19 @@
                             </div>
                             <br/>
                             <small class="form-text text-muted text-center pb-1">Click on field to edit it</small>
+                            <#if error = 1>
+                                <p class="text-center" style="color: #ff0000;">This URL is already in use!</p>
+                            <#elseif error = 2>
+                                <p class="text-center" style="color: #ff0000;">This username is already in use!</p>
+                            </#if>
                             <div class="form-row">
-
                                 <div class="col">
                                     <div class="text-center">
                                         <button type="submit" class="btn btn-secondary">Save</button>
                                     </div>
                                 </div>
                             </div>
-                            <p>${error}</p>
+
                         </form>
                     </div>
 
@@ -121,10 +125,13 @@
     </div>
 
     <script>
-        $('#username').tooltip({'trigger': 'hover focus', 'title': 'Username', 'placement': 'left'});
-        $('#email').tooltip({'trigger': 'hover focus', 'title': 'Email', 'placement': 'left'});
-        $('#phone').tooltip({'trigger': 'hover focus', 'title': 'Phone', 'placement': 'left'});
-        $('#path').tooltip({'trigger': 'hover focus', 'title': 'Path ID', 'placement': 'left'});
+        $('#username').tooltip({'trigger': 'manual', 'title': 'Username', 'placement': 'left'}).tooltip('show');
+        $('#email').tooltip({'trigger': 'manual', 'title': 'Email', 'placement': 'left'}).tooltip('show');
+        ;
+        $('#phone').tooltip({'trigger': 'manual', 'title': 'Phone', 'placement': 'left'}).tooltip('show');
+        ;
+        $('#path').tooltip({trigger: 'manual', title: 'URL', placement: 'left'}).tooltip('show');
+        ;
     </script>
 
 
@@ -133,6 +140,11 @@
 
 <!--
 
+no error 0
+url exist 1
+username exist 2
+
+reguitration: 0 no error 3 username exist 4 email exist
     <p >${error}</p>
     <form action="/users/userEdit" method="post">
         <div><label> User Name : <input type="text" name="username" value="${user.getUsername()}"/> </label></div>

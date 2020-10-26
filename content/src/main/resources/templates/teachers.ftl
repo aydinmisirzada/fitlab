@@ -2,7 +2,7 @@
 <#import "parts/form.ftl" as form>
 <#include "parts/security.ftl">
 
-<@c.page "Teachers">
+<@c.page " | Teachers">
 
     <div class="container" id="cardSection">
 

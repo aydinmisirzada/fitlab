@@ -1,6 +1,6 @@
 <#import "parts/common.ftl" as c>
 
-<@c.page "FITLab | " + teacher.getName() + " " + teacher.getSurname()>
+<@c.page " | " + teacher.getName() + " " + teacher.getSurname()>
 
 <div>
     <#assign x = teacher.averageRating()>

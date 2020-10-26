@@ -1,6 +1,6 @@
 <#import "parts/common.ftl" as c>
 
-<@c.page "| Admin Dashboard">
+<@c.page " | Dashboard">
 
     <div class="container" id="cardSection">
         <div style="padding-top: 100px"></div>
