@@ -34,13 +34,19 @@
                         <input type="text" class="form-control" name="username" placeholder="Username" required>
                     </div>
                     <div class="form-group">
-                        <input type="password" name="password" class="form-control" placeholder="Password" required>
+                        <input type="password" name="password" class="form-control" placeholder="Password" id="password" required>
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" placeholder="Confirm Password"/>
+                        <input type="password" class="form-control" placeholder="Confirm Password" id="confirmPassword" required/>
                     </div>
                     <div class="text-center">
-                        <button type="submit" class="btn btn-secondary">Sign Up</button>
+                        <p id="errorMessage" style="color:red"></p>
+                        <#if error = 3>
+                            <p class="text-center" style="color: #ff0000;">This username is already in use!</p>
+                        <#elseif error = 4>
+                            <p class="text-center" style="color: #ff0000;">This email is already in use!</p>
+                        </#if>
+                        <button type="submit" class="btn btn-secondary" id="btnSubmit">Sign Up</button>
                         <br/>
                         <br/>
                         <small><a href="/login">Registered user? Log in.</a></small>
@@ -52,7 +58,19 @@
 
     </div>
 
-
+    <script type="text/javascript">
+        $(function () {
+            $("#btnSubmit").click(function () {
+                var password = $("#password").val();
+                var confirmPassword = $("#confirmPassword").val();
+                if (password != confirmPassword) {
+                    $( "#errorMessage" ).text( "Passwords do not match" );
+                    return false;
+                }
+                return true;
+            });
+        });
+    </script>
 
 </@c.page>
 
