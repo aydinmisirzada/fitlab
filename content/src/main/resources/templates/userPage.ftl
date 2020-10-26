@@ -1,5 +1,5 @@
 <#import "parts/common.ftl" as c>
-
+<#include "parts/security.ftl">
 <@c.page " | "+ user.getUsername()>
     <div class="container" id="cardSection">
         <div style="padding-top: 100px"></div>
@@ -50,12 +50,14 @@
                                            value="${user.getPathId()}" style="text-align: center">
                                 </div>
                             </div>
-                            <div class="form-row">
+<#--                            <#if isAdmin>-->
+                            <div class="form-row" <#if !isAdmin> hidden </#if> >
                                 <div class="col" style="text-align: center">
-                                    <input type="checkbox" class="form-check-input" id="userRole">
+                                    <input type="checkbox" class="form-check-input" id="userRole" name="userRole" <#if user.isAdmin()>checked</#if>>
                                     <label class="form-check-label" for="userRole">Admin</label>
                                 </div>
                             </div>
+<#--                            </#if>-->
                             <br/>
                             <small class="form-text text-muted text-center pb-1">Click on field to edit it</small>
                             <#if error = 1>
