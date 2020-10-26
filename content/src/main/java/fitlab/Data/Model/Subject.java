@@ -14,6 +14,7 @@ public class Subject {
 
     private String name;
     private Semester semester;
+    @Lob
     private String Description;
     private String code;
     @OneToMany(mappedBy = "subject")
