@@ -50,14 +50,13 @@
                                            value="${user.getPathId()}" style="text-align: center">
                                 </div>
                             </div>
-<#--                            <#if isAdmin>-->
                             <div class="form-row" <#if !isAdmin> hidden </#if> >
                                 <div class="col" style="text-align: center">
-                                    <input type="checkbox" class="form-check-input" id="userRole" name="userRole" <#if user.isAdmin()>checked</#if>>
+                                    <input type="checkbox" class="form-check-input" id="userRole" name="userRole" <#if user.isAdmin()>checked </#if> >
                                     <label class="form-check-label" for="userRole">Admin</label>
                                 </div>
                             </div>
-<#--                            </#if>-->
+
                             <br/>
                             <small class="form-text text-muted text-center pb-1">Click on field to edit it</small>
                             <#if error = 1>
@@ -138,25 +137,3 @@
 
 
 </@c.page>
-
-
-<!--
-
-no error 0
-url exist 1
-username exist 2
-
-reguitration: 0 no error 3 username exist 4 email exist
-    <p >${error}</p>
-    <form action="/users/userEdit" method="post">
-        <div><label> User Name : <input type="text" name="username" value="${user.getUsername()}"/> </label></div>
-
-        <div><label> Name : <input type="text" name="name" value="${user.getName()}"/> </label></div>
-        <div><label> Sur Name : <input type="text" name="surname" value="${user.getSurname()}"/> </label></div>
-        <div><label> Personal URL : <input type="text" name="pathId" value="${user.getPathId()}"/> </label></div>
-        <div><label> Email: <input type="text"  name="email" value="${user.getEmail()}" readonly/> </label></div>
-        <div><label> Phone: <input type="text" name="phone" value="${user.getPhone()}" readonly/> </label></div>
-        <div><input type="submit" value="Save"/></div>
-    </form>
-
--->
