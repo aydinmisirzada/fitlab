@@ -6,6 +6,7 @@ import fitlab.BussinessLogic.Interfaces.MessageLogicConf;
 import fitlab.Data.Model.Message;
 import fitlab.Data.Model.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -57,6 +58,7 @@ public class ContentPageController {
         return "redirect:" + "/subjects/" + subject + "/" + type + '/' + page_id;
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping(value = "/subjects/{subject}" , params = "id")
     public String delContent(@PathVariable String subject, @RequestParam int  id) {
         c_repo.delContent(c_repo.getCon(id));

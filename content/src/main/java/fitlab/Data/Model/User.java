@@ -30,6 +30,11 @@ public class User {
         this.surname = user.getSurname();
         this.username = user.getUsername();
         this.pathId = user.getPathId();
+        this.role = user.getRole();
+    }
+
+    public boolean isAdmin(){
+        return role.equals(Role.ADMIN);
     }
 
     public String getImage() {

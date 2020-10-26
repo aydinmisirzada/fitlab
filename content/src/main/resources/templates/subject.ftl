@@ -1,6 +1,6 @@
 <#import "parts/common.ftl" as c>
 <#import "parts/form.ftl" as form>
-
+<#include "parts/security.ftl">
 
 <@c.page " | " + subject.getCode()>
 
@@ -11,6 +11,7 @@
                 <h3 class="card-title text-center">${subject.getCode()}</h3>
                 <h5 class="card-title text-center">${subject.getName()}</h5>
                 <p class="text-center">${(subject.getDescription())!"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus orci mi, bibendum vel mattis at, pretium id neque. Aliquam suscipit rhoncus porttitor. Pellentesque dignissim, quam sit amet tempor facilisis, libero velit euismod risus, a mattis diam nibh vel magna. Nunc feugiat enim est, eu convallis nisi feugiat in. In mauris elit, interdum at mi placerat, dictum iaculis erat. Praesent non euismod nibh. Maecenas vulputate eleifend risus sit amet tristique. Donec malesuada libero a efficitur gravida. Curabitur sed rhoncus quam. Curabitur vitae finibus massa, sed maximus nibh. Mauris nec finibus tortor, vitae rutrum nisi. Aliquam in tempor tortor. Morbi luctus nulla ac euismod semper. In maximus nibh eu quam consectetur, id blandit diam tincidunt. Donec id aliquet nisl, ac tincidunt elit. Vivamus rhoncus lectus dolor, ac lobortis felis varius et."}</p>
+                <#if isAdmin>
                 <form action="/subjects/${subject.getCode()}" method="post">
                     <div class="form-group">
                         <input type="hidden" name="_csrf" value="${_csrf.token}"/>
@@ -18,10 +19,11 @@
                         <input type="text" id="description" class="form-control" name="description"
                                placeholder="Type here">
                     </div>
-                    <p style="red" ${(error)}</p>
+                    <p style="color:red"> ${error}</p>
                     <button type="submit" class="btn btn-secondary ">Edit description</button>
 
                 </form>
+                </#if>
                 <br/>
                 <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#homeworkSection"
                         aria-expanded="false" aria-controls="homeworkSection">Homeworks

@@ -27,7 +27,6 @@ public class TeacherLogic implements TeacherLogicConf {
     public void addTeacher(String name, String surname, String username) {
         Teacher tec = new Teacher(name,surname,username);
         repo.save(tec);
-        repo.save(tec);
     }
     public void delTeacher(int  id) {
 
