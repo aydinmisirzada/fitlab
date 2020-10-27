@@ -16,7 +16,7 @@
                             <input type="hidden" name="_csrf" value="${_csrf.token}"/>
                             <input type="hidden" name="id" value="${user.getId()}"/>
 
-                            <div class="form-row">
+                            <div class="form-row mb-1">
                                 <div class="col">
 
                                     <input type="text" name="name" class="form-control myform nameform editable"
@@ -135,9 +135,15 @@
                 if ($('.nameform').attr("readonly")) {
                     $('#saveButton').css('visibility','visible');
                     $('.editable').attr("readonly",false);
+                    $('.editable').css('border','1px solid grey');
+                    $('.nameform').css({'font-weight':'normal','padding-left':'10px','margin-left':'10px'});
+                    $('input[name="name"]').css('text-align','left')
                 } else {
                     $('.editable').attr("readonly",true);
+                    $('.editable').css('border','none transparent');
+                    $('.nameform').css({'font-weight':'600','padding-left':'0','margin-left':'0'});
                     $('#saveButton').css('visibility','hidden');
+                    $('input[name="name"]').css('text-align','right');
                 }
             });
 
