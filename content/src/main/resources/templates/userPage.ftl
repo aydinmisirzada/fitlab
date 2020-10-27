@@ -21,17 +21,17 @@
 
                                     <input type="text" name="name" class="form-control myform nameform editable"
                                            value="${user.getName()}"
-                                           spellcheck="false" style="text-align: right;"/>
+                                           spellcheck="false" style="text-align: right;" readonly/>
                                 </div>
                                 <div class="col">
                                     <input type="text" name="surname" class="form-control myform nameform editable"
-                                           value="${user.getSurname()}" spellcheck="false"/>
+                                           value="${user.getSurname()}" spellcheck="false" readonly/>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="col">
                                     <input type="text" id="username" class="form-control myform editable" name="username"
-                                           value="${user.getUsername()}" style="text-align: center">
+                                           value="${user.getUsername()}" style="text-align: center" readonly>
                                 </div>
                             </div>
                             <div class="form-row">
@@ -49,7 +49,7 @@
                             <div class="form-row">
                                 <div class="col">
                                     <input type="text" id="path" class="form-control myform editable" name="pathId"
-                                           value="${user.getPathId()}" style="text-align: center">
+                                           value="${user.getPathId()}" style="text-align: center" readonly>
                                 </div>
                             </div>
                             <div class="form-row" <#if !isAdmin> hidden </#if> >
@@ -129,20 +129,18 @@
     </div>
 
     <script>
-        $(document).ready(function(){
-            $("#editButton").click(function(){
 
-                if (!$('.nameform').attr("readonly")) {
-                    $('.editable').attr("readonly",true);
-                    $('#saveButton').css('visibility','hidden');
-                } else {
+            $("#editButton").on('click',function(){
+                //enable editing mode
+                if ($('.nameform').attr("readonly")) {
                     $('#saveButton').css('visibility','visible');
                     $('.editable').attr("readonly",false);
+                } else {
+                    $('.editable').attr("readonly",true);
+                    $('#saveButton').css('visibility','hidden');
                 }
-
-
             });
-        });
+
 
 
         $('#username').tooltip({'trigger': 'manual', 'title': 'Username', 'placement': 'left'}).tooltip('show');
