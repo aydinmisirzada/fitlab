@@ -757,28 +757,50 @@ input:hover,
   min-height: 850px;
 }
 
-.myform{
+.myform {
   border: none transparent;
-  outline: none; color: black;
+  outline: none;
+  color: black;
   padding: 0px;
   font-size: 1.2em;
 }
 
 .myform:focus {
-  box-shadow:none;
+  box-shadow: none;
 }
 
-.myform[readonly]{
+.myform[readonly] {
   background-color: transparent;
 }
 
-.nameform{
+.nameform {
   font-weight: 600;
-  font-size:1.5em;
+  font-size: 1.5em;
   position: relative;
-  left:-10px;
+  left: -10px;
 }
 
-.tooltip{
-  left:-35px !important;
+.tooltip {
+  left: -20px !important;
+}
+
+/* Teacher page */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 150px;
+}
+.border-top {
+  border-top: 1px solid #b9b9b9;
+}
+.border-top-bottom {
+  border-top: 1px solid #b9b9b9;
+  border-bottom: 1px solid #b9b9b9;
+}
+
+.badge-right {
+  align-items: right;
+  text-align: right;
 }

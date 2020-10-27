@@ -6,7 +6,8 @@
         <div class="row">
 
             <div class="col-4">
-                <div class="card mx-auto align-items-center shadow p-3 mb-5 bg-white rounded" id="formCard">
+                <div class="card mx-auto align-items-center shadow mb-5 bg-white rounded" id="formCard">
+                    <button class="btn btn-secondary ml-auto m-2" id="editButton">Edit</button>
                     <br/>
                     <img src="images/user.svg" style="max-height: 80px; max-width: 80px;">
                     <div class="card-body w-100">
@@ -14,21 +15,22 @@
                         <form action="/users/userEdit" method="post">
                             <input type="hidden" name="_csrf" value="${_csrf.token}"/>
                             <input type="hidden" name="id" value="${user.getId()}"/>
+
                             <div class="form-row">
                                 <div class="col">
 
-                                    <input type="text" name="name" class="form-control myform nameform"
+                                    <input type="text" name="name" class="form-control myform nameform editable"
                                            value="${user.getName()}"
                                            spellcheck="false" style="text-align: right;"/>
                                 </div>
                                 <div class="col">
-                                    <input type="text" name="surname" class="form-control myform nameform"
+                                    <input type="text" name="surname" class="form-control myform nameform editable"
                                            value="${user.getSurname()}" spellcheck="false"/>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="col">
-                                    <input type="text" id="username" class="form-control myform" name="username"
+                                    <input type="text" id="username" class="form-control myform editable" name="username"
                                            value="${user.getUsername()}" style="text-align: center">
                                 </div>
                             </div>
@@ -46,19 +48,20 @@
                             </div>
                             <div class="form-row">
                                 <div class="col">
-                                    <input type="text" id="path" class="form-control myform" name="pathId"
+                                    <input type="text" id="path" class="form-control myform editable" name="pathId"
                                            value="${user.getPathId()}" style="text-align: center">
                                 </div>
                             </div>
                             <div class="form-row" <#if !isAdmin> hidden </#if> >
                                 <div class="col" style="text-align: center">
-                                    <input type="checkbox" class="form-check-input" id="userRole" name="userRole" <#if user.isAdmin()>checked </#if> >
+                                    <input type="checkbox" class="form-check-input" id="userRole" name="userRole"
+                                           <#if user.isAdmin()>checked </#if> >
                                     <label class="form-check-label" for="userRole">Admin</label>
                                 </div>
                             </div>
 
                             <br/>
-                            <small class="form-text text-muted text-center pb-1">Click on field to edit it</small>
+
                             <#if error = 1>
                                 <p class="text-center" style="color: #ff0000;">This URL is already in use!</p>
                             <#elseif error = 2>
@@ -67,7 +70,7 @@
                             <div class="form-row">
                                 <div class="col">
                                     <div class="text-center">
-                                        <button type="submit" class="btn btn-secondary">Save</button>
+                                        <button type="submit" class="btn btn-primary" id="saveButton" style="visibility: hidden">Save</button>
                                     </div>
                                 </div>
                             </div>
@@ -126,6 +129,22 @@
     </div>
 
     <script>
+        $(document).ready(function(){
+            $("#editButton").click(function(){
+
+                if (!$('.nameform').attr("readonly")) {
+                    $('.editable').attr("readonly",true);
+                    $('#saveButton').css('visibility','hidden');
+                } else {
+                    $('#saveButton').css('visibility','visible');
+                    $('.editable').attr("readonly",false);
+                }
+
+
+            });
+        });
+
+
         $('#username').tooltip({'trigger': 'manual', 'title': 'Username', 'placement': 'left'}).tooltip('show');
         $('#email').tooltip({'trigger': 'manual', 'title': 'Email', 'placement': 'left'}).tooltip('show');
         ;
