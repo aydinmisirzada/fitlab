@@ -55,7 +55,7 @@
                             <div class="form-row" <#if !isAdmin> hidden </#if> >
                                 <div class="col" style="text-align: center">
                                     <input type="checkbox" class="form-check-input" id="userRole" name="userRole"
-                                           <#if user.isAdmin()>checked </#if> >
+                                           <#if user.isAdmin()>checked </#if> disabled>
                                     <label class="form-check-label" for="userRole">Admin</label>
                                 </div>
                             </div>
@@ -135,12 +135,14 @@
                 if ($('.nameform').attr("readonly")) {
                     $('#saveButton').css('visibility','visible');
                     $('.editable').attr("readonly",false);
-                    $('.editable').css('border','1px solid grey');
+                    $('input[name="userRole"]').attr("disabled",false);
+                    $('.editable').css({'border-bottom':'1px solid grey','border-radius':'0'});
                     $('.nameform').css({'font-weight':'normal','padding-left':'10px','margin-left':'10px'});
                     $('input[name="name"]').css('text-align','left');
                     $('#editButton').addClass('editMode');
                 } else {
                     $('.editable').attr("readonly",true);
+                    $('input[name="userRole"]').attr("disabled",true);
                     $('.editable').css('border','none transparent');
                     $('.nameform').css({'font-weight':'600','padding-left':'0','margin-left':'0'});
                     $('#saveButton').css('visibility','hidden');

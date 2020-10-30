@@ -761,7 +761,7 @@ input:hover,
   border: none transparent;
   outline: none;
   color: black;
-  padding: 0px;
+  padding: 0;
 }
 
 .myform:focus {

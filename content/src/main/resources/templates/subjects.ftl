@@ -14,8 +14,8 @@
                     <div class="col-sm-4">
                         <div class="card shadow mb-5 bg-white rounded" style="width: 18rem;">
                             <#if isAdmin>
-                                <div class="col-4 offset-8 ">
-                                    <button class="btn btn-secondary ml-4 mt-1" id="editButton">Edit
+                                <div class="col-1 offset-11 pt-2">
+                                    <button class="btn btn-secondary btn-sm" id="editButton" style="float: right">Edit
                                     </button>
                                 </div>
                             </#if>
@@ -50,9 +50,7 @@
 
                                     <div class="form-row p-0" style="display: none" id="saveButton">
                                         <div class="col-4 offset-8 mb-2 p-0">
-                                            <button class="btn btn-primary"  style="float: right;" >
-                                                Save
-                                            </button>
+                                            <button class="btn btn-primary"  style="float: right;" > Save </button>
                                         </div>
                                     </div>
 
@@ -143,7 +141,7 @@
             if ($('.editable').attr("readonly")) {
                 $('#saveButton').show();
                 $('.editable').attr("readonly", false);
-                $('.editable').css('border', '1px solid grey');
+                $('.editable').css({'border-bottom':'1px solid grey','border-radius':'0'});
                 $('#editButton').addClass('editMode');
             } else {
                 $('.editable').attr("readonly", true);
