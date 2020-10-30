@@ -754,15 +754,14 @@ input:hover,
 }
 
 #cardSection {
-  min-height: 900px;
+  min-height: 850px;
 }
 
 .myform {
   border: none transparent;
   outline: none;
   color: black;
-  padding: 0px;
-  font-size: 1.2em;
+  padding: 0;
 }
 
 .myform:focus {
