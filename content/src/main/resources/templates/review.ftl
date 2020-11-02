@@ -1,77 +1,92 @@
 <#import "parts/common.ftl" as c>
 
 <@c.page " | " + teacher.getName() + " " + teacher.getSurname()>
+    <div class="form-container" id="cardSection">
+        <div class="card shadow m-8 col-md-4">
+            <div class="col-md-8 badge-right">
+                <span                     <#assign x = teacher.averageRating()>
+                <#if x != 0>
+                    <#list 1..x as i>
+                        <span>&#9733;</span>
+                    </#list>
+                </#if>
+                <#list x..4 as i>
+                <span>&#9734;</span>
+                </#list></span>
+            </div>
+            <h5 class="mt-4"><b>Your reviews</b></h5>
 
-<div>
-    <#assign x = teacher.averageRating()>
-    <#if x != 0>
-    <#list 1..x as i>
-    <span>&#9733;</span>
-    </#list>
-    </#if>
-    <#list x..4 as i>
-    <span>&#9734;</span>
-    </#list>
-</div>
+            <div class="row p-2 mt-4 border-top">
+                <ul>
+                    <#list reviews as review>
+                        <#if review.getUser().getUsername() == user>
+                                <td  text="${review.getUser().getName()} + ' ' + ${review.getUser().getSurname()} + ' : ' ">Name</td>
+                            <td>${review.getText()}</td>
+                        </#if>
+                    </#list>
+                    </tr>
+                </ul>
+            </div>
+            <h5 class="mt-4"><b>Other reviews: </b></h5>
+            <div class="row p-2 mt-4 border-top">
 
-<div>
-    <form method="post">
-        <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-        <input type="radio" name="rating" value="1" >
-        <input type="radio" name="rating" value="2" >
-        <input type="radio" name="rating" value="3" >
-        <input type="radio" name="rating" value="4" >
-        <input type="radio" name="rating" value="5" >
-
-        <input type="text" name="text" placeholder="Text">
-        <button type="submit">Submit</button>
-    </form>
-</div>
-<#--<span th:text="${error}">text</span>-->
-
-<h1>Your review: </h1>
-<div  class="container1" style="margin-top: 20px;">
-    <ul>
-        <#list reviews as review>
-
-            <#if review.getUser().getUsername() == user>
-
-                    <td  text="${review.getUser().getName()} + ' ' + ${review.getUser().getSurname()} + ' : ' ">
-                        Name
-                    </td>
-
-                    <td>
-                        ${review.getText()}
-                    </td>
-
-            </#if>
-            </#list>
-
-        </tr>
-    </ul>
-</div>
+                <ul>
+                    <#list reviews as review>
+                        <#if review.getUser().getUsername() != user>
+                            <td  text="${review.getUser().getName()} + ' ' + ${review.getUser().getSurname()} + ' : ' ">Name</td>
+                            <td>${review.getText()}</td>
+                        </#if>
+                    </#list>
+                    </tr>
+                </ul>
 
 
-<div id="features" class="container1" style="margin-top: 20px;">
-    <ul id="myUL">
-        <#list reviews as review>
 
-            <#if review.getUser().getUsername() != user>
-                <a>
-                    <td  text="${review.getUser().getName()} + ' ' + ${review.getUser().getSurname()} + ' : ' ">
-                        Name           </td>
-                    <h4>
-                    </h4>
-                    <td>
-                        ${review.getText()}
-                    </td>
-                </a>
-            </#if>
-            <p>
+            </div>
 
-            </p>
-        </#list>
-    </ul>
-</div>
+
+            <div class="row p-2 mb-4 border-top">
+                <h5>Review:</h5>
+                <p style="color:red"> ${error!""}</p>
+                <div class="col-md-8 badge-right">
+                    <span>
+                        <div class="col-md-8 badge-right">
+                            <form method="post">
+                                   <div class="rating">
+                                       <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+                                       <input type="radio" name="rating" value="5" id="5">
+                                       <label for="5">☆</label>
+                                       <input type="radio" name="rating" value="4" id="4">
+                                       <label for="4">☆</label>
+                                       <input type="radio" name="rating" value="3" id="3">
+                                       <label for="3">☆</label>
+                                       <input type="radio" name="rating" value="2" id="2">
+                                       <label for="2">☆</label>
+                                       <input type="radio" name="rating" value="1" id="1">
+                                       <label for="1">☆</label>
+                                    </div>
+<div class="row p-2 mb-4 border-top-bottom">
+                <input type="text" name="text" placeholder="Text">
+                <div class="col-md-6 badge-right">                  <span class="badge p-2 m-2">
+<button type="submit">Submit</button>
+
+          </span>
+                </div>
+
+            </div>
+
+                            </form>
+                        </div>
+                    </span>
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+    </div>
+    </div>
 
 </@c.page>
