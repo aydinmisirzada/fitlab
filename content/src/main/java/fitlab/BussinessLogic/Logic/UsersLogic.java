@@ -1,12 +1,12 @@
 package fitlab.BussinessLogic.Logic;
 
+import fitlab.BussinessLogic.Interfaces.UsersLogicInterface;
 import fitlab.Data.Model.OwnUserDetails;
 import fitlab.Data.Model.Role;
 import fitlab.Data.Model.User;
 import fitlab.Data.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UsersLogic {
+public class UsersLogic implements UsersLogicInterface {
     @Autowired
     UserRepository userRepository;
 
