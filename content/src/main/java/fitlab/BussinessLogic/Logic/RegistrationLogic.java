@@ -6,6 +6,7 @@ import fitlab.Data.Model.Role;
 import fitlab.Data.Model.User;
 import fitlab.Data.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -20,6 +21,9 @@ public class RegistrationLogic implements RegistrationLogicInterface {
     @Autowired
     MailSenderService mailSender;
 
+    @Value("${mail.message.activation}")
+    String message;
+
     public String addUser(User user){
         Optional<User> u = userRepository.findByUsername(user.getUsername());
         if(!u.equals(Optional.empty())) return "username";
@@ -32,11 +36,8 @@ public class RegistrationLogic implements RegistrationLogicInterface {
         userRepository.save(user);
 
         if(!user.getEmail().isEmpty()){
-            String message = String.format("" +
-                    "Welcome to FitLab, %s\n" +
-                    "Use this link to activate your account\n" +
-                    "http://localhost:8080/activate/%s", user.getUsername(), user.getActivationCode());
-            mailSender.send(user.getEmail(),message, "Activation code");
+            String newMessage = String.format(message, user.getUsername(), user.getActivationCode());
+            mailSender.send(user.getEmail(),newMessage, "Activation code");
         }
         return "t";
     }

@@ -12,18 +12,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class MvcConfig implements WebMvcConfigurer {
-    @Autowired
-    UserRepository user;
-    @Bean
-    public CommandLineRunner data() {
-        return (args) -> {
-            User u  = new User(0,"root","root","root", "some@m","root","1", Role.ADMIN);
-            u.setActivationCode("");
-            u.setPathId("root");
-            user.save(u);
-
-        };
-    }
 /**
      * This method is used to control simple pages : login and main
      * @param registry This is needed and provided by the framework
