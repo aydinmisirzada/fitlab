@@ -28,11 +28,7 @@ public class ContentLogic implements ContentLogicConf {
         con.setSubject(sub);
         repo.save(con);
     }
-    public void addContent( String title, ContentType type, Teacher tec) {
-        Content con = new Content(title, type);
-        con.setTeacher(tec);
-        repo.save(con);
-    }
+
 
     public List<Message> contentMessageList(int page_id) {
         return repo.findById(page_id).getMessageList();
@@ -53,5 +49,10 @@ public class ContentLogic implements ContentLogicConf {
 
     public Content getCon(int id) {
         return repo.findById(id);
+    }
+
+    public void changeTitle(int id,String title) {
+        repo.findById(id).setTitle(title);
+        repo.save(repo.findById(id));
     }
 }

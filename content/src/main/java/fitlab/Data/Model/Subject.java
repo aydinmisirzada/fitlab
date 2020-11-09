@@ -14,13 +14,12 @@ public class Subject {
 
     private String name;
     private Semester semester;
+    @Lob
     private String Description;
     private String code;
     @OneToMany(mappedBy = "subject")
     private List<Content> contentList;
 
-//    @ManyToMany
-//    private  List<Teacher> teacherList;
 
     public Subject() {
     }
@@ -60,6 +59,7 @@ public class Subject {
 
     public String getDescription() {
         return Description;
+
     }
 
     public void setDescription(String description) {

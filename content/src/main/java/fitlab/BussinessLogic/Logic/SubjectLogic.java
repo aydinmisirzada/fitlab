@@ -9,6 +9,7 @@ import fitlab.Data.Repository.SubjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -57,5 +58,24 @@ public class SubjectLogic implements SubjectLogicConf {
 
     public Boolean subDuplicate(String code,String name) {
         return (repo.findByName(name) == null && repo.findByCode(code) == null);
+    }
+
+    public int averageRating( List<Integer> ratings ) {
+        int x = 0;
+        for (Integer rat : ratings) {
+            x += rat;
+        }
+        x /= ratings.size();
+        return x;
+    }
+
+    public void editSubjectDetails(int id,String code, String name,int semester){
+        if(semester == 0)
+            repo.findById(id).setSemester(Semester.SUMMER);
+        else
+            repo.findById(id).setSemester(Semester.WINTER);
+        repo.findById(id).setCode(code);
+        repo.findById(id).setName(name);
+        repo.save(repo.findById(id));
     }
 }

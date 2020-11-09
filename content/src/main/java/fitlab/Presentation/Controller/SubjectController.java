@@ -1,9 +1,11 @@
 package fitlab.Presentation.Controller;
 
+import fitlab.BussinessLogic.Logic.ContentLogic;
 import fitlab.BussinessLogic.Logic.SubjectLogic;
 import fitlab.Data.Model.ContentType;
 import fitlab.Data.Model.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,7 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class SubjectController {
     @Autowired
     SubjectLogic sub;
-
+    @Autowired
+    ContentLogic con;
     /**
      * The method is used to show a subject page
      * @param subject This is the subject name from the link
@@ -29,7 +32,8 @@ public class SubjectController {
 
         if(sub1 != null) {
             model.addAttribute("subject",sub1);
-            model.addAttribute("content",sub1.getContentList());
+            model.addAttribute("contents",sub1.getContentList());
+            model.addAttribute("error","");
             return "subject";
         } else {
             return "errorpage";
@@ -43,12 +47,21 @@ public class SubjectController {
      * @param model This is a variable used by the framework
      * @return This returns a page of the subject
      */
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping(value = "/subjects/{subject}", params = {"description"})
     public String EditDescription(@PathVariable String subject, @RequestParam String description, Model model) {
-        Subject sub1 = sub.SubjectEditDescription(subject,description);
-        model.addAttribute("subject",sub1);
-        model.addAttribute("content",sub1.getContentList());
-        return "subject";
+        if(description.length() == 0) {
+            Subject sub1 = sub.SearchSubjects(subject);
+            String s = "Enter text before editing";
+            model.addAttribute("error", s);
+            model.addAttribute("subject",sub1);
+            model.addAttribute("contents",sub1.getContentList());
+
+            return "subject";
+        }
+        sub.SubjectEditDescription(subject,description);
+
+        return "redirect:/subjects/" + subject;
     }
 
     /**
@@ -59,7 +72,8 @@ public class SubjectController {
      * @param model This is a variable used by the framework
      * @return This returns a page of the subject
      */
-    @PostMapping(value = "/subjects/{subject}")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @PostMapping(value = "/subjects/{subject}", params = {"title", "type"})
     public String AddPage(@PathVariable String subject, @RequestParam String title,@RequestParam String type, Model model) {
         if(title.isEmpty()) return "errorpage";
         ContentType Type = ContentType.HOMEWORK;
@@ -77,9 +91,17 @@ public class SubjectController {
         }
         Subject sub1 = sub.SubjectAddPage(subject,title,Type);
         model.addAttribute("subject",sub1);
-        model.addAttribute("content",sub1.getContentList());
+        model.addAttribute("contents",sub1.getContentList());
+        model.addAttribute("error","");
         return "subject";
+    }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @PostMapping(value = "subjects/{subject}", params = {"title", "id"})
+    public String editContent(@PathVariable String subject, @RequestParam String title, @RequestParam int id) {
+        if(title.isEmpty()) return "errorpage";
+        con.changeTitle(id,title);
+        return "redirect:/subjects" + subject;
     }
 
 

@@ -1,12 +1,15 @@
 package fitlab.Presentation.Controller;
 
 import fitlab.BussinessLogic.Logic.TeacherLogic;
+import fitlab.Data.Model.Semester;
 import fitlab.Data.Model.Teacher;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.security.core.Authentication;
 import java.util.List;
 
 //The class controls teacher list
@@ -36,6 +39,7 @@ public class TeacherController {
      * @param username This is a name of the teacher
      * @return This returns a name of html page
      */
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping(value = "/teachers", params = {"name", "surname", "username"})
     public String addTeachers(@RequestParam String name, @RequestParam String surname, @RequestParam String username) {
         if (!t_repo.tecDuplicate(username) || name.isEmpty() || surname.isEmpty() || username.isEmpty())
@@ -50,6 +54,7 @@ public class TeacherController {
      * @param id This is id of the teacher
      * @return This returns a name of html page
      */
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping(value = "/teachers", params = "id")
     public String delTeacher(@RequestParam int id) {
         t_repo.delTeacher(id);
@@ -64,6 +69,14 @@ public class TeacherController {
         model.addAttribute("teacher",teacher);
         return "teacher_page";
     }
+
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @PostMapping(value = "/teachers", params = {"id","surname","name","username"})
+    public String editTeac(@RequestParam int id, @RequestParam String name, @RequestParam String surname, @RequestParam String username) {
+        t_repo.editTeacherDetails(id,name,surname,username);
+        return "redirect:/teacher";
+    }
+
 
 
 }

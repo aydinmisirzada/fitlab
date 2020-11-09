@@ -3,6 +3,7 @@ package fitlab.Presentation.Controller;
 import fitlab.BussinessLogic.Logic.SubjectLogic;
 import fitlab.Data.Model.Semester;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,11 +35,13 @@ public class SubjectListController {
      * @param semester This is semester
      * @return This returns a subject list page
      */
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping("/subjects")
-    public String add(@RequestParam String code, @RequestParam String name, @RequestParam Semester semester) {
+    public String add(@RequestParam String code, @RequestParam String name, @RequestParam(defaultValue = "") String description, @RequestParam Semester semester) {
         if(!s_repo.subDuplicate(code,name) || code.isEmpty() || name.isEmpty())
             return "errorpage";
         s_repo.addSubject(code, name, semester);
+        s_repo.SubjectEditDescription(code, description);
         return "redirect:/subjects";
     }
 
@@ -47,9 +50,19 @@ public class SubjectListController {
      * @param id This is id of the subject
      * @return This returns a subject list page
      */
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping(value = "/subjects" , params = "id")
     public String delSubject(@RequestParam int  id) {
         s_repo.delSubject(id);
+        return "redirect:/subjects";
+    }
+
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @PostMapping(value = "/subjects", params = {"id","code","name","semester"})
+    public String editSub(@RequestParam int id, @RequestParam String code, @RequestParam String name, @RequestParam int semester) {
+        if(code.isEmpty() || name.isEmpty())
+            return "errorpage";
+        s_repo.editSubjectDetails(id,code,name, semester);
         return "redirect:/subjects";
     }
 

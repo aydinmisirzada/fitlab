@@ -7,7 +7,7 @@ known = Session.SPRING_SECURITY_CONTEXT??
     usertmp = Session.SPRING_SECURITY_CONTEXT.authentication.principal
     name = usertmp.getUsername()
     pathId = usertmp.getPathId()
-    <#--    isAdmin = user.isAdmin()-->
+    isAdmin = usertmp.isAdmin()
     logged = true
     >
 <#else>

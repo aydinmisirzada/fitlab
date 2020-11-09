@@ -17,9 +17,12 @@ public class User {
     private String email;
     private String password;
     private String phone;
-    private String role;
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
     private String activationCode;
     private String pathId;
+    private String image;
 
 
     public void setUser(User user) {
@@ -27,6 +30,19 @@ public class User {
         this.surname = user.getSurname();
         this.username = user.getUsername();
         this.pathId = user.getPathId();
+        this.role = user.getRole();
+    }
+
+    public boolean isAdmin(){
+        return role.equals(Role.ADMIN);
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getPathId() {
@@ -73,7 +89,7 @@ public class User {
     public User() {
     }
 
-    public User(Integer id, String name, String surname, String username, String email, String password, String phone, String role) {
+    public User(Integer id, String name, String surname, String username, String email, String password, String phone, Role role) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -110,11 +126,11 @@ public class User {
         this.id = id;
     }
 
-    public String getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(Role role) {
         this.role = role;
     }
 

@@ -6,6 +6,7 @@ import fitlab.BussinessLogic.Interfaces.MessageLogicConf;
 import fitlab.Data.Model.Message;
 import fitlab.Data.Model.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -38,6 +39,7 @@ public class ContentPageController {
         if(sub == null) return "errorpage";
 
         model.addAttribute("messages",messages);
+        model.addAttribute("subject",sub);
         return "page";
     }
 
@@ -55,25 +57,14 @@ public class ContentPageController {
         m_repo.pageAddMessage(page_id,author,text);
         return "redirect:" + "/subjects/" + subject + "/" + type + '/' + page_id;
     }
-    @RequestMapping("/teachers/{id}/reviews")
-    public String teacherContentPage(@PathVariable int id,  Model model) {
-        model.addAttribute("messages",t_repo.getContent(id).getMessageList());
-        return "page";
-    }
 
-    @PostMapping("/teachers/{id}/reviews")
-    public String pageAddMessageTeacher(@PathVariable int id, @RequestParam String author, @RequestParam String text) {
-        int tmp = t_repo.getContent(id).getId();
-        m_repo.pageAddMessage(tmp,author,text);
-        return "redirect:" + "/teachers/" + id + "/reviews";
-    }
-
-
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping(value = "/subjects/{subject}" , params = "id")
-    public String delSubject(@PathVariable String subject, @RequestParam int  id) {
+    public String delContent(@PathVariable String subject, @RequestParam int  id) {
         c_repo.delContent(c_repo.getCon(id));
         return "redirect:/subjects/" + subject;
     }
+
 
 
 }

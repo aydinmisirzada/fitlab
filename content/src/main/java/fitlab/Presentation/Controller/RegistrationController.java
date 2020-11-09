@@ -18,7 +18,7 @@ public class RegistrationController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/registration")
     public String registration(Model model){
-        model.addAttribute("error", "");
+        model.addAttribute("error", 0);
         return "registration";
     }
 
@@ -26,18 +26,18 @@ public class RegistrationController {
     public String addUser(User user, Model model){
         String s = rl.addUser(user);
         if(s.equals("username")){
-            s = "User with this username already exists!";
-            model.addAttribute("error", s);
+//            s = "User with this username already exists!";
+            model.addAttribute("error", 3);
             return "registration";
         }
         if(s.equals("email")){
-            s = "User with this email already exists!";
-            model.addAttribute("error", s);
+//            s = "User with this email already exists!";
+            model.addAttribute("error", 4);
             return "registration";
 
         }
         
-        return "redirect:/login";
+        return "redirect:/activation";
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/activate/{activationCode}")
@@ -49,7 +49,7 @@ public class RegistrationController {
         else
             model.addAttribute("error", "User activation FAILED!");
 
-        return "redirect:/login";
+        return "login";
     }
 
 }

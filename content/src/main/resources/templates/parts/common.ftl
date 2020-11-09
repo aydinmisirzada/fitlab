@@ -1,39 +1,43 @@
 <#import "navbar.ftl" as nav>
-<#import "footer.ftl" as foot>
-<#macro page>
+<#macro page title>
 
-<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 
-<head>
-    <meta charset="UTF-8">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <!DOCTYPE html>
+    <html lang="en">
 
-    <title>FITLab</title>
-    <base href="/" />
-    <!-- Bootstrap core CSS -->
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="styles.css" rel="stylesheet">
-</head>
-<!DOCTYPE html>
+    <head>
 
-<body>
-<@nav.navbar/>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <base href="/" />
+        <title>FITLab${title}</title>
 
-<#nested>
+        <!-- Bootstrap core CSS-->
+        <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <script src="assets/vendor/jquery/jquery.js"></script>
+        <script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
 
-<!-- Footer -->
-<@foot.f/>
+        <link href="styles.css" rel="stylesheet">
+    </head>
 
-<!-- Bootstrap core JavaScript -->
-<script src="assets/vendor/jquery/jquery.min.js"></script>
-<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <body>
+    <@nav.navbar/>
 
-</body>
+    <#nested>
 
-</html>
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; FITLab 2020</p>
+        </div>
+        <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+
+    </body>
+
+    </html>
 </#macro>
