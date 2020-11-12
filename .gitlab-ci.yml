@@ -1,4 +1,4 @@
-image: docker:latest
+image: docker/compose:latest
 
 services:
   - docker:dind
@@ -15,11 +15,14 @@ test:
         - echo run tests
 
 before_script:
-  - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
-
+  - docker version
+  - docker-compose version
+  
 step-deploy-prod:
   stage: deploy
   script:
-    - docker compose up -d --build
+    - cd content
+    - docker-compose build
+    - docker-compose up
   only:
     - production
