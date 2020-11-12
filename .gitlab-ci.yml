@@ -22,7 +22,8 @@ step-deploy-prod:
   stage: deploy
   script:
     - cd content
-    - docker-compose build
-    - docker-compose up
+    - docker-compose up -d --build
+    # - docker-compose build
+    # - docker-compose up
   only:
     - production
