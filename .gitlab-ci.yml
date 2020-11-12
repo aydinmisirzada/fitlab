@@ -23,6 +23,7 @@ step-deploy-prod:
   script:
     - cd content
     - docker-compose up -d --build
+    - docker container ls
     # - docker-compose build
     # - docker-compose up
   only:
