@@ -1,0 +1,25 @@
+image: docker:latest
+
+services:
+  - docker:dind
+  
+stages:
+  - test
+  - deploy
+  
+test:
+    stage: test
+    only:
+        - production
+    script:
+        - echo run tests
+
+before_script:
+  - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+
+step-deploy-prod:
+  stage: deploy
+  script:
+    - docker compose up -d --build
+  only:
+    - production
