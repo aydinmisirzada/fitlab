@@ -1,5 +1,6 @@
 package fitlab;
 
+import fitlab.BussinessLogic.Logic.RegistrationLogic;
 import fitlab.Data.Model.Role;
 import fitlab.Data.Model.User;
 import fitlab.Data.Repository.UserRepository;
@@ -20,6 +21,8 @@ public class FitLabApplication extends SpringBootServletInitializer {
     }
     @Autowired
     UserRepository user;
+    @Autowired
+    RegistrationLogic registrationLogic;
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
@@ -29,10 +32,15 @@ public class FitLabApplication extends SpringBootServletInitializer {
     @Bean
     public CommandLineRunner data() {
         return (args) -> {
-            User u  = new User(0,"root","root","root", "some@m","root","1", Role.ADMIN);
-            u.setActivationCode("");
-            u.setPathId("root");
-            user.save(u);
+            User u = new User();
+
+            u.setEmail("some@m");
+            u.setUsername("root");
+            u.setName("root");
+            u.setSurname("root");
+            u.setPhone("1");
+            u.setPassword("root");
+            registrationLogic.addAdmin(u);
 
         };
     }
