@@ -7,18 +7,17 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-@ExtendWith(SpringExtension.class)
+//@ExtendWith(SpringExtension.class)
 /*@ContextConfiguration(classes = RegistrationLogicTestConfig.class,
         loader = AnnotationConfigContextLoader.class)*/
 @ContextConfiguration(classes = RegistrationLogicTestConfig.class)
+//@SpringBootTest(classes = RegistrationLogicTestConfig.class)
 class RegistrationLogicTest {
 
     @Autowired
@@ -46,8 +45,8 @@ class RegistrationLogicTest {
     @Test
     void addAdminShouldAddAdmin() {
 //        User u = mock(User.class);
-        when(userRepository.findByUsername("user")).thenReturn(null);
-        when(userRepository.findByEmail("user")).thenReturn(null);
+//        when(userRepository.findByUsername("user")).thenReturn(null);
+//        when(userRepository.findByEmail("user")).thenReturn(null);
 //        verify(Exception.class, never());
     }
 
