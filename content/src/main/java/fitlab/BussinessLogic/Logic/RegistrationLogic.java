@@ -1,6 +1,7 @@
 package fitlab.BussinessLogic.Logic;
 
 import fitlab.BussinessLogic.Interfaces.RegistrationLogicInterface;
+import fitlab.BussinessLogic.exeptions.AdminWasFoundExeption;
 import fitlab.BussinessLogic.services.MailSenderService;
 import fitlab.Data.Model.Role;
 import fitlab.Data.Model.User;
@@ -49,11 +50,12 @@ public class RegistrationLogic implements RegistrationLogicInterface {
 
     public void addAdmin(User user) throws Exception {
         Optional<User> u = userRepository.findByUsername(user.getUsername());
-        if(!u.equals(Optional.empty())) {
-            throw new Exception("Admin with same Username already exist");
-        }
+        if(!u.equals(Optional.empty()))
+            throw new AdminWasFoundExeption("Admin was found by username, cannot create a new one");
+
         u = userRepository.findByEmail(user.getEmail());
-        if(!u.equals(Optional.empty())) throw new Exception("Admin with same Email already exist");
+        if(!u.equals(Optional.empty()))
+            throw new AdminWasFoundExeption("Admin was found by email, cannot create a new one");
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole(Role.ADMIN);

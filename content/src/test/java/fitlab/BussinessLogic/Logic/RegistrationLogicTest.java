@@ -1,35 +1,38 @@
 package fitlab.BussinessLogic.Logic;
 
-import fitlab.BussinessLogic.config.RegistrationLogicTestConfig;
+import fitlab.BussinessLogic.exeptions.AdminWasFoundExeption;
 import fitlab.Data.Model.User;
 import fitlab.Data.Repository.UserRepository;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import java.util.Optional;
 
-//@ExtendWith(SpringExtension.class)
-/*@ContextConfiguration(classes = RegistrationLogicTestConfig.class,
-        loader = AnnotationConfigContextLoader.class)*/
-@ContextConfiguration(classes = RegistrationLogicTestConfig.class)
-//@SpringBootTest(classes = RegistrationLogicTestConfig.class)
+import static org.mockito.Mockito.*;
+
 class RegistrationLogicTest {
 
-    @Autowired
+    @InjectMocks
     private RegistrationLogic registrationLogic;
 
-    @Autowired
+    @Mock
     private UserRepository userRepository;
+
+    @Mock
+    private PasswordEncoder passwordEncoder;
+
 
     private static final User user = mock(User.class);
 
-    @BeforeAll
-    public static void setup(){
+    @BeforeEach
+    public void setup(){
+        MockitoAnnotations.initMocks(this);
         when(user.getUsername()).thenReturn("user");
     }
 
@@ -42,27 +45,51 @@ class RegistrationLogicTest {
         Assertions.assertFalse();
     }*/
 
+
     @Test
-    void addAdminShouldAddAdmin() {
-//        User u = mock(User.class);
-//        when(userRepository.findByUsername("user")).thenReturn(null);
-//        when(userRepository.findByEmail("user")).thenReturn(null);
-//        verify(Exception.class, never());
+    @DisplayName("addAdmin Should Not Throw Exeption")
+    void addAdminShouldNotThrowExeption() {
+        User u = new User();
+        u.setName("root");
+        u.setEmail("test@test");
+        u.setUsername("root");
+        u.setPassword("123");
+        when(userRepository.findByUsername(anyString())).thenReturn(Optional.empty());
+        when(userRepository.findByEmail(anyString())).thenReturn(Optional.empty());
+        when(passwordEncoder.encode(anyString())).thenReturn("123");
+        Assertions.assertDoesNotThrow(() -> registrationLogic.addAdmin(u));
     }
 
     @Test
-    @DisplayName("addAdmin Should Throw Exeption When Admin exist")
+    @DisplayName("addAdmin Should Throw Exeption When Username exist")
     void addAdminShouldThrowExeptionWhenFindUsername() {
-        User u = mock(User.class);
-        u.setName("user");
-//        when(userRepository.findByUsername("user")).thenReturn(Optional.of(u));
-//        when(userRepository.findByEmail("user")).thenReturn(null);
+        User u = new User();
+        u.setName("root");
+        u.setEmail("test@test");
+        u.setUsername("root");
+        when(userRepository.findByUsername(anyString())).thenReturn(Optional.of(u));
+        when(userRepository.findByEmail(anyString())).thenReturn(Optional.empty());
+        Exception e = Assertions.assertThrows(
+                AdminWasFoundExeption.class,
+                () -> registrationLogic.addAdmin(u));
 
-        Exception exception = Assertions.assertThrows(
-                Exception.class,
-                () -> registrationLogic.addAdmin(user));
+        Assertions.assertTrue(e.getMessage().contains("Admin was found by username, cannot create a new one"));
+    }
 
-        Assertions.assertTrue(exception.getMessage().contains("Admin with same Username already exist"));
+    @Test
+    @DisplayName("addAdmin Should Throw Exeption When Email exist")
+    void addAdminShouldThrowExeptionWhenFindEmail() {
+        User u = new User();
+        u.setName("root");
+        u.setEmail("test@test");
+        u.setUsername("root");
+        when(userRepository.findByUsername(anyString())).thenReturn(Optional.empty());
+        when(userRepository.findByEmail(anyString())).thenReturn(Optional.of(u));
+        Exception e = Assertions.assertThrows(
+                AdminWasFoundExeption.class,
+                () -> registrationLogic.addAdmin(u));
+
+        Assertions.assertTrue(e.getMessage().contains("Admin was found by email, cannot create a new one"));
     }
 
     @Test
