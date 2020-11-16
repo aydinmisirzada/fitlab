@@ -2,7 +2,9 @@ package fitlab.BussinessLogic.Logic;
 
 import fitlab.Data.Model.OwnUserDetails;
 import fitlab.Data.Model.Role;
+import fitlab.Data.Model.Subject;
 import fitlab.Data.Model.User;
+import fitlab.Data.Repository.SubjectRepository;
 import fitlab.Data.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -17,7 +19,8 @@ import java.util.Optional;
 public class UsersLogic {
     @Autowired
     UserRepository userRepository;
-
+    @Autowired
+    SubjectRepository subjectRepository;
     OwnUserDetails oud;
 
     public User getUserByPath(String path){
@@ -72,5 +75,21 @@ public class UsersLogic {
 
     public List<User> getAllUsers() {
         return userRepository.findAll();
+    }
+
+    public void delAssignment(User u, int id){
+        Subject subject = subjectRepository.findById(id);
+        subject.delUser(u);
+        u.delSubject(subject);
+        subjectRepository.save(subject);
+        userRepository.save(u);
+    }
+
+    public User getUser(String username) {
+        Optional<User> u = userRepository.findByUsername(username);
+        if(u.equals(Optional.empty()))
+            return null;
+        else
+            return u.get();
     }
 }

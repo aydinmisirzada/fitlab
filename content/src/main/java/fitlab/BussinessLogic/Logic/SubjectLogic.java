@@ -1,22 +1,23 @@
 package fitlab.BussinessLogic.Logic;
 
 import fitlab.BussinessLogic.Interfaces.SubjectLogicConf;
-import fitlab.Data.Model.Content;
-import fitlab.Data.Model.ContentType;
-import fitlab.Data.Model.Semester;
-import fitlab.Data.Model.Subject;
+import fitlab.Data.Model.*;
 import fitlab.Data.Repository.SubjectRepository;
+import fitlab.Data.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class SubjectLogic implements SubjectLogicConf {
     @Autowired
     SubjectRepository repo;
+    @Autowired
+    UserRepository userRepository;
     @Autowired
     ContentLogic con;
     public Subject SearchSubjects(String subject) {
@@ -72,10 +73,43 @@ public class SubjectLogic implements SubjectLogicConf {
     public void editSubjectDetails(int id,String code, String name,int semester){
         if(semester == 0)
             repo.findById(id).setSemester(Semester.SUMMER);
-        else
+        else if(semester == 1)
             repo.findById(id).setSemester(Semester.WINTER);
+        else
+            repo.findById(id).setSemester(Semester.WINTER_SUMMER);
         repo.findById(id).setCode(code);
         repo.findById(id).setName(name);
         repo.save(repo.findById(id));
     }
+
+    public void assignSubject(String username, String subject) {
+        User u = userRepository.findByUsername(username).get();
+        Subject sub = repo.findByCode(subject);
+        sub.AddUser(u);
+        u.AddSubject(sub);
+        repo.save(sub);
+        userRepository.save(u);
+    }
+
+    public boolean assignedSubejct(Subject sub,String username) {
+        User tmp = userRepository.findByUsername(username).get();
+        for ( User u : sub.getUsers()) {
+            if ( u.equals(tmp)) {
+                return  true;
+            }
+        }
+        return false;
+    }
+
+
+/*    public List<Subject> getSubjectsMain () {
+        List<Subject> subs = new ArrayList<Subject>();
+        if(repo.findAll().size() > 3) {
+            subs.add(repo.getOne(0));
+            subs.add(repo.getOne(1));
+            subs.add(repo.getOne(2));
+        }
+        return  subs;
+    }*/
+
 }

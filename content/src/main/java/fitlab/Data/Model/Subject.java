@@ -20,12 +20,21 @@ public class Subject {
     @OneToMany(mappedBy = "subject")
     private List<Content> contentList;
 
+    @ManyToMany(mappedBy = "subjects")
+    private List<User> users;
 
     public Subject() {
     }
 
-
-
+    public List<User> getUsers() {
+        return users;
+    }
+    public void AddUser(User u){
+        users.add(u);
+    }
+    public void delUser(User u){
+        users.remove(u);
+    }
     public Subject(String Code, String Name, Semester Semester) {
         semester = Semester;
         name = Name;

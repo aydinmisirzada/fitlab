@@ -45,6 +45,10 @@
                                             <input type="hidden" name="semester" class="form-control myform"
                                                    value="1"
                                                    spellcheck="false" readonly/>
+                                        <#elseif sem == "WINTER_SUMMER">
+                                            <input type="hidden" name="semester" class="form-control myform"
+                                                   value="2"
+                                                   spellcheck="false" readonly/>
                                         </#if>
                                     </div>
 
@@ -119,6 +123,7 @@
                                     <select name="semester" class="custom-select">
                                         <option value="SUMMER">Summer</option>
                                         <option value="WINTER">Winter</option>
+                                        <option value="WINTER_SUMMER">ALL</option>
                                     </select>
                                 </div>
                             </div>
