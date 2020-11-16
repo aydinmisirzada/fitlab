@@ -29,10 +29,6 @@ class RegistrationLogicTest {
     @Mock
     private PasswordEncoder passwordEncoder;
 
-    @Mock
-    private MailSenderService mailSender;
-
-
     private static final User user = mock(User.class);
 
     @BeforeEach
@@ -128,7 +124,7 @@ class RegistrationLogicTest {
     @DisplayName("checkActivation Should Return False")
     void checkActivationShouldReturnFalse() {
         when(userRepository.findByActivationCode(anyString())).thenReturn(Optional.empty());
-        Assertions.assertEquals(false, registrationLogic.checkActivation("string"));
+        Assertions.assertFalse(registrationLogic.checkActivation("string"));
     }
 
     @Test
@@ -137,6 +133,6 @@ class RegistrationLogicTest {
         User u = new User();
         u.setName("root");
         when(userRepository.findByActivationCode(anyString())).thenReturn(Optional.of(u));
-        Assertions.assertEquals(true, registrationLogic.checkActivation("string"));
+        Assertions.assertTrue(registrationLogic.checkActivation("string"));
     }
 }
