@@ -47,11 +47,13 @@ public class RegistrationLogic implements RegistrationLogicInterface {
         return "t";
     }
 
-    public void addAdmin(User user){
+    public void addAdmin(User user) throws Exception {
         Optional<User> u = userRepository.findByUsername(user.getUsername());
-        if(!u.equals(Optional.empty())) return;
+        if(!u.equals(Optional.empty())) {
+            throw new Exception("Admin with same Username already exist");
+        }
         u = userRepository.findByEmail(user.getEmail());
-        if(!u.equals(Optional.empty())) return;
+        if(!u.equals(Optional.empty())) throw new Exception("Admin with same Email already exist");
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole(Role.ADMIN);
