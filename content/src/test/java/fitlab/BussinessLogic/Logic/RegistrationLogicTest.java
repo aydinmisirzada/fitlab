@@ -29,12 +29,12 @@ class RegistrationLogicTest {
     @Mock
     private PasswordEncoder passwordEncoder;
 
-    private static final User user = mock(User.class);
+    @Mock
+    private MailSenderService mailSender;
 
     @BeforeEach
     public void setup(){
         MockitoAnnotations.initMocks(this);
-        when(user.getUsername()).thenReturn("user");
     }
 
     @Test
@@ -44,6 +44,8 @@ class RegistrationLogicTest {
         u.setUsername("root");
         when(userRepository.findByUsername(anyString())).thenReturn(Optional.of(u));
         Assertions.assertEquals("username", registrationLogic.addUser(u));
+        verify(mailSender, never()).send(anyString(),anyString(),anyString());
+        verify(userRepository, never()).save(u);
     }
 
     @Test
@@ -56,6 +58,8 @@ class RegistrationLogicTest {
         when(userRepository.findByEmail(anyString())).thenReturn(Optional.of(u));
 
         Assertions.assertEquals("email", registrationLogic.addUser(u));
+        verify(mailSender, never()).send(anyString(),anyString(),anyString());
+        verify(userRepository, never()).save(u);
     }
 
     @Test
@@ -72,11 +76,14 @@ class RegistrationLogicTest {
         ReflectionTestUtils.setField(registrationLogic, "message", "m");
 
         Assertions.assertEquals("t", registrationLogic.addUser(u));
+        verify(userRepository, times(1)).save(u);
+        verify(mailSender, times(1)).send(anyString(),anyString(),anyString());
+
     }
 
     @Test
-    @DisplayName("addAdmin Should Not Throw Exeption")
-    void addAdminShouldNotThrowExeption() {
+    @DisplayName("addAdmin Should Add New Admin")
+    void addAdminShouldAddNewAdmin() {
         User u = new User();
         u.setName("root");
         u.setEmail("test@test");
@@ -85,39 +92,37 @@ class RegistrationLogicTest {
         when(userRepository.findByUsername(anyString())).thenReturn(Optional.empty());
         when(userRepository.findByEmail(anyString())).thenReturn(Optional.empty());
         when(passwordEncoder.encode(anyString())).thenReturn("123");
+
+        registrationLogic.addAdmin(u);
+        verify(passwordEncoder, times(1)).encode(anyString());
+        verify(userRepository, times(1)).save(u);
         Assertions.assertDoesNotThrow(() -> registrationLogic.addAdmin(u));
     }
 
     @Test
-    @DisplayName("addAdmin Should Throw Exeption When Username exist")
-    void addAdminShouldThrowExeptionWhenFindUsername() {
+    @DisplayName("addAdmin Should Not Add When Email Exist")
+    void addAdminShouldNotAddWhenEmailExist() {
         User u = new User();
-        u.setName("root");
-        u.setEmail("test@test");
         u.setUsername("root");
-        when(userRepository.findByUsername(anyString())).thenReturn(Optional.of(u));
-        when(userRepository.findByEmail(anyString())).thenReturn(Optional.empty());
-        Exception e = Assertions.assertThrows(
-                AdminWasFoundException.class,
-                () -> registrationLogic.addAdmin(u));
-
-        Assertions.assertTrue(e.getMessage().contains("Admin was found by username, cannot create a new one"));
+        u.setEmail("root");
+        u.setPassword("root");
+        when(userRepository.findByUsername(anyString())).thenReturn(Optional.empty());
+        when(userRepository.findByEmail(anyString())).thenReturn(Optional.of(u));
+        registrationLogic.addAdmin(u);
+        verify(passwordEncoder, never()).encode(anyString());
     }
 
     @Test
-    @DisplayName("addAdmin Should Throw Exeption When Email exist")
-    void addAdminShouldThrowExeptionWhenFindEmail() {
+    @DisplayName("addAdmin Should Not Add When Username Exist")
+    void addAdminShouldNotAddWhenUsernameExist() {
         User u = new User();
-        u.setName("root");
-        u.setEmail("test@test");
         u.setUsername("root");
-        when(userRepository.findByUsername(anyString())).thenReturn(Optional.empty());
-        when(userRepository.findByEmail(anyString())).thenReturn(Optional.of(u));
-        Exception e = Assertions.assertThrows(
-                AdminWasFoundException.class,
-                () -> registrationLogic.addAdmin(u));
-
-        Assertions.assertTrue(e.getMessage().contains("Admin was found by email, cannot create a new one"));
+        u.setEmail("root");
+        u.setPassword("root");
+        when(userRepository.findByUsername(anyString())).thenReturn(Optional.of(u));
+        when(userRepository.findByEmail(anyString())).thenReturn(Optional.empty());
+        registrationLogic.addAdmin(u);
+        verify(passwordEncoder, never()).encode(anyString());
     }
 
     @Test

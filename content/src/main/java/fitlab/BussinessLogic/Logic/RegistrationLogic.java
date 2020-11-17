@@ -48,14 +48,15 @@ public class RegistrationLogic implements RegistrationLogicInterface {
         return "t";
     }
 
-    public void addAdmin(User user) throws Exception {
+    public void addAdmin(User user) {
         Optional<User> u = userRepository.findByUsername(user.getUsername());
+
         if(!u.equals(Optional.empty()))
-            throw new AdminWasFoundException("Admin was found by username, cannot create a new one");
+            return;
 
         u = userRepository.findByEmail(user.getEmail());
         if(!u.equals(Optional.empty()))
-            throw new AdminWasFoundException("Admin was found by email, cannot create a new one");
+            return;
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole(Role.ADMIN);
