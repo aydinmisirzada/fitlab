@@ -26,7 +26,7 @@ class MailSenderServiceTest {
     }
 
     @Test
-    @DisplayName("addAdmin Should Send Email")
+    @DisplayName("send Should Send Email")
     void sendShouldSendEmail() {
         ReflectionTestUtils.setField(mailSenderService, "username", "username");
         mailSenderService.send("", "", "");
