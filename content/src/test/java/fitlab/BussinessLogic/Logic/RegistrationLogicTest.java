@@ -1,6 +1,5 @@
 package fitlab.BussinessLogic.Logic;
 
-import fitlab.BussinessLogic.exeptions.AdminWasFoundException;
 import fitlab.BussinessLogic.services.MailSenderService;
 import fitlab.Data.Model.User;
 import fitlab.Data.Repository.UserRepository;
