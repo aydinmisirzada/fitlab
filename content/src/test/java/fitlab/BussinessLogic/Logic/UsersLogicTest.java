@@ -181,7 +181,6 @@ class UsersLogicTest {
         u1.setPassword("1232");
         u1.setActivationCode("");
 
-//        OwnUserDetails oud = new OwnUserDetails(u1);
         OwnUserDetails oud = mock(OwnUserDetails.class);
 
         when(userRepository.findById(anyInt())).thenReturn(Optional.of(u1));
