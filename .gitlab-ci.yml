@@ -1,30 +1,27 @@
-image: docker/compose:latest
-
-services:
-  - docker:dind
+image: maven:latest
   
 stages:
+  - build
   - test
   - deploy
   
-test:
+build-dev:
+    stage: build
+    only:
+        - dev
+    script:
+        - mvn clean install -DskipTests
+  
+test-dev:
     stage: test
     only:
-        - production
+        - dev
     script:
-        - echo run tests
-
-before_script:
-  - docker version
-  - docker-compose version
+        - mvn test
   
-step-deploy-prod:
+deploy-dev:
   stage: deploy
-  script:
-    - cd content
-    - docker-compose up -d --build
-    - docker container ls
-    # - docker-compose build
-    # - docker-compose up
   only:
-    - production
+        - dev
+  script:
+    - mvn azure-webapp:deploy
