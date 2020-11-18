@@ -5,6 +5,9 @@ stages:
   - test
   - deploy
   
+before_script:
+    - cd content
+  
 build-dev:
     stage: build
     only:
