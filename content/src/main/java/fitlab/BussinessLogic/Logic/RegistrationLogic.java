@@ -47,11 +47,15 @@ public class RegistrationLogic implements RegistrationLogicInterface {
         return "t";
     }
 
-    public void addAdmin(User user){
+    public void addAdmin(User user) {
         Optional<User> u = userRepository.findByUsername(user.getUsername());
-        if(!u.equals(Optional.empty())) return;
+
+        if(!u.equals(Optional.empty()))
+            return;
+
         u = userRepository.findByEmail(user.getEmail());
-        if(!u.equals(Optional.empty())) return;
+        if(!u.equals(Optional.empty()))
+            return;
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole(Role.ADMIN);

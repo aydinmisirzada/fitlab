@@ -1,102 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">  
-  <modelVersion>4.0.0</modelVersion>  
-  <parent> 
-    <groupId>org.springframework.boot</groupId>  
-    <artifactId>spring-boot-starter-parent</artifactId>  
-    <version>2.2.1.RELEASE</version>  
-    <relativePath/>  
-    <!-- lookup parent from repository --> 
-  </parent>  
-  <groupId>soft.fitlab</groupId>  
-  <artifactId>content</artifactId>  
-  <version>1.0-SNAPSHOT</version>  
-  <packaging>jar</packaging>  
-  <properties> 
-    <java.version>1.8</java.version> 
-  </properties>  
-  <dependencyManagement> 
-    <dependencies> 
-      <dependency> 
-        <groupId>com.microsoft.azure</groupId>  
-        <artifactId>azure-spring-boot-bom</artifactId>  
-        <version>2.0.6</version>  
-        <type>pom</type>  
-        <scope>import</scope> 
-      </dependency> 
-    </dependencies> 
-  </dependencyManagement>  
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.2.1.RELEASE</version>
+    <relativePath/>
+    <!-- lookup parent from repository -->
+  </parent>
+  <groupId>soft.fitlab</groupId>
+  <artifactId>content</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+  <properties>
+    <java.version>1.8</java.version>
+  </properties>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>azure-spring-boot-bom</artifactId>
+        <version>2.0.6</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
   <dependencies>
     <dependency>
       <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-test</artifactId>
-      <version>2.0.3.RELEASE</version>
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
     </dependency>
-    <dependency> 
-      <groupId>org.springframework.boot</groupId>  
-      <artifactId>spring-boot-starter-data-jpa</artifactId> 
-    </dependency>  
-    <dependency> 
-      <groupId>mysql</groupId>  
+    <dependency>
+      <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
-    </dependency>  
-    <dependency> 
-      <groupId>org.springframework.boot</groupId>  
-      <artifactId>spring-boot-starter-data-jdbc</artifactId> 
-    </dependency>  
-    <dependency> 
-      <groupId>org.hibernate</groupId>  
-      <artifactId>hibernate-core</artifactId>  
-      <version>5.4.9.Final</version> 
-    </dependency>  
-    <dependency> 
-      <groupId>org.springframework.boot</groupId>  
-      <artifactId>spring-boot-starter-thymeleaf</artifactId> 
-    </dependency>  
-    <dependency> 
-      <groupId>org.springframework.boot</groupId>  
-      <artifactId>spring-boot-starter-web</artifactId> 
-    </dependency>  
-    <dependency> 
-      <groupId>org.springframework.boot</groupId>  
-      <artifactId>spring-boot-starter-tomcat</artifactId>  
-      <scope>provided</scope> 
-    </dependency>  
-    <dependency> 
-      <groupId>org.springframework.boot</groupId>  
-      <artifactId>spring-boot-devtools</artifactId>  
-      <scope>runtime</scope>  
-      <optional>true</optional> 
-    </dependency>  
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-jdbc</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-core</artifactId>
+      <version>5.4.9.Final</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-thymeleaf</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-tomcat</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-devtools</artifactId>
+      <scope>runtime</scope>
+      <optional>true</optional>
+    </dependency>
     <dependency>
       <groupId>com.h2database</groupId>
       <artifactId>h2</artifactId>
       <scope>runtime</scope>
     </dependency>
-    <dependency> 
-      <groupId>com.microsoft.azure</groupId>  
-      <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>  
-      <version>2.2.0</version> 
-    </dependency>  
-    <dependency> 
-      <groupId>org.springframework.boot</groupId>  
-      <artifactId>spring-boot-starter-actuator</artifactId> 
-    </dependency>  
-    <dependency> 
-      <groupId>org.springframework.cloud</groupId>  
-      <artifactId>spring-cloud-config-client</artifactId>  
-      <version>2.2.2.RELEASE</version> 
-    </dependency>  
-    <dependency> 
-      <groupId>org.springframework.cloud</groupId>  
-      <artifactId>spring-cloud-starter-zipkin</artifactId>  
-      <version>2.2.2.RELEASE</version> 
-    </dependency>  
-    <dependency> 
-      <groupId>org.springframework.cloud</groupId>  
-      <artifactId>spring-cloud-starter-sleuth</artifactId>  
-      <version>2.2.2.RELEASE</version> 
+    <dependency>
+      <groupId>com.microsoft.azure</groupId>
+      <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
+      <version>2.2.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-config-client</artifactId>
+      <version>2.2.2.RELEASE</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-zipkin</artifactId>
+      <version>2.2.2.RELEASE</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-sleuth</artifactId>
+      <version>2.2.2.RELEASE</version>
     </dependency>
 
     <!--security-->
@@ -104,11 +99,7 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-security</artifactId>
     </dependency>
-    <!--<dependency>
-      <groupId>org.springframework.security</groupId>
-      <artifactId>spring-security-test</artifactId>
-      <scope>test</scope>
-    </dependency>-->
+
     <dependency>
       <groupId>com.microsoft.azure</groupId>
       <artifactId>spring-data-cosmosdb</artifactId>
@@ -124,66 +115,111 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-mail</artifactId>
     </dependency>
-      <dependency>
-          <groupId>junit</groupId>
-          <artifactId>junit</artifactId>
-          <scope>test</scope>
-      </dependency>
+
+    <!--testing-->
     <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter</artifactId>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>org.junit.vintage</groupId>
+          <artifactId>junit-vintage-engine</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-test</artifactId>
       <scope>test</scope>
     </dependency>
+    <!--<dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>-->
+    <!--<dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>-->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>5.3.2</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+    <groupId>org.junit.jupiter</groupId>
+    <artifactId>junit-jupiter-engine</artifactId>
+    <version>5.3.2</version>
+    <scope>test</scope>
+  </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-all</artifactId>
+      <version>1.10.19</version>
+      <scope>test</scope>
+    </dependency>
+
+
   </dependencies>
 
-  <build> 
-    <finalName>FitLab</finalName>  
-    <plugins> 
-      <plugin> 
-        <groupId>com.microsoft.azure</groupId>  
-        <artifactId>azure-webapp-maven-plugin</artifactId>  
-        <version>1.9.0</version>  
-        <configuration> 
-          <subscriptionId>81e33bc9-55b6-4d8f-bfa8-3f7821a8953d</subscriptionId>  
-          <schemaVersion>v2</schemaVersion>  
-          <!-- Web App information -->  
-          <resourceGroup>fit</resourceGroup>  
-          <appName>flab</appName>  
-          <region>northeurope</region>  
-          <!-- Java Runtime Stack for Web App on Linux-->  
-          <runtime> 
-            <os>linux</os>  
-            <javaVersion>jre8</javaVersion>  
-            <webContainer>jre8</webContainer> 
-          </runtime>  
-          <deployment> 
-            <resources> 
-              <resource> 
-                <directory>${project.basedir}/target</directory>  
-                <includes> 
-                  <include>*.jar</include> 
-                </includes> 
-              </resource> 
-            </resources> 
-          </deployment>  
-          <appSettings> 
-            <property> 
-              <name>JAVA_OPTS</name>  
-              <value>-Dserver.port=80</value> 
-            </property> 
-          </appSettings>  
-          <pricingTier>F1</pricingTier> 
-        </configuration> 
-      </plugin>  
-      <plugin> 
-        <groupId>org.springframework.boot</groupId>  
-        <artifactId>spring-boot-maven-plugin</artifactId> 
-      </plugin>  
-      <plugin> 
-        <groupId>org.apache.maven.plugins</groupId>  
-        <artifactId>maven-compiler-plugin</artifactId>  
+  <build>
+    <finalName>FitLab</finalName>
+    <plugins>
+      <plugin>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>azure-webapp-maven-plugin</artifactId>
+        <version>1.9.0</version>
+        <configuration>
+          <subscriptionId>81e33bc9-55b6-4d8f-bfa8-3f7821a8953d</subscriptionId>
+          <schemaVersion>v2</schemaVersion>
+          <!-- Web App information -->
+          <resourceGroup>fit</resourceGroup>
+          <appName>flab</appName>
+          <region>northeurope</region>
+          <!-- Java Runtime Stack for Web App on Linux-->
+          <runtime>
+            <os>linux</os>
+            <javaVersion>jre8</javaVersion>
+            <webContainer>jre8</webContainer>
+          </runtime>
+          <deployment>
+            <resources>
+              <resource>
+                <directory>${project.basedir}/target</directory>
+                <includes>
+                  <include>*.jar</include>
+                </includes>
+              </resource>
+            </resources>
+          </deployment>
+          <appSettings>
+            <property>
+              <name>JAVA_OPTS</name>
+              <value>-Dserver.port=80</value>
+            </property>
+          </appSettings>
+          <pricingTier>F1</pricingTier>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
         <version>3.8.1</version>
-      </plugin> 
-    </plugins> 
-  </build> 
+      </plugin>
+
+      <!--test-->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.0.0-M4</version>
+      </plugin>
+    </plugins>
+  </build>
 </project>
