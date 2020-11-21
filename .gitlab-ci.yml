@@ -32,8 +32,7 @@ before_script:
 build-dev:
     stage: build
     script:
-        - mvn $MAVEN_CLI_OPTS compile
-        # - mvn $MAVEN_CLI_OPTS clean install -DskipTests
+        - mvn clean install -DskipTests
     # artifacts:
     #     paths:
     #         - content/target/
