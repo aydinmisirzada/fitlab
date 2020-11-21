@@ -13,14 +13,20 @@ build-dev:
     stage: build
     script:
         - mvn clean install -DskipTests
-    artifacts:
+    cache:
         paths:
-            - binaries/
+            - target/
+    # artifacts:
+    #     paths:
+    #         - binaries/
   
 test-dev:
     stage: test
-    dependencies: 
-        - build-dev
+    cache:
+        paths:
+            - target/
+    # dependencies: 
+    #     - build-dev
     script:
         - mvn test
   
@@ -30,5 +36,5 @@ deploy-dev:
         - dev
   script:
     - mvn azure-webapp:deploy
-  dependencies: 
-    - build-dev
+#   dependencies: 
+#     - build-dev
