@@ -5,13 +5,21 @@ stages:
   - build
   - test
   - deploy
+
+# variables:
+#   missing GIT_CLEAN_FLAGS # use default, the `-ffdx`
+#   GIT_CLEAN_FLAGS: "" # use default, the `-ffdx`
+#   GIT_CLEAN_FLAGS: -ffdx -e cache/
+#   GIT_CLEAN_FLAGS: none # disable git clean
+
   
 # variables:
 #     MAVEN_OPTS: "-Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository"
     
-# cache:
-#     paths:
-#         - ./.m2/repository/
+cache:
+    paths:
+        - .m2/repository/
+        - content/target/
   
   
 before_script:
@@ -21,17 +29,17 @@ build-dev:
     stage: build
     script:
         - mvn clean install -DskipTests
-    artifacts:
-        paths:
-            - content/target/
+    # artifacts:
+    #     paths:
+    #         - content/target/
    
   
 test-dev:
     stage: test
     script:
         - mvn test
-    dependencies: 
-        - build-dev
+    # dependencies: 
+    #     - build-dev
   
 deploy-dev:
   stage: deploy
