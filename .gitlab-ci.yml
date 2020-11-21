@@ -20,7 +20,7 @@ build-dev:
 test-dev:
     stage: test
     dependencies: 
-        -build-dev
+        - build-dev
     script:
         - mvn test
   
@@ -31,4 +31,4 @@ deploy-dev:
   script:
     - mvn azure-webapp:deploy
   dependencies: 
-    -build-dev
+    - build-dev
