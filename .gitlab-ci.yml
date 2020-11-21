@@ -15,7 +15,11 @@ stages:
   
 # variables:
 #     MAVEN_OPTS: "-Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository"
-    
+   
+variables:
+  MAVEN_CLI_OPTS: "-s .m2/settings.xml --batch-mode"
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
+ 
 cache:
     paths:
         - .m2/repository/
@@ -28,7 +32,7 @@ before_script:
 build-dev:
     stage: build
     script:
-        - mvn clean install -DskipTests
+        - mvn $MAVEN_CLI_OPTS clean install -DskipTests
     # artifacts:
     #     paths:
     #         - content/target/
@@ -37,7 +41,7 @@ build-dev:
 test-dev:
     stage: test
     script:
-        - mvn test
+        - mvn $MAVEN_CLI_OPTS test
     # dependencies: 
     #     - build-dev
   
