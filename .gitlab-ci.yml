@@ -43,6 +43,9 @@ test-dev:
     stage: test
     script:
         - mvn test
+    artifacts:
+        paths:
+            - target/
     # dependencies: 
     #     - build-dev
   
