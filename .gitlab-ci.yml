@@ -22,7 +22,7 @@ variables:
  
 cache:
     paths:
-        - content/.m2/repository/
+        - .m2/repository/
         - content/target/
   
   
