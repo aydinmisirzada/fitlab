@@ -1,53 +1,32 @@
 image: maven:latest
-# image: maven:3-jdk-12-alpine
-  
+
 stages:
   - build
   - test
   - deploy
-
-# variables:
-#   missing GIT_CLEAN_FLAGS # use default, the `-ffdx`
-#   GIT_CLEAN_FLAGS: "" # use default, the `-ffdx`
-#   GIT_CLEAN_FLAGS: -ffdx -e cache/
-#   GIT_CLEAN_FLAGS: none # disable git clean
-
-  
-# variables:
-#     MAVEN_OPTS: "-Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository"
    
 variables:
-#   SPRING_PROFILES_ACTIVE: gitlab-ci
-#   MAVEN_CLI_OPTS: "-s .m2/settings.xml --batch-mode"
   MAVEN_OPTS: "-Dmaven.repo.local=.m2"
  
 cache:
     paths:
         - content/.m2/
-        # - content/target/
-  
-  
+        
 before_script:
     - cd content
   
-build-dev:
+building:
     stage: build
     script:
         - mvn clean install -DskipTests
-    # artifacts:
-    #     paths:
-    #         - content/target/
    
-  
-test-dev:
+testing:
     stage: test
     script:
         - mvn test
     artifacts:
         paths:
             - target/
-    # dependencies: 
-    #     - build-dev
   
 deploy-dev:
   stage: deploy
@@ -55,5 +34,6 @@ deploy-dev:
         - dev
   script:
     - mvn azure-webapp:deploy
-#   dependencies: 
-#     - build-dev
+  artifacts:
+    paths:
+        - target/
