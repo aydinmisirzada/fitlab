@@ -17,8 +17,8 @@ stages:
 #     MAVEN_OPTS: "-Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository"
    
 variables:
-  SPRING_PROFILES_ACTIVE: gitlab-ci
-  MAVEN_CLI_OPTS: "-s .m2/settings.xml --batch-mode"
+#   SPRING_PROFILES_ACTIVE: gitlab-ci
+#   MAVEN_CLI_OPTS: "-s .m2/settings.xml --batch-mode"
   MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
  
 cache:
@@ -33,7 +33,7 @@ before_script:
 build-dev:
     stage: build
     script:
-        - mvn $MAVEN_CLI_OPTS clean install -DskipTests
+        - mvn clean install -DskipTests
     # artifacts:
     #     paths:
     #         - content/target/
@@ -42,7 +42,7 @@ build-dev:
 test-dev:
     stage: test
     script:
-        - mvn $MAVEN_CLI_OPTS test
+        - mvn test
     # dependencies: 
     #     - build-dev
   
