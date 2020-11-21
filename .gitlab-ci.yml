@@ -1,17 +1,17 @@
-# image: maven:latest
-image: maven:3-jdk-12-alpine
+image: maven:latest
+# image: maven:3-jdk-12-alpine
   
 stages:
   - build
   - test
   - deploy
   
-variables:
-    MAVEN_OPTS: "-Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository"
+# variables:
+#     MAVEN_OPTS: "-Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository"
     
-cache:
-    paths:
-        - ./.m2/repository/
+# cache:
+#     paths:
+#         - ./.m2/repository/
   
   
 before_script:
@@ -21,12 +21,17 @@ build-dev:
     stage: build
     script:
         - mvn clean install -DskipTests
+    artifacts:
+        paths:
+            - content/target/
    
   
 test-dev:
     stage: test
     script:
         - mvn test
+    dependencies: 
+        - build-dev
   
 deploy-dev:
   stage: deploy
