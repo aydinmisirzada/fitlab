@@ -7,7 +7,7 @@ stages:
   
 cache:
   paths:
-    - target/
+    - content/target/
   
 before_script:
     - cd content
