@@ -10,15 +10,11 @@ before_script:
   
 build-dev:
     stage: build
-    only:
-        - dev
     script:
         - mvn clean install -DskipTests
   
 test-dev:
     stage: test
-    only:
-        - dev
     script:
         - mvn test
   
