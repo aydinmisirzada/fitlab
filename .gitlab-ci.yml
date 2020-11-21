@@ -1,15 +1,17 @@
-image: maven:latest
+# image: maven:latest
+image: maven:3-jdk-12-alpine
   
 stages:
   - build
   - test
   - deploy
   
-  cache: &global_cache
-  key: ${CI_COMMIT_REF_SLUG}
-  paths:
-    - content/target
-  policy: pull-push
+variables:
+    MAVEN_OPTS: "-Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository"
+    
+cache:
+    paths:
+        - ./.m2/repository/
   
   
 before_script:
@@ -17,18 +19,12 @@ before_script:
   
 build-dev:
     stage: build
-    cache:
-        <<: *global_cache
-        policy: push
     script:
         - mvn clean install -DskipTests
    
   
 test-dev:
     stage: test
-    cache:
-        <<: *global_cache
-        policy: pull
     script:
         - mvn test
   
