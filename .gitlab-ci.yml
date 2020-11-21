@@ -19,6 +19,7 @@ build-dev:
   
 test-dev:
     stage: test
+    extends: build-dev
     script:
         - mvn test
   
