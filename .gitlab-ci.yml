@@ -5,9 +5,6 @@ stages:
   - test
   - deploy
   
-artifacts:
-  paths:
-    - content/target/
   
 before_script:
     - cd content
@@ -16,10 +13,14 @@ build-dev:
     stage: build
     script:
         - mvn clean install -DskipTests
+    artifacts:
+        paths:
+            - binaries/
   
 test-dev:
     stage: test
-    extends: build-dev
+    dependencies: 
+        -build-dev
     script:
         - mvn test
   
@@ -29,3 +30,5 @@ deploy-dev:
         - dev
   script:
     - mvn azure-webapp:deploy
+  dependencies: 
+    -build-dev
