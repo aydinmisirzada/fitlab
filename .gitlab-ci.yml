@@ -15,7 +15,7 @@ build-dev:
         - mvn clean install -DskipTests
     artifacts:
         paths:
-            - target/*.jar
+            - content/target/*.jar
     # artifacts:
     #     paths:
     #         - binaries/
@@ -23,10 +23,14 @@ build-dev:
 test-dev:
     stage: test
     artifacts:
-        when: always
-        reports:
-        junit:
-            - target/surefire-reports/TEST-*.xml
+        paths:
+            - content/target/
+
+    # artifacts:
+    #     when: always
+    #     reports:
+    #     junit:
+    #         - target/surefire-reports/TEST-*.xml
     # dependencies: 
     #     - build-dev
     script:
