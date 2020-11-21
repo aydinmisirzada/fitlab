@@ -5,7 +5,7 @@ stages:
   - test
   - deploy
   
-cache:
+artifacts:
   paths:
     - content/target/
   
