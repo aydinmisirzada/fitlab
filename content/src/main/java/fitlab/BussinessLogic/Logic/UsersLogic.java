@@ -1,5 +1,6 @@
 package fitlab.BussinessLogic.Logic;
 
+import fitlab.BussinessLogic.Interfaces.UsersLogicInterface;
 import fitlab.Data.Model.OwnUserDetails;
 import fitlab.Data.Model.Role;
 import fitlab.Data.Model.Subject;
@@ -8,7 +9,6 @@ import fitlab.Data.Repository.SubjectRepository;
 import fitlab.Data.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UsersLogic {
+public class UsersLogic implements UsersLogicInterface {
     @Autowired
     UserRepository userRepository;
     @Autowired
@@ -26,15 +26,15 @@ public class UsersLogic {
     public User getUserByPath(String path){
         Optional<User> u = userRepository.findByPathId(path);
 
-        if((!checkAccount(u.get().getId()) && !oud.getRole().equals(Role.ADMIN))
-                || u.equals(Optional.empty())) return null;
+        if(u.equals(Optional.empty()) ||
+                (!checkAccount(u.get().getId()) && !oud.getRole().equals(Role.ADMIN)))
+            return null;
 
         return u.get();
     }
 
     private boolean checkAccount(Integer id){
         oud = (OwnUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        if(oud.getUserId().equals(id) || oud.getRole().equals(Role.ADMIN))
         if(oud.getUserId().equals(id))
             return true;
 
