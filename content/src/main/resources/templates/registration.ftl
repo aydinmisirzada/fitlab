@@ -122,7 +122,6 @@
             if (val !== "") {
                 $('.passStrength').removeClass('invisible');
                 $('#strengthText').html(strengthText[result.score]);
-
                 meter.attr('aria-valuenow',strengthMeter[result.score]);
                 meter.css('width',strengthMeter[result.score]+"%");
                 meter.css('background-color',strengthMeterColor[result.score]);

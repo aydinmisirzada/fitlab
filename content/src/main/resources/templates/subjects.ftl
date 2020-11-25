@@ -6,7 +6,9 @@
     <div class="container" id="cardSection">
 
         <div style="padding-top: 100px"></div>
-
+        <div class="input-group mb-5">
+            <input type="text" class="form-control" id="searchSubjects" placeholder="Search Subjects">
+        </div>
         <#list subject?chunk(3) as row>
             <div class="row">
                 <#list row as s>
@@ -150,5 +152,25 @@
                 $('#editButton').removeClass('editMode');
             }
         });
+
+        function search() {
+            var input, filter, i, txtValue;
+            input = $('#searchSubjects');
+            filter = input.val().toUpperCase();
+            cards = $(".card");
+            for (i = 0; i < cards.length; i++) {
+                var name = $(cards[i]).find("input[name='name']").val();
+                var code = $(cards[i]).find("input[name='code']").val();
+                txtValue = name + code;
+
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    $(cards[i]).parent().css('display',"");
+                } else {
+                    $(cards[i]).parent().css('display',"none");
+                }
+            }
+        }
+        $('#searchSubjects').on('keyup',search);
+
     </script>
 </@c.page>
