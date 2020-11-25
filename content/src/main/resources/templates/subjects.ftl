@@ -6,7 +6,7 @@
     <div class="container" id="cardSection">
 
         <div style="padding-top: 100px"></div>
-        <div class="input-group mb-5">
+        <div class="input-group mb-4">
             <input type="text" class="form-control" id="searchSubjects" placeholder="Search Subjects">
         </div>
         <#list subject?chunk(3) as row>

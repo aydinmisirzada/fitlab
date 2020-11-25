@@ -7,7 +7,9 @@
     <div class="container" id="cardSection">
 
         <div style="padding-top: 100px"></div>
-
+        <div class="input-group mb-4">
+            <input type="text" class="form-control" id="searchTeachers" placeholder="Search Teachers">
+        </div>
         <#list teacher?chunk(3) as row>
             <div class="row">
                 <#list row as t>
@@ -133,5 +135,24 @@
                 $('#editButton').removeClass('editMode');
             }
         });
+
+        function search() {
+            var input, filter, i, txtValue;
+            input = $('#searchTeachers');
+            filter = input.val().toUpperCase();
+            cards = $(".card");
+            for (i = 0; i < cards.length; i++) {
+                var name = $(cards[i]).find("input[name='name']").val();
+                var surname = $(cards[i]).find("input[name='surname']").val();
+                txtValue = name + surname;
+
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    $(cards[i]).parent().css('display',"");
+                } else {
+                    $(cards[i]).parent().css('display',"none");
+                }
+            }
+        }
+        $('#searchTeachers').on('keyup',search);
     </script>
 </@c.page>
