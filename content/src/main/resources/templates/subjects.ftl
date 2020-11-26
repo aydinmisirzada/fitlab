@@ -41,7 +41,6 @@
                                             <option value="0">Summer</option>
                                             <option value="1">Winter</option>
                                         </select>
-
                                     </div>
 
                                     <div class="form-row p-0" style="display: none" id="saveButton">

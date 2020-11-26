@@ -1,7 +1,7 @@
 <#import "parts/common.ftl" as c>
 
 <@c.page " | Dashboard">
-
+    <div style="height:10%"></div>
     <div class="container" id="cardSection">
         <div class="row">
             <!-- Requests -->
