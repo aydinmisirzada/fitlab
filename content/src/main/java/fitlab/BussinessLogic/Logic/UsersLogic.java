@@ -23,15 +23,15 @@ public class UsersLogic implements UsersLogicInterface {
     public User getUserByPath(String path){
         Optional<User> u = userRepository.findByPathId(path);
 
-        if((!checkAccount(u.get().getId()) && !oud.getRole().equals(Role.ADMIN))
-                || u.equals(Optional.empty())) return null;
+        if(u.equals(Optional.empty()) ||
+                (!checkAccount(u.get().getId()) && !oud.getRole().equals(Role.ADMIN)))
+            return null;
 
         return u.get();
     }
 
     private boolean checkAccount(Integer id){
         oud = (OwnUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        if(oud.getUserId().equals(id) || oud.getRole().equals(Role.ADMIN))
         if(oud.getUserId().equals(id))
             return true;
 

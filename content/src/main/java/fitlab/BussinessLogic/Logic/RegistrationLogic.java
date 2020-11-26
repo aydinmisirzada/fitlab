@@ -7,6 +7,7 @@ import fitlab.Data.Model.User;
 import fitlab.Data.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -21,6 +22,9 @@ public class RegistrationLogic implements RegistrationLogicInterface {
     @Autowired
     MailSenderService mailSender;
 
+    @Autowired
+    PasswordEncoder passwordEncoder;
+
     @Value("${mail.message.activation}")
     String message;
 
@@ -30,6 +34,7 @@ public class RegistrationLogic implements RegistrationLogicInterface {
         u = userRepository.findByEmail(user.getEmail());
         if(!u.equals(Optional.empty())) return "email";
 
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole(Role.USER);
         user.setPathId(user.getUsername()+UUID.randomUUID().toString());
         user.setActivationCode(UUID.randomUUID().toString());
@@ -40,6 +45,23 @@ public class RegistrationLogic implements RegistrationLogicInterface {
             mailSender.send(user.getEmail(),newMessage, "Activation code");
         }
         return "t";
+    }
+
+    public void addAdmin(User user) {
+        Optional<User> u = userRepository.findByUsername(user.getUsername());
+
+        if(!u.equals(Optional.empty()))
+            return;
+
+        u = userRepository.findByEmail(user.getEmail());
+        if(!u.equals(Optional.empty()))
+            return;
+
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setRole(Role.ADMIN);
+        user.setPathId(user.getUsername()+UUID.randomUUID().toString());
+        user.setActivationCode("");
+        userRepository.save(user);
     }
 
     public boolean checkActivation(String activationCode) {
