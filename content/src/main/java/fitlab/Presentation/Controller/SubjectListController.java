@@ -64,7 +64,7 @@ public class SubjectListController {
     }
 
     @PreAuthorize("hasAuthority('ADMIN')")
-    @PostMapping(value = "/subjects", params = {"id","code","name","semester"})
+    @PostMapping(value = "/edit", params = {"id","code","name","semester"})
     public String editSub(@RequestParam int id, @RequestParam String code, @RequestParam String name, @RequestParam int semester) {
         if(code.isEmpty() || name.isEmpty())
             return "errorpage";

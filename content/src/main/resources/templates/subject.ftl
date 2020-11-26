@@ -3,9 +3,9 @@
 <#include "parts/security.ftl">
 
 <@c.page " | " + subject.getCode()>
-
+    <div style="height:10%"></div>
     <div class="container" id="cardSection">
-        <div style="padding-top: 100px"></div>
+
         <div class="card mx-auto" style="width: 60%">
             <div class="card-body mx-auto">
                 <h3 class="card-title text-center">${subject.getCode()}</h3>

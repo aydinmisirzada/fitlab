@@ -3,7 +3,6 @@
 <@c.page " | Log In">
 
     <div class="container" id="cardSection">
-        <div style="padding-top: 100px"></div>
 
         <div class="card mx-auto align-items-center" style="width: 22rem;">
 

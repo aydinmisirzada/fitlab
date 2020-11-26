@@ -1,8 +1,8 @@
 <#import "parts/common.ftl" as c>
 <#include "parts/security.ftl">
 <@c.page " | "+ user.getUsername()>
+    <div style="height:10%"></div>
     <div class="container" id="cardSection">
-        <div style="padding-top: 100px"></div>
         <div class="row">
 
             <div class="col-4">

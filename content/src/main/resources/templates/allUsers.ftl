@@ -4,7 +4,6 @@
 
 
     <div class="container" id="cardSection">
-        <div style="padding-top: 100px"></div>
         <#list users?chunk(3) as row>
             <div class="row">
                 <#list row as u>

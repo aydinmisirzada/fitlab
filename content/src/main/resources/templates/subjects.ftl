@@ -2,10 +2,8 @@
 <#import "parts/form.ftl" as form>
 <#include "parts/security.ftl">
 <@c.page " | Subjects">
-
+    <div style="height:10%"></div>
     <div class="container" id="cardSection">
-
-        <div style="padding-top: 100px"></div>
         <div class="input-group mb-4">
             <input type="text" class="form-control" id="searchSubjects" placeholder="Search Subjects">
         </div>
@@ -22,7 +20,7 @@
                                 </div>
                             </#if>
                             <div class="card-body">
-                                <form action="/subjects" method="post">
+                                <form action="/edit" id='subject' method="post">
 
                                     <input type="hidden" name="_csrf" value="${_csrf.token}"/>
                                     <input type="hidden" name="id" value="${s.getId()}"/>
@@ -39,15 +37,11 @@
                                     <div class="form-row">
                                         <p class="card-text pl-1">Semester: ${s.getSemester()}</p>
                                         <#assign sem>${s.getSemester()}</#assign>
-                                        <#if sem == "SUMMER">
-                                            <input type="hidden" name="semester" class="form-control myform"
-                                                   value="0"
-                                                   spellcheck="false" readonly/>
-                                        <#elseif sem == "WINTER">
-                                            <input type="hidden" name="semester" class="form-control myform"
-                                                   value="1"
-                                                   spellcheck="false" readonly/>
-                                        </#if>
+                                        <select form="subject" name="semester" style="display: none">
+                                            <option value="0">Summer</option>
+                                            <option value="1">Winter</option>
+                                        </select>
+
                                     </div>
 
                                     <div class="form-row p-0" style="display: none" id="saveButton">
@@ -141,11 +135,13 @@
         $("#editButton").on('click', function () {
             //enable editing mode
             if ($('.editable').attr("readonly")) {
+                $('select[name="semester"]').css('display','');
                 $('#saveButton').show();
                 $('.editable').attr("readonly", false);
                 $('.editable').css({'border-bottom':'1px solid grey','border-radius':'0'});
                 $('#editButton').addClass('editMode');
             } else {
+                $('select[name="semester"]').css('display','none');
                 $('.editable').attr("readonly", true);
                 $('.editable').css('border', 'none transparent');
                 $('#saveButton').hide();
