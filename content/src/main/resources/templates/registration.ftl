@@ -115,10 +115,6 @@
             var val = password.val();
             var result = zxcvbn(val);
 
-            // Update the password strength meter
-           // meter.value = result.score;
-
-            // Update the text indicator
             if (val !== "") {
                 $('.passStrength').removeClass('invisible');
                 $('#strengthText').html(strengthText[result.score]);

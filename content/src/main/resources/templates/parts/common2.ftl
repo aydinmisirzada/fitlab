@@ -11,7 +11,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
-        <base href="/"/>
+        <base href="/" />
         <title>FITLab${title}</title>
 
         <!-- Bootstrap core CSS-->
@@ -24,17 +24,18 @@
 
     <body>
     <@nav.navbar/>
-    <div style="height:10%"></div>
+
     <#nested>
 
     <!-- Footer -->
-    <footer class="h-25">
-        <div class="container-fluid h-100 pt-5">
-            <div class="copyright-text">
-                <p class="text-center">Copyright &copy; FITLab 2020</p>
-            </div>
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; FITLab 2020</p>
         </div>
+        <!-- /.container -->
     </footer>
+
+    <!-- Bootstrap core JavaScript -->
 
     </body>
 

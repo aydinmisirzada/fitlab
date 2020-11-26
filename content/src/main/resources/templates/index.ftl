@@ -1,130 +1,116 @@
 ﻿<#import "parts/common.ftl" as c>
 
 <@c.page "">
-    <header>
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner" role="listbox">
-                <!-- Slide One - Set the background image for this slide in the line below -->
-                <div class="carousel-item active" style="background-image: url('http://placehold.it/1900x1080')">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h3>First Slide</h3>
-                        <p>This is a description for the first slide.</p>
-                    </div>
-                </div>
-                <!-- Slide Two - Set the background image for this slide in the line below -->
-                <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h3>Second Slide</h3>
-                        <p>This is a description for the second slide.</p>
-                    </div>
-                </div>
-                <!-- Slide Three - Set the background image for this slide in the line below -->
-                <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h3>Third Slide</h3>
-                        <p>This is a description for the third slide.</p>
-                    </div>
-                </div>
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
+
+    <div class="container-fluid p-0" style="height:50%">
+        <div class="img-teaser h-100 float-left" style="width:40%">
+            <img src="/images/FIT_people.jpeg" class="img-fluid h-100 w-100">
         </div>
-    </header>
-    <!-- Page Content -->
-    <div class="container">
-
-        <h1 class="my-4">Welcome to FITLab</h1>
-
-        <!-- Marketing Icons Section -->
-        <div class="row">
-            <div class="col-lg-4 mb-4">
-                <div class="card h-100">
-                    <h4 class="card-header">PA1</h4>
+        <div class="text-teaser h-100 float-left p-5" style="width:60%;">
+            <div class="w-75">
+                <h2>Welcome to FITLab!</h2>
+                <p class="text-justify">Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet
+                    fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex
+                    communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in
+                    diem certam indicere. Cras mattis iudicium purus sit amet fermentum.</p>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-5">
+        <div class="news-section">
+            <div class="news-header">
+                <h2>What's new at FIT?</h2>
+            </div>
+            <div class="card-deck mt-4">
+                <div class="card">
+                    <img src="https://fit.cvut.cz/zivot-na-fit/zpravy/2020/image-thumb__2024__NewsPreviewImage/2020-11-23-cena_msmt_koronavirus24.jpeg"
+                         class="card-img-top" alt="...">
                     <div class="card-body">
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse
-                            necessitatibus neque.</p>
+                        <h5 class="card-title">Tři studenti FIT získali Cenu ministra školství</h5>
                     </div>
                     <div class="card-footer">
-                        <a href="#" class="btn btn-primary">Learn More</a>
+                        <small class="text-muted">Last updated 3 mins ago</small>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4 mb-4">
-                <div class="card h-100">
-                    <h4 class="card-header">SI1.2</h4>
+                <div class="card">
+                    <img src="https://fit.cvut.cz/zivot-na-fit/zpravy/2020/image-thumb__1989__NewsPreviewImage/2020-11-11-it_spy_2020.png"
+                         class="card-img-top" alt="...">
                     <div class="card-body">
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ipsam
-                            eos, nam perspiciatis natus commodi similique totam consectetur praesentium molestiae atque
-                            exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.</p>
+                        <h5 class="card-title">Absolvent FIT se probojoval do finále soutěže IT SPY 2020</h5>
                     </div>
                     <div class="card-footer">
-                        <a href="#" class="btn btn-primary">Learn More</a>
+                        <small class="text-muted">Last updated 3 mins ago</small>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4 mb-4">
-                <div class="card h-100">
-                    <h4 class="card-header">TJV</h4>
+                <div class="card">
+                    <img src="https://fit.cvut.cz/zivot-na-fit/zpravy/2020/koronavirus/image-thumb__832__NewsPreviewImage/koronavirus.jpeg"
+                         class="card-img-top" alt="...">
                     <div class="card-body">
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse
-                            necessitatibus neque.</p>
+                        <h5 class="card-title">Koronavirus – Aktuálně</h5>
                     </div>
                     <div class="card-footer">
-                        <a href="#" class="btn btn-primary">Learn More</a>
+                        <small class="text-muted">Last updated 3 mins ago</small>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- /.row -->
-
-
-        <!-- Features Section -->
-        <div class="row">
-            <div class="col-lg-6">
-                <h2>Why FITLab?</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                <ul>
-                    <li>
-                        <strong>Easy to use</strong>
-                    </li>
-                    <li>Help and get help from other students</li>
-                    <li>Review the subject before enrolling</li>
-                    <li>Find info on a specific teacher, and what students think of him</li>
-                </ul>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id
-                    reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia
-                    dolorum ducimus unde.</p>
+        <div class="discover-section mt-5">
+            <div class="discover-header">
+                <h2>Discover FITLab</h2>
             </div>
-            <div class="col-lg-6">
-                <img class="img-fluid rounded" src="http://placehold.it/700x450" alt="">
+            <div class="pt-3 pb-3">
+                <h4>Subjects at FIT</h4>
             </div>
+            <div class="card-deck">
+                <#list subject?take_while(s -> s.getId() <= 3) as s>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <a href="subjects/${s.getCode()}"><h5 class="card-title">${s.getCode()}</h5></a>
+                            <p class="card-text">${s.getName()}</p>
+                        </div>
+                    </div>
+                </#list>
+            </div>
+            <a class="btn btn-primary mt-3" href="subjects" role="button">See all</a>
         </div>
-        <!-- /.row -->
+    </div>
+    <div class="container-fluid mt-5 pt-5 h-50 aboutus-section">
+        <div class="container">
+            <div class="aboutus-header">
+                <h2>About FITLab</h2>
+            </div>
+            <div class="row mt-3">
+                <div class="col">
+                    <h4>For students, from students</h4>
+                    <p class="text-justify">FITLab was designed in 2020 by a group of students as a semestral project
+                        for BIE-SP course. Back in the day, students at FIT studying in English did not have any
+                        collaboration platform, where they could find all the information they need for studies. On the
+                        other hand, there was a platform called fitwiki, however it was only in Czech. Our team's
+                        solution aims to facilitate studies at FIT by providing a tool to look up and share information,
+                        be it about a particular subject, or homework, or even a teacher. Users can enjoy private
+                        messaging tool to discuss important assignments.</p>
+                </div>
+                <div class="col offset-1">
+                    <h4>Why FITLab?</h4>
+                    <ul>
+                        <li>Easy to use</li>
+                        <li>Fully in English</li>
+                        <li>Review a subject before enrolling</li>
+                        <li>Find info on a specific teacher, and what students think of him</li>
+                        <li>Help and get help from other students</li>
+                    </ul>
+                    <div class="joinus-btn w-50">
+                        <a class="btn btn-primary btn-block mt-1" href="registration" role="button">Join us today</a>
+                    </div>
 
-        <hr>
-
-        <!-- Call to Action Section -->
-        <div class="row mb-4">
-            <div class="col-md-8">
-              <p>Join our family today, and always stay updated about what's going on at FIT.<br/>Enjoy your journey, FITter</p>
+                </div>
 
             </div>
-            <div class="col-md-4">
-                <a class="btn btn-lg btn-secondary btn-block" href="/registration">Sign Up</a>
-            </div>
+
         </div>
 
     </div>
-    <!-- /.container -->
+
+
 </@c.page>
