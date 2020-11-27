@@ -60,7 +60,7 @@
                                         <div class="col-md-6">
                                             <span <#assign x = t.averageRating()>
                                             <#if x != 0>
-                                                <#list 2..x as i>
+                                                <#list 1..x as i>
                                                     <span class="fa fa-star checked"></span>
                                                 </#list>
                                             </#if>
