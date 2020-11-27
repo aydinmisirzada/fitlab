@@ -74,7 +74,7 @@ public class TeacherController {
     @PostMapping(value = "/teachers", params = {"id","surname","name","username"})
     public String editTeac(@RequestParam int id, @RequestParam String name, @RequestParam String surname, @RequestParam String username) {
         t_repo.editTeacherDetails(id,name,surname,username);
-        return "redirect:/teacher";
+        return "redirect:/teachers";
     }
 
 

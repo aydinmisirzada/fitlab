@@ -28,11 +28,6 @@ public class SubjectListController {
         return "subjects";
     }
 
-    @GetMapping("/")
-    public String subjectListIndex(Model model) {
-        model.addAttribute("subject", s_repo.SearchList());
-        return "index";
-    }
 
     /**
      *  This method is used to add a subject to the database
