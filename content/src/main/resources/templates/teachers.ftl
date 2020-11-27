@@ -25,7 +25,8 @@
                                 <form action="/teachers" method="post">
                                     <input type="hidden" name="_csrf" value="${_csrf.token}"/>
                                     <input type="hidden" name="id" value="${t.getId()}"/>
-                                    <div class="form-row mb-1">
+
+                                    <div class="form-row" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
                                         <div class="col">
                                             <input type="text" name="name" class="form-control myform editable pl-1"
                                                    value="${t.getName()}"
@@ -39,6 +40,41 @@
                                                    readonly/>
                                         </div>
                                     </div>
+
+                                    <div class="form-row" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+                                        <div class="col-md-4">
+                                            <label class="card-text pl-1" >username: </label>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <input type="text" name="username" class="form-control myform editable pl-1"
+                                                   value="${t.getUsername()}"
+                                                   spellcheck="false"
+                                                   readonly/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+                                        <div class="col-md-4">
+                                            <label class="card-text pl-1" >rating: </label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <span <#assign x = t.averageRating()>
+                                            <#if x != 0>
+                                                <#list 1..x as i>
+                                                    <span class="fa fa-star checked"></span>
+
+                                                </#list>
+                                            </#if>
+                                            <#list x..4 as i>
+                                            <span class="fa fa-star"></span>
+                                            </#list></span>
+                                        </div>
+                                        <div class="col-md-2">
+                                            ${t.averageRating()}
+                                        </div>
+                                    </div>
+
+                                    <div style="padding-top: 20px"></div>
 
                                     <div class="form-row p-0 mt-3" style="display: none" id="saveButton">
                                         <div class="col-4 offset-8 mb-2 p-0">
@@ -153,4 +189,10 @@
         }
         $('#searchTeachers').on('keyup',search);
     </script>
+
+    <style>
+        .checked {
+            color: orange;
+        }
+    </style>
 </@c.page>
