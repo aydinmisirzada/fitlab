@@ -9,8 +9,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.swing.text.html.Option;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SubjectLogic implements SubjectLogicConf {
@@ -20,6 +22,8 @@ public class SubjectLogic implements SubjectLogicConf {
     UserRepository userRepository;
     @Autowired
     ContentLogic con;
+    @Autowired
+    UsersLogic usersLogic;
     public Subject SearchSubjects(String subject) {
         return repo.findByCode(subject);
     }
@@ -54,6 +58,12 @@ public class SubjectLogic implements SubjectLogicConf {
         for (int i = 0; i < contents.size(); i++)  {
             con.delContent(contents.get(i));
         }
+        List<User> users = subject.getUsers();
+
+        for (int i = 0; i < users.size(); i++) {
+            usersLogic.delAssignment(users.get(i),id);
+        }
+
         repo.delete(repo.findById(id));
     }
 
@@ -71,6 +81,8 @@ public class SubjectLogic implements SubjectLogicConf {
     }
 
     public void editSubjectDetails(int id,String code, String name,int semester){
+        if(repo.findById(id) == null)
+            return;
         if(semester == 0)
             repo.findById(id).setSemester(Semester.SUMMER);
         else if(semester == 1)
@@ -83,18 +95,26 @@ public class SubjectLogic implements SubjectLogicConf {
     }
 
     public void assignSubject(String username, String subject) {
-        User u = userRepository.findByUsername(username).get();
+        Optional<User> u = userRepository.findByUsername(username);
+
+        if(u.equals(Optional.empty()))
+            return;
+
+        User user = u.get();
         Subject sub = repo.findByCode(subject);
-        sub.AddUser(u);
-        u.AddSubject(sub);
+        sub.AddUser(user);
+        user.AddSubject(sub);
         repo.save(sub);
-        userRepository.save(u);
+        userRepository.save(user);
     }
 
     public boolean assignedSubejct(Subject sub,String username) {
-        User tmp = userRepository.findByUsername(username).get();
+        Optional<User> tmp = userRepository.findByUsername(username);
+        if(tmp.equals(Optional.empty())) {
+            return false;
+        }
         for ( User u : sub.getUsers()) {
-            if ( u.equals(tmp)) {
+            if ( u.equals(tmp.get())) {
                 return  true;
             }
         }

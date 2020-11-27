@@ -79,6 +79,8 @@ public class UsersLogic implements UsersLogicInterface {
 
     public void delAssignment(User u, int id){
         Subject subject = subjectRepository.findById(id);
+        if(subject == null)
+            return;
         subject.delUser(u);
         u.delSubject(subject);
         subjectRepository.save(subject);

@@ -1,6 +1,7 @@
 package fitlab.Data.Model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -21,7 +22,7 @@ public class Subject {
     private List<Content> contentList;
 
     @ManyToMany(mappedBy = "subjects")
-    private List<User> users;
+    private List<User> users = new ArrayList<User>();
 
     public Subject() {
     }

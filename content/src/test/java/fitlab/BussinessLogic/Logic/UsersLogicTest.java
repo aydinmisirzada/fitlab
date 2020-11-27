@@ -2,7 +2,9 @@ package fitlab.BussinessLogic.Logic;
 
 import fitlab.Data.Model.OwnUserDetails;
 import fitlab.Data.Model.Role;
+import fitlab.Data.Model.Subject;
 import fitlab.Data.Model.User;
+import fitlab.Data.Repository.SubjectRepository;
 import fitlab.Data.Repository.UserRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -31,6 +33,9 @@ class UsersLogicTest {
 
     @Mock
     private UserRepository userRepository;
+
+    @Mock
+    private SubjectRepository subjectRepository;
 
     @BeforeEach
     public void setup(){
@@ -235,4 +240,26 @@ class UsersLogicTest {
         when(userRepository.findAll()).thenReturn(users);
         Assertions.assertNotNull(usersLogic.getAllUsers());
     }
+
+    @Test
+    @DisplayName("delAssingment Should Delete Subject From User")
+    void delAssingmentShouldDeleteSubjectFromUser(){
+        User u = new User();
+        Subject sub  = new Subject();
+        u.addSubject(sub);
+        when(subjectRepository.findById(anyInt())).thenReturn(sub);
+        usersLogic.delAssignment(u,0);
+        Assertions.assertEquals(0,u.getSubjects().size());
+    }
+
+    @Test
+    @DisplayName("delAssingment Should Not Change List Of Subjects From User If There Is No Such Subject")
+    void delAssingmentShouldChangeListOfSubjectsFromUserIfThereIsNoSuchSubject(){
+        User u = new User();
+        Subject sub  = new Subject();
+        u.addSubject(sub);
+        usersLogic.delAssignment(u,5);
+        Assertions.assertEquals(1,u.getSubjects().size());
+    }
+
 }

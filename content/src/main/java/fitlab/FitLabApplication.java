@@ -14,8 +14,8 @@ public class FitLabApplication extends SpringBootServletInitializer {
     public static void main(String[] args) {
         SpringApplication.run(FitLabApplication.class, args);
     }
-    /*@Autowired
-    UserRepository user;*/
+
+
     @Autowired
     RegistrationLogic registrationLogic;
 
@@ -36,19 +36,6 @@ public class FitLabApplication extends SpringBootServletInitializer {
         u.setPassword("root");
         registrationLogic.addAdmin(u);
     }
-    /*@Bean
-    public CommandLineRunner data() {
-        return (args) -> {
-            User u = new User();
 
-            u.setEmail("some@m");
-            u.setUsername("root");
-            u.setName("root");
-            u.setSurname("root");
-            u.setPhone("1");
-            u.setPassword("root");
-            registrationLogic.addAdmin(u);
 
-        };
-    }*/
 }

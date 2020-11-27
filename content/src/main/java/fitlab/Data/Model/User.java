@@ -1,6 +1,7 @@
 package fitlab.Data.Model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 // User entity
@@ -21,7 +22,7 @@ public class User{
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable
-    private List<Subject> subjects;
+    private List<Subject> subjects = new ArrayList<Subject>();
 
     public void AddSubject(Subject sub){
         subjects.add(sub);
