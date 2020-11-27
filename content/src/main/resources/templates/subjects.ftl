@@ -7,7 +7,10 @@
         <div class="input-group mb-4">
             <input type="text" class="form-control" id="searchSubjects" placeholder="Search Subjects">
         </div>
-        <#list subject?chunk(3) as row>
+    <div class="list-container">
+
+
+    <#list subject?chunk(3) as row>
             <div class="row">
                 <#list row as s>
                     <#assign path>${s.getCode()}</#assign>
@@ -72,6 +75,7 @@
                 </#list>
             </div>
         </#list>
+    </div>
 
         <#if isAdmin>
             <!-- list of all subjects -->

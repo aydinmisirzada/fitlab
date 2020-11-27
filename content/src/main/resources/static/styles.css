@@ -151,3 +151,9 @@ footer {
 footer .copyright-text {
   font-size: 1.5em;
 }
+
+.list-container{
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 60vh;
+}
