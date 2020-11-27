@@ -3,7 +3,7 @@
 <#include "parts/security.ftl">
 
 <@c.page " | " + subject.getCode()>
-    <div style="height:10%"></div>
+    <div style="height:7%"></div>
     <div class="container" id="cardSection">
 
         <div class="card mx-auto" style="width: 60%">

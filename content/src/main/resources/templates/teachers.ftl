@@ -3,7 +3,7 @@
 <#include "parts/security.ftl">
 
 <@c.page " | Teachers">
-    <div style="height:10%"></div>
+    <div style="height:7%"></div>
     <div class="container" id="cardSection">
         <div class="input-group mb-4">
             <input type="text" class="form-control" id="searchTeachers" placeholder="Search Teachers">

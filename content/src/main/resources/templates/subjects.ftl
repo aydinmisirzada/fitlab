@@ -2,7 +2,7 @@
 <#import "parts/form.ftl" as form>
 <#include "parts/security.ftl">
 <@c.page " | Subjects">
-    <div style="height:10%"></div>
+    <div style="height:7%"></div>
     <div class="container" id="cardSection">
         <div class="input-group mb-4">
             <input type="text" class="form-control" id="searchSubjects" placeholder="Search Subjects">
@@ -40,6 +40,7 @@
                                         <select form="subject" name="semester" style="display: none">
                                             <option value="0">Summer</option>
                                             <option value="1">Winter</option>
+                                            <option value="2">Both</option>
                                         </select>
                                     </div>
 

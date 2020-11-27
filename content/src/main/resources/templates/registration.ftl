@@ -1,7 +1,7 @@
 <#import "parts/common.ftl" as c>
 
 <@c.page " | Registration">
-    <div style="height:10%"></div>
+    <div style="height:7%"></div>
     <div class="container" id="cardSection">
 
         <div class="card mx-auto align-items-center" style="width: 25rem;">
