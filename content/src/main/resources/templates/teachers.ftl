@@ -62,7 +62,6 @@
                                             <#if x != 0>
                                                 <#list 1..x as i>
                                                     <span class="fa fa-star checked"></span>
-
                                                 </#list>
                                             </#if>
                                             <#list x..4 as i>

@@ -30,7 +30,7 @@
 
                                     <div class="form-row mb-1" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
                                         <div class="col-md-4">
-                                            <p class="card-text pl-1" style="font-size: 1.50rem; font-weight: 500;">Code: </p>
+                                            <p class="card-text" style="font-size: 1.50rem; font-weight: 500;">Code: </p>
                                         </div>
                                         <div class="col-md-8 left">
                                             <input type="text" name="code" class="form-control myform editable pl-1"
@@ -40,7 +40,7 @@
                                     </div>
                                     <div class="form-row" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
                                         <div class="col-md-4">
-                                            <p class="card-text pl-1">Name: </p>
+                                            <p class="card-text">Name: </p>
                                         </div>
                                         <div class="col-md-8 left>">
                                             <input type="text" name="name" class="form-control myform editable pl-1"
