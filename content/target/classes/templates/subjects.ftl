@@ -49,7 +49,13 @@
                                         </div>
                                     </div>
                                     <div class="form-row">
-                                        <p class="card-text pl-1">Semester: ${s.getSemester()}</p>
+                                        <#if s.getSemester()=="WINTER_SUMMER">
+                                        <p class="card-text pl-1">Semester: Both</p>
+                                        <#elseif s.getSemester()=="SUMMER">
+                                        <p class="card-text pl-1">Semester: Summer</p>
+                                        <#elseif s.getSemester()=="WINTER">
+                                        <p class="card-text pl-1">Semester: Winter</p>
+                                        </#if>
                                         <#assign sem>${s.getSemester()}</#assign>
                                         <select form="subject" name="semester" style="display: none">
                                             <option value="0">Summer</option>

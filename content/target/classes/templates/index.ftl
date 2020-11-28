@@ -62,7 +62,8 @@
                 <h4>Subjects at FIT</h4>
             </div>
             <div class="card-deck">
-                <#assign subjects = [subject[0],subject[1],subject[2]]>
+                <#if subjectSet?size gt 2>
+                <#assign subjects = [subjectSet[0],subjectSet[1],subjectSet[2]]>
                 <#list subjects as s>
 
                     <div class="card">
@@ -72,6 +73,7 @@
                         </div>
                     </div>
                 </#list>
+                </#if>
             </div>
             <a class="btn btn-primary mt-3" href="subjects" role="button">See all</a>
         </div>

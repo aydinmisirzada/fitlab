@@ -28,6 +28,7 @@ public class SubjectListController {
         return "subjects";
     }
 
+
     /**
      *  This method is used to add a subject to the database
      * @param code This is a code of the subject written in text form

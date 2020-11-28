@@ -49,7 +49,13 @@
                                         </div>
                                     </div>
                                     <div class="form-row">
-                                        <p class="card-text pl-1">Semester: ${s.getSemester()}</p>
+                                        <#if s.getSemester()=="WINTER_SUMMER">
+                                        <p class="card-text pl-1">Semester: Both</p>
+                                        <#elseif s.getSemester()=="SUMMER">
+                                        <p class="card-text pl-1">Semester: Summer</p>
+                                        <#elseif s.getSemester()=="WINTER">
+                                        <p class="card-text pl-1">Semester: Winter</p>
+                                        </#if>
                                         <#assign sem>${s.getSemester()}</#assign>
                                         <select form="subject" name="semester" style="display: none">
                                             <option value="0">Summer</option>
@@ -57,18 +63,13 @@
                                             <option value="2">Both</option>
                                         </select>
                                     </div>
-
                                     <div class="form-row p-0" style="display: none" id="saveButton">
                                         <div class="col-4 offset-8 mb-2 p-0">
                                             <button class="btn btn-primary"  style="float: right;" > Save </button>
                                         </div>
                                     </div>
-
-
                                 </form>
-
                                 <@form.form_template path="/subjects" name = "id" value = "${s.getId()}" href ="subjects/${path}" />
-
                             </div>
                         </div>
                     </div>
