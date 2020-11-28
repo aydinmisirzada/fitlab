@@ -7,7 +7,10 @@
         <div class="input-group mb-4">
             <input type="text" class="form-control" id="searchSubjects" placeholder="Search Subjects">
         </div>
-        <#list subject?chunk(3) as row>
+    <div class="list-container">
+
+
+    <#list subject?chunk(3) as row>
             <div class="row">
                 <#list row as s>
                     <#assign path>${s.getCode()}</#assign>
@@ -24,15 +27,26 @@
 
                                     <input type="hidden" name="_csrf" value="${_csrf.token}"/>
                                     <input type="hidden" name="id" value="${s.getId()}"/>
-                                    <div class="form-row mb-1">
-                                        <input type="text" name="code" class="form-control myform editable pl-1"
-                                               value="${s.getCode()}"
-                                               spellcheck="false" style="font-size: 1.25rem; font-weight: 500;" readonly/>
+
+                                    <div class="form-row mb-1" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+                                        <div class="col-md-4">
+                                            <p class="card-text" style="font-size: 1.50rem; font-weight: 500;">Code: </p>
+                                        </div>
+                                        <div class="col-md-8 left">
+                                            <input type="text" name="code" class="form-control myform editable pl-1"
+                                                   value="${s.getCode()}"
+                                                   spellcheck="false" style="font-size: 1.25rem; font-weight: 500;" readonly/>
+                                        </div>
                                     </div>
-                                    <div class="form-row">
-                                        <input type="text" name="name" class="form-control myform editable pl-1"
-                                               value="${s.getName()}"
-                                               spellcheck="false" readonly/>
+                                    <div class="form-row" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+                                        <div class="col-md-4">
+                                            <p class="card-text">Name: </p>
+                                        </div>
+                                        <div class="col-md-8 left>">
+                                            <input type="text" name="name" class="form-control myform editable pl-1"
+                                                   value="${s.getName()}"
+                                                   spellcheck="false" readonly/>
+                                        </div>
                                     </div>
                                     <div class="form-row">
                                         <p class="card-text pl-1">Semester: ${s.getSemester()}</p>
@@ -50,6 +64,7 @@
                                         </div>
                                     </div>
 
+
                                 </form>
 
                                 <@form.form_template path="/subjects" name = "id" value = "${s.getId()}" href ="subjects/${path}" />
@@ -60,6 +75,7 @@
                 </#list>
             </div>
         </#list>
+    </div>
 
         <#if isAdmin>
             <!-- list of all subjects -->

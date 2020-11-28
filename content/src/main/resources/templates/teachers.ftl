@@ -57,6 +57,8 @@
                                         <div class="col-md-4">
                                             <label class="card-text pl-1" >rating: </label>
                                         </div>
+
+                                        <#if t.getReviewList()?size gt 2>
                                         <div class="col-md-6">
                                             <span <#assign x = t.averageRating()>
                                             <#if x != 0>
@@ -66,11 +68,15 @@
                                             </#if>
                                             <#list x..4 as i>
                                             <span class="fa fa-star"></span>
-                                            </#list></span>
+                                            </#list>
+                                            </span>
                                         </div>
                                         <div class="col-md-2">
                                             ${t.averageRating()}
                                         </div>
+                                        <#else>
+                                            <div class="col-md-8">Not rated yet</div>
+                                        </#if>
                                     </div>
 
                                     <div style="padding-top: 20px"></div>

@@ -24,6 +24,18 @@
 
                 </form>
                 </#if>
+                <#if assigned == false>
+                <form action="/subjects/${subject.getCode()}/addAssignment" method="post">
+                    <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+                    <button type="submit" class="btn btn-secondary">Assign for this subject</button>
+                </form>
+                </#if>
+                <#if assigned == true>
+                    <form action="/subjects/${subject.getCode()}/delAssignment" method="post">
+                        <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+                        <button type="submit" class="btn btn-secondary">Unassign for this subject</button>
+                    </form>
+                </#if>
                 <br/>
                 <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#homeworkSection"
                         aria-expanded="false" aria-controls="homeworkSection">Homeworks
@@ -123,6 +135,8 @@
     </div>
 
     </div>
+
+
 
 </@c.page>
 
