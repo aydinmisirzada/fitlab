@@ -1,11 +1,13 @@
 package fitlab.Data.Model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 // User entity
 @Entity
 @Table(name = "user")
-public class User {
+public class User{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -17,6 +19,18 @@ public class User {
     private String email;
     private String password;
     private String phone;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable
+    private List<Subject> subjects = new ArrayList<Subject>();
+
+    public void AddSubject(Subject sub){
+        subjects.add(sub);
+    }
+
+    public List<Subject> getSubjects() {
+        return subjects;
+    }
 
     @Enumerated(EnumType.STRING)
     private Role role;
@@ -32,6 +46,14 @@ public class User {
         this.pathId = user.getPathId();
         this.role = user.getRole();
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof User)
+            return this.getId() == ((User) obj).getId();
+        return false;
+    }
+
 
     public boolean isAdmin(){
         return role.equals(Role.ADMIN);
@@ -84,8 +106,12 @@ public class User {
     public void setUsername(String username) {
         this.username = username;
     }
-
-
+    public void addSubject(Subject subject) {
+        subjects.add(subject);
+    }
+    public void delSubject(Subject subject) {
+        subjects.remove(subject);
+    }
     public User() {
     }
 

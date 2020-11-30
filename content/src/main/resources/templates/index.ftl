@@ -45,49 +45,46 @@
     <div class="container">
 
         <h1 class="my-4">Welcome to FITLab</h1>
-
-        <!-- Marketing Icons Section -->
+        <#if subjectSet?size gt 2>
         <div class="row">
             <div class="col-lg-4 mb-4">
                 <div class="card h-100">
-                    <h4 class="card-header">PA1</h4>
+                    <h4 class="card-header">${subjectSet[0].getName()}</h4>
                     <div class="card-body">
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse
-                            necessitatibus neque.</p>
+                        <p class="card-text">${subjectSet[0].getDescription()}</p>
                     </div>
                     <div class="card-footer">
-                        <a href="#" class="btn btn-primary">Learn More</a>
+                        <a href="subjects/${subjectSet[0].getCode()}" class="btn btn-primary">Learn More</a>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 mb-4">
                 <div class="card h-100">
-                    <h4 class="card-header">SI1.2</h4>
+                    <h4 class="card-header">${subjectSet[1].getName()}</h4>
                     <div class="card-body">
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ipsam
-                            eos, nam perspiciatis natus commodi similique totam consectetur praesentium molestiae atque
-                            exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.</p>
+                        <p class="card-text">${subjectSet[1].getDescription()}</p>
+
                     </div>
                     <div class="card-footer">
-                        <a href="#" class="btn btn-primary">Learn More</a>
+                        <a href="subjects/${subjectSet[1].getCode()}" class="btn btn-primary">Learn More</a>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 mb-4">
                 <div class="card h-100">
-                    <h4 class="card-header">TJV</h4>
+                    <h4 class="card-header">${subjectSet[2].getName()}</h4>
                     <div class="card-body">
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse
-                            necessitatibus neque.</p>
+                        <p class="card-text">${subjectSet[2].getDescription()}</p>
+
                     </div>
                     <div class="card-footer">
-                        <a href="#" class="btn btn-primary">Learn More</a>
+                        <a href="subjects/${subjectSet[2].getCode()}" class="btn btn-primary">Learn More</a>
                     </div>
                 </div>
             </div>
         </div>
         <!-- /.row -->
-
+        </#if>
 
         <!-- Features Section -->
         <div class="row">

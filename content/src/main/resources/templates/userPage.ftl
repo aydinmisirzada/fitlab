@@ -85,41 +85,22 @@
                     <div class="card-body">
                         <h5 class="card-title">My Subjects</h5>
                         <div class="row">
+                            <#list user.getSubjects() as subject>
                             <div class="col">
                                 <div class="card shadow-sm p-1 mb-2 bg-white rounded">
                                     <div class="card-body">
-                                        <h5 class="card-title">BIE-SI1</h5>
+                                        <h5 class="card-title">${subject.getName()}</h5>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col">
-                                <div class="card shadow-sm p-1 mb-2 bg-white rounded">
-                                    <div class="card-body">
-                                        <h5 class="card-title">BIE-SP1</h5>
-                                    </div>
+                                <div>
+                                    <form action="/users/${user.getPathId()}" method="post">
+                                        <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+                                        <input type="hidden" name="id" value="${subject.getId()}">
+                                        <button type="submit" class="btn btn-secondary">del</button>
+                                    </form>
                                 </div>
-                            </div>
-                            <div class="col">
-                                <div class="card shadow-sm p-1 mb-2 bg-white rounded">
-                                    <div class="card-body">
-                                        <h5 class="card-title">BIE-SP2</h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card shadow-sm p-1 mb-2 bg-white rounded">
-                                    <div class="card-body">
-                                        <h5 class="card-title">BIE-PA1</h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card shadow-sm p-1 mb-2 bg-white rounded">
-                                    <div class="card-body">
-                                        <h5 class="card-title">BIE-OSY</h5>
-                                    </div>
-                                </div>
-                            </div>
+                            </#list>
                         </div>
                     </div>
                 </div>
