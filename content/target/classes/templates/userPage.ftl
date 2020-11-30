@@ -1,8 +1,8 @@
 <#import "parts/common.ftl" as c>
 <#include "parts/security.ftl">
 <@c.page " | "+ user.getUsername()>
+    <div style="height:10%"></div>
     <div class="container" id="cardSection">
-        <div style="padding-top: 100px"></div>
         <div class="row">
 
             <div class="col-4">
@@ -30,7 +30,8 @@
                             </div>
                             <div class="form-row">
                                 <div class="col">
-                                    <input type="text" id="username" class="form-control myform editable" name="username"
+                                    <input type="text" id="username" class="form-control myform editable"
+                                           name="username"
                                            value="${user.getUsername()}" style="text-align: center" readonly>
                                 </div>
                             </div>
@@ -52,9 +53,9 @@
                                            value="${user.getPathId()}" style="text-align: center" readonly>
                                 </div>
                             </div>
-                            <div class="form-row" <#if !isAdmin> hidden </#if> >
+                            <div class="form-row" id="isAdmin" style="display: none;" <#if !isAdmin> hidden </#if> >
                                 <div class="col" style="text-align: center">
-                                    <input type="checkbox" class="form-check-input" id="userRole" name="userRole"
+                                    <input type="checkbox" class="form-check-input"  id="userRole" name="userRole"
                                            <#if user.isAdmin()>checked </#if> disabled>
                                     <label class="form-check-label" for="userRole">Admin</label>
                                 </div>
@@ -70,7 +71,9 @@
                             <div class="form-row">
                                 <div class="col">
                                     <div class="text-center">
-                                        <button type="submit" class="btn btn-primary" id="saveButton" style="visibility: hidden">Save</button>
+                                        <button type="submit" class="btn btn-primary" id="saveButton"
+                                                style="visibility: hidden">Save
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -110,37 +113,39 @@
     </div>
 
     <script>
+        $("#editButton").on('click', function () {
+            //enable editing mode
+            if ($('.nameform').attr("readonly")) {
+                $('#saveButton').css('visibility', 'visible');
+                $('.editable').attr("readonly", false);
+                $('input[name="userRole"]').attr("disabled", false);
+                $('.editable').css({'border-bottom': '1px solid grey', 'border-radius': '0'});
+                $('.nameform').css({'font-weight': 'normal', 'padding-left': '10px', 'margin-left': '10px'});
+                $('input[name="name"]').css('text-align', 'left');
+                $('#isAdmin').css('display', '');
+                $('#editButton').addClass('editMode');
+            } else {
+                $('.editable').attr("readonly", true);
+                $('input[name="userRole"]').attr("disabled", true);
+                $('.editable').css('border', 'none transparent');
+                $('.nameform').css({'font-weight': '600', 'padding-left': '0', 'margin-left': '0'});
+                $('#saveButton').css('visibility', 'hidden');
+                $('input[name="name"]').css('text-align', 'right');
+                $('#isAdmin').css('display', 'none');
+                $('#editButton').removeClass('editMode');
+            }
+        });
 
-            $("#editButton").on('click',function(){
-                //enable editing mode
-                if ($('.nameform').attr("readonly")) {
-                    $('#saveButton').css('visibility','visible');
-                    $('.editable').attr("readonly",false);
-                    $('input[name="userRole"]').attr("disabled",false);
-                    $('.editable').css({'border-bottom':'1px solid grey','border-radius':'0'});
-                    $('.nameform').css({'font-weight':'normal','padding-left':'10px','margin-left':'10px'});
-                    $('input[name="name"]').css('text-align','left');
-                    $('#editButton').addClass('editMode');
-                } else {
-                    $('.editable').attr("readonly",true);
-                    $('input[name="userRole"]').attr("disabled",true);
-                    $('.editable').css('border','none transparent');
-                    $('.nameform').css({'font-weight':'600','padding-left':'0','margin-left':'0'});
-                    $('#saveButton').css('visibility','hidden');
-                    $('input[name="name"]').css('text-align','right');
-                    $('#editButton').removeClass('editMode');
-                }
-            });
+        $(document).ready(function () {
+            $('#username').tooltip({'trigger': 'manual', 'title': 'Username', 'placement': 'left'}).tooltip('show');
+            $('#email').tooltip({'trigger': 'manual', 'title': 'Email', 'placement': 'left'}).tooltip('show');
+            ;
+            $('#phone').tooltip({'trigger': 'manual', 'title': 'Phone', 'placement': 'left'}).tooltip('show');
+            ;
+            $('#path').tooltip({trigger: 'manual', title: 'URL', placement: 'left'}).tooltip('show');
+        });
 
 
-
-        $('#username').tooltip({'trigger': 'manual', 'title': 'Username', 'placement': 'left'}).tooltip('show');
-        $('#email').tooltip({'trigger': 'manual', 'title': 'Email', 'placement': 'left'}).tooltip('show');
-        ;
-        $('#phone').tooltip({'trigger': 'manual', 'title': 'Phone', 'placement': 'left'}).tooltip('show');
-        ;
-        $('#path').tooltip({trigger: 'manual', title: 'URL', placement: 'left'}).tooltip('show');
-        ;
     </script>
 
 

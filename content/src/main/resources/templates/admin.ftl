@@ -1,9 +1,8 @@
 <#import "parts/common.ftl" as c>
 
 <@c.page " | Dashboard">
-
+    <div style="height:10%"></div>
     <div class="container" id="cardSection">
-        <div style="padding-top: 100px"></div>
         <div class="row">
             <!-- Requests -->
             <div class="col-3 card mx-auto align-items-center shadow p-1 bg-white rounded">
