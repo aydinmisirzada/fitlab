@@ -3,7 +3,9 @@ package fitlab.BussinessLogic.Logic;
 import fitlab.BussinessLogic.Interfaces.UsersLogicInterface;
 import fitlab.Data.Model.OwnUserDetails;
 import fitlab.Data.Model.Role;
+import fitlab.Data.Model.Subject;
 import fitlab.Data.Model.User;
+import fitlab.Data.Repository.SubjectRepository;
 import fitlab.Data.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -17,21 +19,22 @@ import java.util.Optional;
 public class UsersLogic implements UsersLogicInterface {
     @Autowired
     UserRepository userRepository;
-
+    @Autowired
+    SubjectRepository subjectRepository;
     OwnUserDetails oud;
 
     public User getUserByPath(String path){
         Optional<User> u = userRepository.findByPathId(path);
 
-        if((!checkAccount(u.get().getId()) && !oud.getRole().equals(Role.ADMIN))
-                || u.equals(Optional.empty())) return null;
+        if(u.equals(Optional.empty()) ||
+                (!checkAccount(u.get().getId()) && !oud.getRole().equals(Role.ADMIN)))
+            return null;
 
         return u.get();
     }
 
     private boolean checkAccount(Integer id){
         oud = (OwnUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        if(oud.getUserId().equals(id) || oud.getRole().equals(Role.ADMIN))
         if(oud.getUserId().equals(id))
             return true;
 
@@ -72,5 +75,23 @@ public class UsersLogic implements UsersLogicInterface {
 
     public List<User> getAllUsers() {
         return userRepository.findAll();
+    }
+
+    public void delAssignment(User u, int id){
+        Subject subject = subjectRepository.findById(id);
+        if(subject == null)
+            return;
+        subject.delUser(u);
+        u.delSubject(subject);
+        subjectRepository.save(subject);
+        userRepository.save(u);
+    }
+
+    public User getUser(String username) {
+        Optional<User> u = userRepository.findByUsername(username);
+        if(u.equals(Optional.empty()))
+            return null;
+        else
+            return u.get();
     }
 }

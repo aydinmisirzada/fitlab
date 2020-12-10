@@ -1,0 +1,39 @@
+image: maven:latest
+
+stages:
+  - build
+  - test
+  - deploy
+   
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2"
+ 
+cache:
+    paths:
+        - content/.m2/
+        
+before_script:
+    - cd content
+  
+building:
+    stage: build
+    script:
+        - mvn clean install -DskipTests
+   
+testing:
+    stage: test
+    script:
+        - mvn test
+    artifacts:
+        paths:
+            - target/
+  
+# deploy-dev:
+#   stage: deploy
+#   only:
+#         - dev
+#   script:
+#     - mvn azure-webapp:deploy
+#   artifacts:
+#     paths:
+#         - target/

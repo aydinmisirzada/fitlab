@@ -28,6 +28,7 @@ public class SubjectListController {
         return "subjects";
     }
 
+
     /**
      *  This method is used to add a subject to the database
      * @param code This is a code of the subject written in text form
@@ -58,7 +59,7 @@ public class SubjectListController {
     }
 
     @PreAuthorize("hasAuthority('ADMIN')")
-    @PostMapping(value = "/subjects", params = {"id","code","name","semester"})
+    @PostMapping(value = "/edit", params = {"id","code","name","semester"})
     public String editSub(@RequestParam int id, @RequestParam String code, @RequestParam String name, @RequestParam int semester) {
         if(code.isEmpty() || name.isEmpty())
             return "errorpage";
