@@ -21,6 +21,9 @@ public class Review {
     @JoinColumn(name = "user_id")
     User user;
 
+    @ManyToOne
+    @JoinColumn(name ="subject_id")
+    Subject subject;
 
     public Review() {
     }
@@ -30,6 +33,21 @@ public class Review {
         this.text = text;
         this.user = user;
         this.teacher = teacher;
+    }
+
+    public Review(int rating, String text, User user, Subject subject) {
+        this.rating = rating;
+        this.text = text;
+        this.user = user;
+        this.subject = subject;
+    }
+
+    public Subject getSubject() {
+        return subject;
+    }
+
+    public void setSubject(Subject subject) {
+        this.subject = subject;
     }
 
     public Integer getId() {

@@ -54,7 +54,7 @@ public class RegistrationLogic implements RegistrationLogicInterface {
             return;
 
         u = userRepository.findByEmail(user.getEmail());
-        if(!u.equals(Optional.empty()))
+        if(!u.equals(Optional.empty())) 
             return;
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));

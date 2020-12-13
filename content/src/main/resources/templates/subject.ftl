@@ -24,6 +24,8 @@
 
                 </form>
                 </#if>
+                <a href= "${'subjects/' + subject.getCode() + '/reviews'}" class="col-md-4 nav-link text-dark" style="font-size:18px; font-weight:600;">Reviews</a>
+
                 <#if assigned == false>
                 <form action="/subjects/${subject.getCode()}/addAssignment" method="post">
                     <input type="hidden" name="_csrf" value="${_csrf.token}"/>

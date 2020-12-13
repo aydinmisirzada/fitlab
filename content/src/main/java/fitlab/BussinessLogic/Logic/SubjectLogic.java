@@ -2,6 +2,7 @@ package fitlab.BussinessLogic.Logic;
 
 import fitlab.BussinessLogic.Interfaces.SubjectLogicConf;
 import fitlab.Data.Model.*;
+import fitlab.Data.Repository.ReviewRepository;
 import fitlab.Data.Repository.SubjectRepository;
 import fitlab.Data.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,11 @@ public class SubjectLogic implements SubjectLogicConf {
     ContentLogic con;
     @Autowired
     UsersLogic usersLogic;
+    @Autowired
+    ReviewRepository rev;
+    @Autowired
+    UserRepository user;
+
     public Subject SearchSubjects(String subject) {
         return repo.findByCode(subject);
     }
@@ -63,6 +69,9 @@ public class SubjectLogic implements SubjectLogicConf {
         for (int i = 0; i < users.size(); i++) {
             usersLogic.delAssignment(users.get(i),id);
         }
+
+        for (Review review :subject.getReviewList())
+            rev.delete(review);
 
         repo.delete(repo.findById(id));
     }
@@ -119,6 +128,17 @@ public class SubjectLogic implements SubjectLogicConf {
             }
         }
         return false;
+    }
+
+    public void addRating(String code, int rate, String text, String username) {
+        Review r = new Review(rate, text,user.findByUsername(username).get(),repo.findByCode(code));
+        rev.save(r);
+        repo.findByCode(code).addReview(r);
+        repo.save(repo.findByCode(code));
+    }
+
+    public List<Review> getReviews(String code) {
+        return repo.findByCode(code).getReviewList();
     }
 
 

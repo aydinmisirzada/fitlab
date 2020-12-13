@@ -24,6 +24,10 @@ public class Subject {
     @ManyToMany(mappedBy = "subjects")
     private List<User> users = new ArrayList<User>();
 
+    @OneToMany(mappedBy = "subject")
+    private List<Review> reviewList;
+
+
     public Subject() {
     }
 
@@ -41,7 +45,22 @@ public class Subject {
         name = Name;
         code = Code;
     }
-
+    public List<Review> getReviewList() {
+        return reviewList;
+    }
+    public void addReview(Review review) {
+        reviewList.add(review);
+    }
+    public int averageRating() {
+        int x = 0;
+        if(reviewList.size() == 0) return 0;
+        for (Review y : reviewList) {
+            x += y.getRating();
+        }
+        if(reviewList.size() > 0)
+            x /= reviewList.size();
+        return  x;
+    }
 
     public Integer getId() {
         return id;

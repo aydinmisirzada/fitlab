@@ -1,5 +1,6 @@
 package fitlab.Presentation.Controller;
 
+import com.sun.javaws.exceptions.InvalidArgumentException;
 import fitlab.BussinessLogic.Logic.UsersLogic;
 import fitlab.Data.Model.Role;
 import fitlab.Data.Model.User;
@@ -10,6 +11,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
+public enum ErrorEnum {
+    PathEmpty = 1;
+    PathTooShort = 2;
+
+
+}
+
 
 @Controller
 @RequestMapping("/users")
@@ -29,9 +38,13 @@ public class UsersController {
 
     @RequestMapping(value = "/{pathId}", method = RequestMethod.GET)
     public String getUserPage(@PathVariable String pathId,Integer id, Model model){
-        User u = usersLogic.getUserByPath(pathId);
-        if(u==null)      // If user is not exist return "USER NOT FOUND" page
+        User u;
+        try {
+            u = usersLogic.getUserByPath(pathId);
+        } catch (IllegalArgumentException e) {
+            model.addAttribute("error", ErrorEnum.PathEmpty);
             return "errorpage";
+        }
 
         model.addAttribute("error", 0);
         model.addAttribute("user", u);

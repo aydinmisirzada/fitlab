@@ -1,6 +1,7 @@
 package fitlab.BussinessLogic.Interfaces;
 
 import fitlab.Data.Model.ContentType;
+import fitlab.Data.Model.Review;
 import fitlab.Data.Model.Semester;
 import fitlab.Data.Model.Subject;
 import org.springframework.ui.Model;
@@ -56,4 +57,6 @@ public interface SubjectLogicConf {
      void delSubject(int  id);
 
      Boolean subDuplicate(String code,String name);
+     List<Review> getReviews(String code);
+     public void addRating(String code, int rate, String text, String username);
 }
