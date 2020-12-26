@@ -41,20 +41,24 @@ public class UsersLogic implements UsersLogicInterface {
         return false;
     }
 
-    public String editUserById(User user, Boolean role) {
+    public String editUserById(User user, Boolean role){
         Optional<User> u = userRepository.findById(user.getId());
-        if(u.equals(Optional.empty())) return "une"; //user not exist
+        try {
+            if (u.equals(Optional.empty()))
+                throw new IllegalArgumentException("une"); //user not exist
+            if (!u.get().getPathId().equals(user.getPathId())) {
+                Optional<User> tmp = userRepository.findByPathId(user.getPathId());
+                if (!tmp.equals(Optional.empty()))
+                    throw new IllegalArgumentException("path");
+            } else if (!u.get().getUsername().equals(user.getUsername())) {
+                Optional<User> tmp = userRepository.findByUsername(user.getUsername());
+                if (!tmp.equals(Optional.empty()))
+                    throw new IllegalArgumentException("username"); //username exist
+            }
+        } catch (IllegalArgumentException e){
+            return e.getMessage();
+        }
 
-        if(!u.get().getPathId().equals(user.getPathId())){
-            Optional<User> tmp = userRepository.findByPathId(user.getPathId());
-            if(!tmp.equals(Optional.empty()))
-                return "path";  //path exist
-        }
-        else if(!u.get().getUsername().equals(user.getUsername())){
-            Optional<User> tmp = userRepository.findByUsername(user.getUsername());
-            if(!tmp.equals(Optional.empty()))
-                return "username";  //username exist
-        }
         if(role)
             user.setRole(Role.ADMIN);
         else

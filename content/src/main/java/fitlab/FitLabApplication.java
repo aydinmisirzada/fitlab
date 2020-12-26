@@ -15,7 +15,6 @@ public class FitLabApplication extends SpringBootServletInitializer {
         SpringApplication.run(FitLabApplication.class, args);
     }
 
-
     @Autowired
     RegistrationLogic registrationLogic;
 

@@ -1,13 +1,15 @@
 package fitlab.Presentation.Controller;
 
 import fitlab.BussinessLogic.Logic.UsersLogic;
-import fitlab.Data.Model.Role;
 import fitlab.Data.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -53,7 +55,7 @@ public class UsersController {
             return "userPage";
         }
 
-        return "redirect:/users/"+user.getPathId();
+        return "redirect:/users/" + user.getPathId();
     }
 
     @RequestMapping(value = "/{pathId}", method = RequestMethod.POST, params = {"id"})
