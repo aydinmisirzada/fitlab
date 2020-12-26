@@ -43,18 +43,23 @@ public class UsersController {
     @RequestMapping(value = "/userEdit", method = RequestMethod.POST)
     public String editUserInfo(User user, Boolean userRole, Model model){
         if(userRole == null) userRole = false;
-        String s = usersLogic.editUserById(user, userRole);
-        if(s.equals("une"))
-            return "errorpage";
-        else if(s.equals("path")) {
-            model.addAttribute("error", 1);
-            return "userPage";
+        String s ;
+        try {
+            usersLogic.editUserById(user, userRole);
         }
-        else if(s.equals("username")) {
-            model.addAttribute("error", 2);
-            return "userPage";
+        catch (IllegalArgumentException e){
+             s = e.getMessage();
+            if(s.equals("une"))
+                return "errorpage";
+            else if(s.equals("path")) {
+                model.addAttribute("error", 1);
+                return "userPage";
+            }
+            else if(s.equals("username")) {
+                model.addAttribute("error", 2);
+                return "userPage";
+            }
         }
-
         return "redirect:/users/" + user.getPathId();
     }
 
