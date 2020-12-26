@@ -28,7 +28,8 @@ public class UsersLogic implements UsersLogicInterface {
 
         if(u.equals(Optional.empty()) ||
                 (!checkAccount(u.get().getId()) && !oud.getRole().equals(Role.ADMIN)))
-            return null;
+            throw new NullPointerException("User does not exist");
+//            return null;
 
         return u.get();
     }
