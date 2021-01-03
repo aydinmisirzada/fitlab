@@ -1,4 +1,7 @@
 
+body{
+  font-family: 'Open Sans', sans-serif;
+}
 .carousel-item {
   height: 65vh;
   min-height: 300px;
@@ -32,6 +35,7 @@
   background-color: transparent;
 }
 
+
 .nameform {
   font-weight: 600;
   font-size: 1.5em;
@@ -60,7 +64,7 @@
 }
 
 .badge-right {
-  align-items: right;
+  /*align-items: right;*/
   text-align: right;
 }
 
@@ -156,4 +160,19 @@ footer .copyright-text {
   overflow-y: auto;
   overflow-x: hidden;
   height: 60vh;
+}
+
+.center{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-content: center;
+}
+
+.text-left{
+  text-align: left;
+}
+
+h4 span{
+  color: white;
 }

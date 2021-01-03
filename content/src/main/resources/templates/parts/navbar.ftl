@@ -3,7 +3,7 @@
     <!-- Navigation -->
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg fixed-top shadow">
-            <img src="/images/FITLabLogo.svg">
+            <img src="/images/FITLabLogo.svg" style="max-height: 30px">
             <a class="navbar-brand mr-0" href="/">FITLab</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
                     aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
