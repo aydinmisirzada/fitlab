@@ -47,6 +47,12 @@ public class ReviewPageController {
         return "redirect:/teachers/" + id + "/reviews";
     }
 
+    @PostMapping(value = "/teachers/{id}/reviews/edit", params = "rating")
+    public String editTeacherRating(@PathVariable int id, @RequestParam int rating, @RequestParam String text, Authentication auth, Model model) {
+        t_repo.editRating(id, rating, text, auth.getName());
+        return "redirect:/teachers/" + id + "/reviews";
+    }
+
     @RequestMapping("/subjects/{subject}/reviews")
     public String subjectReviewPage(@PathVariable String subject, Model model, Authentication auth) {
         model.addAttribute("reviews",subjectLogicConf.getReviews(subject));
@@ -59,6 +65,14 @@ public class ReviewPageController {
     @PostMapping(value = "/subjects/{subject}/reviews", params = "rating")
     public String subjectRating(@PathVariable String subject, @RequestParam int rating, @RequestParam String text, Authentication auth) {
         subjectLogicConf.addRating(subject, rating, text, auth.getName());
+        return "redirect:/subjects/" + subject + "/reviews";
+    }
+
+
+
+    @PostMapping(value = "/subjects/{subject}/reviews/edit", params = "rating")
+    public String editSubjectRating(@PathVariable String subject, @RequestParam int rating, @RequestParam String text, Authentication auth) {
+        subjectLogicConf.editRating(subject, rating, text, auth.getName());
         return "redirect:/subjects/" + subject + "/reviews";
     }
 

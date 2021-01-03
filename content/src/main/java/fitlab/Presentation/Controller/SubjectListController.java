@@ -5,9 +5,9 @@ import fitlab.BussinessLogic.Logic.UsersLogic;
 import fitlab.Data.Model.Semester;
 import fitlab.Data.Model.User;
 import fitlab.Data.Repository.UserRepository;
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +23,7 @@ public class SubjectListController {
     @Autowired
     SubjectLogic s_repo;
     @Autowired
-    UserRepository userRepository;
+    UsersLogic usersLogic;
     /**
      * This method is used to show subject list page
      * @param model This is a variable used by the framework
@@ -31,7 +31,7 @@ public class SubjectListController {
      */
     @GetMapping("/subjects")
     public String subjectList(Model model, Authentication auth) {
-        Optional< User> u = userRepository.findByUsername(auth.name());
+        User u = usersLogic.getUser(auth.getName());
         model.addAttribute("user", u);
         model.addAttribute("subject", s_repo.SearchList());
         return "subjects";

@@ -33,6 +33,7 @@ public interface TeacherLogicConf {
      Boolean tecDuplicate(String username);
      Teacher SearchTeacher(int id);
      void addRating(int id, int rate, String text, String username);
+     void editRating (int id, int rate, String text, String username);
      List<Review> getReviews(int id);
      Teacher getTeacher(int id);
      boolean findDup(int id, String username);

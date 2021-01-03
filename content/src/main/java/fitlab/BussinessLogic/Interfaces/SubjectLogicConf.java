@@ -59,4 +59,5 @@ public interface SubjectLogicConf {
      Boolean subDuplicate(String code,String name);
      List<Review> getReviews(String code);
      public void addRating(String code, int rate, String text, String username);
+     public void editRating (String code, int rate, String text, String username);
 }

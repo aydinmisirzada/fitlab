@@ -16,6 +16,8 @@ public class MessageLogic implements MessageLogicConf {
 
 
     public void pageAddMessage(int page_id, String author, String text) {
+        if(author.length() == 0 || text.length() == 0)
+            throw new IllegalArgumentException("Parameters are invalid");
         Message message = new Message(text,author,con_repo.findById(page_id));
         mes_repo.save(message);
         con_repo.save(con_repo.findById(page_id));
