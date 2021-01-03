@@ -15,7 +15,6 @@ public class FitLabApplication extends SpringBootServletInitializer {
         SpringApplication.run(FitLabApplication.class, args);
     }
 
-
     @Autowired
     RegistrationLogic registrationLogic;
 
@@ -34,7 +33,12 @@ public class FitLabApplication extends SpringBootServletInitializer {
         u.setSurname("root");
         u.setPhone("1");
         u.setPassword("root");
-        registrationLogic.addAdmin(u);
+        try {
+            registrationLogic.addAdmin(u);
+        }
+        catch (IllegalArgumentException e) {
+            System.err.println("Create ADMIN failed at all : "+e.getMessage());
+        }
     }
 
 
