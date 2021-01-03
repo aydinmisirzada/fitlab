@@ -58,7 +58,7 @@ public class RegistrationLogic implements RegistrationLogicInterface {
 
         u = userRepository.findByEmail(user.getEmail());
         if(!u.equals(Optional.empty()))
-            throw new IllegalArgumentException((u.get().isAdmin() ? "ADMIN" : "USER") + " with same username exist");
+            throw new IllegalArgumentException((u.get().isAdmin() ? "ADMIN" : "USER") + " with same email exist");
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole(Role.ADMIN);

@@ -43,15 +43,15 @@ class UsersLogicTest {
     }
 
     @Test
-    @DisplayName("getUserByPath Should Not Find User And Return Null")
-    void getUserByPathShouldNotFindUserAndReturnNull() {
+    @DisplayName("getUserByPath Should Not Find User And Throw Exception")
+    void getUserByPathShouldNotFindUserAndThrowException() {
         when(userRepository.findByPathId(anyString())).thenReturn(Optional.empty());
-        Assertions.assertNull(usersLogic.getUserByPath("a"));
+        Assertions.assertThrows(NullPointerException.class, () -> usersLogic.getUserByPath("a"));
     }
 
     @Test
-    @DisplayName("getUserByPath Should Find Different User And Return Null")
-    void getUserByPathShouldFindDifferentUserAndReturnNull() {
+    @DisplayName("getUserByPath Should Find Different User And Throw Exception")
+    void getUserByPathShouldFindDifferentUserAndThrowException() {
         User u = new User();
         u.setPathId("root");
         u.setRole(Role.USER);
@@ -73,12 +73,12 @@ class UsersLogicTest {
 
         when(SecurityContextHolder.getContext().getAuthentication().getPrincipal()).thenReturn(oud);
 
-        Assertions.assertNull(usersLogic.getUserByPath("a"));
+        Assertions.assertThrows(NullPointerException.class, () -> usersLogic.getUserByPath("a"));
     }
 
     @Test
-    @DisplayName("getUserByPath Should Find Admin And Return User")
-    void getUserByPathShouldFindAdminAndReturnUser(){
+    @DisplayName("getUserByPath Should Find Admin And Return User Object")
+    void getUserByPathShouldFindAdminAndReturnUserObject(){
         User u = new User();
         u.setPathId("root");
         u.setRole(Role.ADMIN);
@@ -104,15 +104,17 @@ class UsersLogicTest {
     }
 
     @Test
-    @DisplayName("editUserById Should Not Find User And Return User Not Exist")
-    void editUserByIdShouldNotFindUserAndReturnUserNotExist() {
+    @DisplayName("editUserById Should Not Find User And Throw Exception User Not Exist")
+    void editUserByIdShouldNotFindUserAndThrowExceptionUserNotExist() {
         when(userRepository.findById(anyInt())).thenReturn(Optional.empty());
-        Assertions.assertEquals("une", usersLogic.editUserById(new User(), true));
+        IllegalArgumentException ex = Assertions.assertThrows(  IllegalArgumentException.class,
+                                                                () -> usersLogic.editUserById(new User(), true));
+        Assertions.assertTrue(ex.getMessage().equals("une"));
     }
 
     @Test
-    @DisplayName("editUserById Should Not Find Path And Return Path Exist")
-    void editUserByIdShouldFindPathAndReturnPathExist() {
+    @DisplayName("editUserById Should Not Find Path And Throw Exception Path Exist")
+    void editUserByIdShouldFindPathAndThrowExceptionPathExist() {
         User u1 = new User();
         User u = new User();
         u.setPathId("root");
@@ -121,7 +123,11 @@ class UsersLogicTest {
         u1.setPathId("roota");
         when(userRepository.findById(1)).thenReturn(Optional.of(u1));
         when(userRepository.findByPathId(anyString())).thenReturn(Optional.of(u));
-        Assertions.assertEquals("path", usersLogic.editUserById(u, true));
+
+        IllegalArgumentException ex = Assertions.assertThrows(  IllegalArgumentException.class,
+                () -> usersLogic.editUserById(u, true));
+
+        Assertions.assertTrue(ex.getMessage().equals("path"));
     }
 
     @Test
@@ -158,7 +164,7 @@ class UsersLogicTest {
         SecurityContextHolder.setContext(securityContext);
         when(SecurityContextHolder.getContext().getAuthentication().getPrincipal()).thenReturn(oud);
 
-        Assertions.assertEquals("true", usersLogic.editUserById(u, true));
+        Assertions.assertTrue( usersLogic.editUserById(u, true));
 
         verify(userRepository, times(1)).save(u1);
     }
@@ -200,14 +206,14 @@ class UsersLogicTest {
         when(authentication.getPrincipal()).thenReturn(oud);
         when(oud.getUserId()).thenReturn(2);
 
-        Assertions.assertEquals("true", usersLogic.editUserById(u, true));
+        Assertions.assertTrue( usersLogic.editUserById(u, true));
 
         verify(oud, times(1)).setOwnUserDetails(u1);
     }
 
     @Test
-    @DisplayName("editUserById Should Not Find Username And Return Username Exist")
-    void editUserByIdShouldFindUsernameAndReturnUsernameExist() {
+    @DisplayName("editUserById Should Not Find Username And Throw Exception Username Exist")
+    void editUserByIdShouldFindUsernameAndThrowExceptionUsernameExist() {
         User u1 = new User();
         User u = new User();
         u.setPathId("root");
@@ -220,7 +226,11 @@ class UsersLogicTest {
         u1.setUsername("roota");
         when(userRepository.findById(anyInt())).thenReturn(Optional.of(u1));
         when(userRepository.findByUsername(anyString())).thenReturn(Optional.of(u1));
-        Assertions.assertEquals("username", usersLogic.editUserById(u, true));
+
+        IllegalArgumentException ex = Assertions.assertThrows(  IllegalArgumentException.class,
+                () -> usersLogic.editUserById(u, true));
+
+        Assertions.assertTrue(ex.getMessage().equals("username"));
     }
 
     @Test

@@ -1,6 +1,7 @@
 package fitlab.BussinessLogic.Logic;
 
 import fitlab.BussinessLogic.services.MailSenderService;
+import fitlab.Data.Model.Role;
 import fitlab.Data.Model.User;
 import fitlab.Data.Repository.UserRepository;
 import org.junit.jupiter.api.Assertions;
@@ -36,34 +37,41 @@ class RegistrationLogicTest {
         MockitoAnnotations.initMocks(this);
     }
 
-    /*@Test
-    @DisplayName("addUser Should Return If Found Username")
-    void addUserShouldReturnIfFoundUsername() {
+    @Test
+    @DisplayName("addUser Should Throw Exception If Found Username")
+    void addUserShouldThrowExceptionIfFoundUsername() {
         User u = new User();
         u.setUsername("root");
         when(userRepository.findByUsername(anyString())).thenReturn(Optional.of(u));
-        Assertions.assertEquals("username", registrationLogic.addUser(u));
+
+        IllegalArgumentException ex = Assertions.assertThrows(  IllegalArgumentException.class,
+                () -> registrationLogic.addUser(u));
+
+        Assertions.assertTrue(ex.getMessage().equals("username"));
         verify(mailSender, never()).send(anyString(),anyString(),anyString());
         verify(userRepository, never()).save(u);
     }
 
     @Test
-    @DisplayName("addUser Should Return If Found Email")
-    void addUserShouldReturnIfFoundEmail() {
+    @DisplayName("addUser Should Throw Exception If Found Email")
+    void addUserShouldThrowExceptionIfFoundEmail() {
         User u = new User();
         u.setUsername("root");
         u.setEmail("test@test");
         when(userRepository.findByUsername(anyString())).thenReturn(Optional.empty());
         when(userRepository.findByEmail(anyString())).thenReturn(Optional.of(u));
 
-        Assertions.assertEquals("email", registrationLogic.addUser(u));
+        IllegalArgumentException ex = Assertions.assertThrows(  IllegalArgumentException.class,
+                () -> registrationLogic.addUser(u));
+
+        Assertions.assertTrue(ex.getMessage().equals("email"));
         verify(mailSender, never()).send(anyString(),anyString(),anyString());
         verify(userRepository, never()).save(u);
-    }*/
+    }
 
-    /*@Test
-    @DisplayName("addUser Should Return If Save")
-    void addUserShouldReturnIfSave() {
+    @Test
+    @DisplayName("addUser Should Not Throw Any Exception If Save")
+    void addUserShouldNotThrowAnyExceptionIfSave() {
         User u = new User();
         u.setName("root");
         u.setEmail("test@test");
@@ -74,11 +82,11 @@ class RegistrationLogicTest {
         when(passwordEncoder.encode(anyString())).thenReturn("123");
         ReflectionTestUtils.setField(registrationLogic, "message", "m");
 
-        Assertions.assertEquals("t", registrationLogic.addUser(u));
+        Assertions.assertDoesNotThrow(() -> registrationLogic.addUser(u));
         verify(userRepository, times(1)).save(u);
         verify(mailSender, times(1)).send(anyString(),anyString(),anyString());
 
-    }*/
+    }
 
     @Test
     @DisplayName("addAdmin Should Add New Admin")
@@ -99,28 +107,39 @@ class RegistrationLogicTest {
     }
 
     @Test
-    @DisplayName("addAdmin Should Not Add When Email Exist")
-    void addAdminShouldNotAddWhenEmailExist() {
+    @DisplayName("addAdmin Should Not Add When Email Exist And Throw Exception")
+    void addAdminShouldNotAddWhenEmailExistAndThrowException() {
         User u = new User();
         u.setUsername("root");
         u.setEmail("root");
         u.setPassword("root");
+        u.setRole(Role.ADMIN);
         when(userRepository.findByUsername(anyString())).thenReturn(Optional.empty());
         when(userRepository.findByEmail(anyString())).thenReturn(Optional.of(u));
-        registrationLogic.addAdmin(u);
+
+        IllegalArgumentException ex = Assertions.assertThrows( IllegalArgumentException.class,
+                () -> registrationLogic.addAdmin(u));
+
+        Assertions.assertTrue(ex.getMessage().equals("ADMIN with same email exist"));
         verify(passwordEncoder, never()).encode(anyString());
     }
 
+    ////// THIS
     @Test
-    @DisplayName("addAdmin Should Not Add When Username Exist")
-    void addAdminShouldNotAddWhenUsernameExist() {
+    @DisplayName("addAdmin Should Not Add When Username Exist And Throw Exception")
+    void addAdminShouldNotAddWhenUsernameExistAndThrowException() {
         User u = new User();
         u.setUsername("root");
         u.setEmail("root");
         u.setPassword("root");
+        u.setRole(Role.ADMIN);
         when(userRepository.findByUsername(anyString())).thenReturn(Optional.of(u));
         when(userRepository.findByEmail(anyString())).thenReturn(Optional.empty());
-        registrationLogic.addAdmin(u);
+
+        IllegalArgumentException ex = Assertions.assertThrows( IllegalArgumentException.class,
+                () -> registrationLogic.addAdmin(u));
+
+        Assertions.assertTrue(ex.getMessage().equals("ADMIN with same username exist"));
         verify(passwordEncoder, never()).encode(anyString());
     }
 
