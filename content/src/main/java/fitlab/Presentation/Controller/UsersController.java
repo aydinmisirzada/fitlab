@@ -12,13 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-public enum ErrorEnum {
-    PathEmpty = 1;
-    PathTooShort = 2;
-
-
-}
-
 
 @Controller
 @RequestMapping("/users")
@@ -42,7 +35,7 @@ public class UsersController {
         try {
             u = usersLogic.getUserByPath(pathId);
         } catch (IllegalArgumentException e) {
-            model.addAttribute("error", ErrorEnum.PathEmpty);
+            model.addAttribute("error", "meh");
             return "errorpage";
         }
 

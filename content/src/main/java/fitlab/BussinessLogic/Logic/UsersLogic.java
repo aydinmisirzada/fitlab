@@ -27,7 +27,7 @@ public class UsersLogic implements UsersLogicInterface {
         Optional<User> u = userRepository.findByPathId(path);
         if (path == null)
             throw new IllegalArgumentException("path is null");
-        if (path.size() < 5)
+        if (path.length() < 0)
             throw new IllegalArgumentException("path is too short");
         if(u.equals(Optional.empty()) ||
                 (!checkAccount(u.get().getId()) && !oud.getRole().equals(Role.ADMIN)))
