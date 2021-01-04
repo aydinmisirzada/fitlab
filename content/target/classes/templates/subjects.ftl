@@ -7,81 +7,90 @@
         <div class="input-group mb-4">
             <input type="text" class="form-control" id="searchSubjects" placeholder="Search Subjects">
         </div>
-    <div class="list-container">
+        <div class="list-container">
 
-
-    <#list subject?chunk(3) as row>
-            <div class="row">
-                <#list row as s>
-                    <#assign path>${s.getCode()}</#assign>
-                    <div class="col-sm-4">
-                        <div class="card shadow mb-5 bg-white rounded" style="width: 18rem;">
-                            <#if isAdmin>
-                                <div class="col-1 offset-11 pt-2">
-                                    <button class="btn btn-secondary btn-sm" id="editButton" style="float: right">Edit
-                                    </button>
+            <h3>My Subjects</h3>
+            <#list user.getSubjects()?chunk(3) as row>
+                <div class="row">
+                    <#list row as s>
+                        <#assign path>${s.getCode()}</#assign>
+                        <div class="col-sm-4">
+                            <div class="card shadow mb-5 bg-white rounded" style="width: 18rem;">
+                                <div class="card-body">
+                                    <p style="font-size: 1.25rem; font-weight: 500;">${path}</p>
+                                    <p>${s.getName()}</p>
+                                    <a href="subjects/${path}" class="btn btn-secondary">Learn More</a>
                                 </div>
-                            </#if>
-                            <div class="card-body">
-                                <form action="/edit" id='subject' method="post">
+                            </div>
+                        </div>
+                    </#list>
+                </div>
+            </#list>
 
-                                    <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-                                    <input type="hidden" name="id" value="${s.getId()}"/>
+            <h3>All Subjects</h3>
+            <#list subject?chunk(3) as row>
+                <div class="row">
+                    <#list row as s>
+                        <#assign path>${s.getCode()}</#assign>
+                        <div class="col-sm-4">
+                            <div class="card shadow mb-5 bg-white rounded" style="width: 18rem;">
+                                <#if isAdmin>
+                                    <div class="col-1 offset-11 pt-2">
+                                        <button class="btn btn-secondary btn-sm" id="editButton" style="float: right">
+                                            Edit
+                                        </button>
+                                    </div>
+                                </#if>
+                                <div class="card-body">
+                                    <form action="/edit" id='subject' method="post">
 
-                                    <div class="form-row mb-1" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
-                                        <div class="col-md-4">
-                                            <p class="card-text" style="font-size: 1.50rem; font-weight: 500;">Code: </p>
-                                        </div>
-                                        <div class="col-md-8 left">
+                                        <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+                                        <input type="hidden" name="id" value="${s.getId()}"/>
+
+                                        <div class="form-row mb-1"
+                                             style="display:flex; flex-direction: row; justify-content: center; align-items: center">
                                             <input type="text" name="code" class="form-control myform editable pl-1"
                                                    value="${s.getCode()}"
-                                                   spellcheck="false" style="font-size: 1.25rem; font-weight: 500;" readonly/>
+                                                   spellcheck="false" style="font-size: 1.25rem; font-weight: 500;"
+                                                   readonly/>
+
                                         </div>
-                                    </div>
-                                    <div class="form-row" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
-                                        <div class="col-md-4">
-                                            <p class="card-text">Name: </p>
-                                        </div>
-                                        <div class="col-md-8 left>">
+                                        <div class="form-row"
+                                             style="display:flex; flex-direction: row; justify-content: center; align-items: center">
                                             <input type="text" name="name" class="form-control myform editable pl-1"
                                                    value="${s.getName()}"
                                                    spellcheck="false" readonly/>
+
                                         </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <#if s.getSemester()=="WINTER_SUMMER">
-                                        <p class="card-text pl-1">Semester: Both</p>
-                                        <#elseif s.getSemester()=="SUMMER">
-                                        <p class="card-text pl-1">Semester: Summer</p>
-                                        <#elseif s.getSemester()=="WINTER">
-                                        <p class="card-text pl-1">Semester: Winter</p>
-                                        </#if>
-                                        <#assign sem>${s.getSemester()}</#assign>
-                                        <select form="subject" name="semester" style="display: none">
-                                            <option value="0">Summer</option>
-                                            <option value="1">Winter</option>
-                                            <option value="2">Both</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="form-row p-0" style="display: none" id="saveButton">
-                                        <div class="col-4 offset-8 mb-2 p-0">
-                                            <button class="btn btn-primary"  style="float: right;" > Save </button>
+                                        <div class="form-row">
+                                            <#if s.getSemester()=="WINTER_SUMMER">
+                                                <p class="card-text pl-1">Both semesters</p>
+                                            <#elseif s.getSemester()=="SUMMER">
+                                                <p class="card-text pl-1">Summer Semester</p>
+                                            <#elseif s.getSemester()=="WINTER">
+                                                <p class="card-text pl-1">Winter Semester</p>
+                                            </#if>
+                                            <#assign sem>${s.getSemester()}</#assign>
+                                            <select form="subject" name="semester" style="display: none">
+                                                <option value="0">Summer</option>
+                                                <option value="1">Winter</option>
+                                                <option value="2">Both</option>
+                                            </select>
                                         </div>
-                                    </div>
-
-
-                                </form>
-
-                                <@form.form_template path="/subjects" name = "id" value = "${s.getId()}" href ="subjects/${path}" />
-
+                                        <div class="form-row p-0" style="display: none" id="saveButton">
+                                            <div class="col-4 offset-8 mb-2 p-0">
+                                                <button class="btn btn-primary" style="float: right;">Save</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <@form.form_template path="/subjects" name = "id" value = "${s.getId()}" href ="subjects/${path}" />
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </#list>
-            </div>
-        </#list>
-    </div>
+                    </#list>
+                </div>
+            </#list>
+        </div>
 
         <#if isAdmin>
             <!-- list of all subjects -->
@@ -157,13 +166,13 @@
         $("#editButton").on('click', function () {
             //enable editing mode
             if ($('.editable').attr("readonly")) {
-                $('select[name="semester"]').css('display','');
+                $('select[name="semester"]').css('display', '');
                 $('#saveButton').show();
                 $('.editable').attr("readonly", false);
-                $('.editable').css({'border-bottom':'1px solid grey','border-radius':'0'});
+                $('.editable').css({'border-bottom': '1px solid grey', 'border-radius': '0'});
                 $('#editButton').addClass('editMode');
             } else {
-                $('select[name="semester"]').css('display','none');
+                $('select[name="semester"]').css('display', 'none');
                 $('.editable').attr("readonly", true);
                 $('.editable').css('border', 'none transparent');
                 $('#saveButton').hide();
@@ -182,13 +191,14 @@
                 txtValue = name + code;
 
                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    $(cards[i]).parent().css('display',"");
+                    $(cards[i]).parent().css('display', "");
                 } else {
-                    $(cards[i]).parent().css('display',"none");
+                    $(cards[i]).parent().css('display', "none");
                 }
             }
         }
-        $('#searchSubjects').on('keyup',search);
+
+        $('#searchSubjects').on('keyup', search);
 
     </script>
 </@c.page>

@@ -8,6 +8,7 @@
         <div class="input-group mb-4">
             <input type="text" class="form-control" id="searchTeachers" placeholder="Search Teachers">
         </div>
+        <h3>All Teachers</h3>
         <#list teacher?chunk(3) as row>
             <div class="row">
                 <#list row as t>

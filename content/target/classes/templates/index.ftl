@@ -22,7 +22,7 @@
                 <h2>Latest at FIT</h2>
             </div>
             <div class="card-deck mt-4">
-                <div class="card">
+                <div class="card news-card">
                     <img src="https://fit.cvut.cz/zivot-na-fit/zpravy/2020/image-thumb__2024__NewsPreviewImage/2020-11-23-cena_msmt_koronavirus24.jpeg"
                          class="card-img-top" alt="...">
                     <div class="card-body">
@@ -32,7 +32,7 @@
                         <small class="text-muted">23.11.2020</small>
                     </div>
                 </div>
-                <div class="card">
+                <div class="card news-card">
                     <img src="https://fit.cvut.cz/zivot-na-fit/zpravy/2020/image-thumb__1989__NewsPreviewImage/2020-11-11-it_spy_2020.png"
                          class="card-img-top" alt="...">
                     <div class="card-body">
@@ -42,7 +42,7 @@
                         <small class="text-muted">11.11.2020</small>
                     </div>
                 </div>
-                <div class="card">
+                <div class="card news-card">
                     <img src="https://fit.cvut.cz/zivot-na-fit/zpravy/2020/koronavirus/image-thumb__832__NewsPreviewImage/koronavirus.jpeg"
                          class="card-img-top" alt="...">
                     <div class="card-body">
@@ -114,6 +114,20 @@
         </div>
 
     </div>
+
+    <script type = "text/javascript">
+
+        $(function() {
+            $.getJSON('https://fit-parser.herokuapp.com', function(json) {
+                $('.news-card').each(function(i, obj) {
+                    $(obj).find("a").text(json[i].title);
+                    $(obj).find("a").attr("href",json[i].url)
+                    $(obj).find("small").text(json[i].date);
+                    $(obj).find("img").attr("src",json[i].img_url);
+                });
+            });
+        });
+    </script>
 
 
 </@c.page>
