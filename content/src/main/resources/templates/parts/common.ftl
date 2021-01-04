@@ -25,11 +25,11 @@
 
     <body>
     <@nav.navbar/>
-    <div style="height:10%"></div>
+    <div style="height:5%"></div>
     <#nested>
 
     <!-- Footer -->
-    <footer class="h-25">
+    <footer style="height:15%">
         <div class="container-fluid h-100 pt-5">
             <div class="copyright-text">
                 <p class="text-center">Copyright &copy; FITLab 2020</p>
