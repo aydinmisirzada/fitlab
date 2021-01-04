@@ -95,12 +95,12 @@
                         <div class="btn-group text-center " role="group" aria-label="Basic outlined example">
                             <button class="btn btn-outline-primary"  type="button" data-toggle="collapse" data-target="#homeworkSection"
                                     aria-expanded="false" aria-controls="homeworkSection">Homeworks</button>
-                            <button type="button" class="bt n btn-outline-primary" data-toggle="collapse" data-target="#testSection"
+                            <button type="button" class="btn btn-outline-primary" data-toggle="collapse" data-target="#testSection"
                                     aria-expanded="false" aria-controls="testSection">Tests</button>
                             <button type="button" class="btn btn-outline-primary" data-toggle="collapse" data-target="#examSection"
                                     aria-expanded="false" aria-controls="examSection">Exams</button>
                         </div>
-                    </div>
+                    </div>  
 
                     <div class="collapse multi-collapse mb-2 mt-2" id="homeworkSection">
                         <div class="row mb-2">
