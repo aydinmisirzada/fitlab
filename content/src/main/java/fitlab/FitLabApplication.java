@@ -37,7 +37,7 @@ public class FitLabApplication extends SpringBootServletInitializer {
             registrationLogic.addAdmin(u);
         }
         catch (IllegalArgumentException e) {
-            System.err.println("Create ADMIN failed at all : "+e.getMessage());
+            System.err.println("Create ADMIN failed : #"+e.getMessage());
         }
     }
 
