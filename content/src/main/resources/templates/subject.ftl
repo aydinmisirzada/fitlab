@@ -12,7 +12,7 @@
                     <div class="card-body">
                         <div class="row col-md-12">
                             <div class="col-md-4">
-                                <h4>Subject Code </h4>
+                                <h4>Subject Code</h4>
                             </div>
                             <div class="col-md-3" >
                                 <h4><span class="badge bg-dark p-2">${subject.getCode()}</span></h4>
