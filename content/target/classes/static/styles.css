@@ -1,0 +1,176 @@
+
+body{
+  font-family: 'Open Sans', sans-serif;
+}
+.carousel-item {
+  height: 65vh;
+  min-height: 300px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.portfolio-item {
+  margin-bottom: 30px;
+}
+
+#cardSection {
+  min-height: 850px;
+}
+
+.myform {
+  border: none transparent;
+  outline: none;
+  color: black;
+  padding: 0;
+}
+
+.myform:focus {
+  box-shadow: none;
+}
+
+.myform[readonly] {
+  background-color: transparent;
+}
+
+
+.nameform {
+  font-weight: 600;
+  font-size: 1.5em;
+  position: relative;
+  left: -10px;
+}
+
+.tooltip {
+  left: -20px !important;
+}
+
+/* Teacher page */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 150px;
+}
+.border-top {
+  border-top: 1px solid #b9b9b9;
+}
+.border-top-bottom {
+  border-top: 1px solid #b9b9b9;
+  border-bottom: 1px solid #b9b9b9;
+}
+
+.badge-right {
+  /*align-items: right;*/
+  text-align: right;
+}
+
+.editMode, .editMode:hover, .editMode:active, .editMode:visited {
+  background-color: #C0C3C6 !important;
+  border-color: #C0C3C6 !important;
+}
+
+.rating {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center
+}
+
+.rating>input {
+  display: none
+}
+
+.rating>label {
+  position: relative;
+  width: 1em;
+  font-size: 2vw;
+  color: #FFD600;
+  cursor: pointer
+}
+
+.rating>label::before {
+  content: "\2605";
+  position: absolute;
+  opacity: 0
+}
+
+.rating>label:hover:before,
+.rating>label:hover~label:before {
+  opacity: 1 !important
+}
+
+.rating>input:checked~label:before {
+  opacity: 1
+}
+
+.rating:hover>input:checked~label:before {
+  opacity: 0.4
+}
+
+.navbar {
+  font-size: 1.4em;
+  background-color: white;
+}
+
+body,html {
+  height: 100%;
+  width: 100%;
+}
+
+.text-teaser{
+  background-color: #2F6FB4;
+  color: white;
+  font-size:1.2em;
+}
+
+.news-header {
+  padding-bottom: 3px;
+  border-bottom: 3px solid #D2D9E5;
+}
+
+.discover-header {
+  padding-bottom: 3px;
+  border-bottom: 3px solid #D2D9E5;
+}
+
+.aboutus-section {
+  background-color: #2F6FB4;
+  color: white;
+  font-size: 1.1em;
+}
+
+.aboutus-section .btn {
+  background-color:  #E6AD3B;
+}
+
+footer {
+  background-color: #EAF5FB;
+}
+
+footer .copyright-text {
+  font-size: 1.5em;
+}
+
+.list-container{
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 60vh;
+}
+
+.center{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-content: center;
+}
+
+.text-left{
+  text-align: left;
+}
+
+h4 span{
+  color: white;
+}
