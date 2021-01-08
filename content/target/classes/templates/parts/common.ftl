@@ -19,17 +19,19 @@
         <script src="assets/vendor/jquery/jquery.js"></script>
         <script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 
         <link href="styles.css" rel="stylesheet">
     </head>
 
     <body>
     <@nav.navbar/>
-    <div style="height:10%"></div>
+    <div style="height:5%"></div>
     <#nested>
 
     <!-- Footer -->
-    <footer class="h-25">
+    <footer style="height:15%">
         <div class="container-fluid h-100 pt-5">
             <div class="copyright-text">
                 <p class="text-center">Copyright &copy; FITLab 2020</p>

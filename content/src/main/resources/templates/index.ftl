@@ -22,34 +22,34 @@
                 <h2>Latest at FIT</h2>
             </div>
             <div class="card-deck mt-4">
-                <div class="card">
-                    <img src="https://fit.cvut.cz/zivot-na-fit/zpravy/2020/image-thumb__2024__NewsPreviewImage/2020-11-23-cena_msmt_koronavirus24.jpeg"
+                <div class="card news-card">
+                    <img src="/images/default_image.png"
                          class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title"><a href="https://fit.cvut.cz/cs/zivot-na-fit/aktualne/zpravy/15109-tri-studenti-fit-ziskali-cenu-ministra-skolstvi">Tři studenti FIT získali Cenu ministra školství</a></h5>
+                        <h5 class="card-title"><a href="#">News #1</a></h5>
                     </div>
                     <div class="card-footer">
-                        <small class="text-muted">23.11.2020</small>
+                        <small class="text-muted">20.20.2020</small>
                     </div>
                 </div>
-                <div class="card">
-                    <img src="https://fit.cvut.cz/zivot-na-fit/zpravy/2020/image-thumb__1989__NewsPreviewImage/2020-11-11-it_spy_2020.png"
+                <div class="card news-card">
+                    <img src="/images/default_image.png"
                          class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title"><a href="https://fit.cvut.cz/cs/zivot-na-fit/aktualne/zpravy/15061-absolvent-fit-se-probojoval-do-finale-souteze-it-spy-2020">Absolvent FIT se probojoval do finále soutěže IT SPY 2020</a></h5>
+                        <h5 class="card-title"><a href="#">News #2</a></h5>
                     </div>
                     <div class="card-footer">
-                        <small class="text-muted">11.11.2020</small>
+                        <small class="text-muted">20.20.2020</small>
                     </div>
                 </div>
-                <div class="card">
-                    <img src="https://fit.cvut.cz/zivot-na-fit/zpravy/2020/koronavirus/image-thumb__832__NewsPreviewImage/koronavirus.jpeg"
+                <div class="card news-card">
+                    <img src="/images/default_image.png"
                          class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title"><a href="https://fit.cvut.cz/cs/zivot-na-fit/aktualne/zpravy/10686-koronavirus-aktualne">Koronavirus – Aktuálně</a></h5>
+                        <h5 class="card-title"><a href="#">News #3</a></h5>
                     </div>
                     <div class="card-footer">
-                        <small class="text-muted">25.11.2020</small>
+                        <small class="text-muted">20.20.2020</small>
                     </div>
                 </div>
             </div>
@@ -114,6 +114,20 @@
         </div>
 
     </div>
+
+    <script type = "text/javascript">
+
+        $(function() {
+            $.getJSON('https://fit-parser.herokuapp.com', function(json) {
+                $('.news-card').each(function(i, obj) {
+                    $(obj).find("a").text(json[i].title);
+                    $(obj).find("a").attr("href",json[i].url)
+                    $(obj).find("small").text(json[i].date);
+                    $(obj).find("img").attr("src",json[i].img_url);
+                });
+            });
+        });
+    </script>
 
 
 </@c.page>

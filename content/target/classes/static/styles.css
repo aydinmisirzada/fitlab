@@ -1,4 +1,7 @@
 
+body{
+  font-family: 'Open Sans', sans-serif;
+}
 .carousel-item {
   height: 65vh;
   min-height: 300px;
@@ -32,6 +35,7 @@
   background-color: transparent;
 }
 
+
 .nameform {
   font-weight: 600;
   font-size: 1.5em;
@@ -60,7 +64,7 @@
 }
 
 .badge-right {
-  align-items: right;
+  /*align-items: right;*/
   text-align: right;
 }
 
@@ -68,8 +72,6 @@
   background-color: #C0C3C6 !important;
   border-color: #C0C3C6 !important;
 }
-
-
 
 .rating {
   display: flex;
@@ -137,7 +139,7 @@ body,html {
 .aboutus-section {
   background-color: #2F6FB4;
   color: white;
-  font-size: 1.2em;
+  font-size: 1.1em;
 }
 
 .aboutus-section .btn {
@@ -156,4 +158,19 @@ footer .copyright-text {
   overflow-y: auto;
   overflow-x: hidden;
   height: 60vh;
+}
+
+.center{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-content: center;
+}
+
+.text-left{
+  text-align: left;
+}
+
+h4 span{
+  color: white;
 }

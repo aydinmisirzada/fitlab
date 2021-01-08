@@ -24,19 +24,21 @@ public class RegistrationController {
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public String addUser(User user, Model model){
-        String s = rl.addUser(user);
-        if(s.equals("username")){
+        try {
+            rl.addUser(user);
+        }
+        catch (IllegalArgumentException e) {
+            if (e.getMessage().equals("username")) {
 //            s = "User with this username already exists!";
-            model.addAttribute("error", 3);
-            return "registration";
-        }
-        if(s.equals("email")){
+                model.addAttribute("error", 3);
+                return "registration";
+            }
+            if (e.getMessage().equals("email")) {
 //            s = "User with this email already exists!";
-            model.addAttribute("error", 4);
-            return "registration";
-
+                model.addAttribute("error", 4);
+                return "registration";
+            }
         }
-        
         return "redirect:/activation";
     }
 

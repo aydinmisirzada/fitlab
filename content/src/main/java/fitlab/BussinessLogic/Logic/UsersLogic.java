@@ -31,7 +31,8 @@ public class UsersLogic implements UsersLogicInterface {
             throw new IllegalArgumentException("path is too short");
         if(u.equals(Optional.empty()) ||
                 (!checkAccount(u.get().getId()) && !oud.getRole().equals(Role.ADMIN)))
-            return null;
+            throw new NullPointerException("User does not exist");
+//            return null;
 
         return u.get();
     }
@@ -44,20 +45,21 @@ public class UsersLogic implements UsersLogicInterface {
         return false;
     }
 
-    public String editUserById(User user, Boolean role) {
+    public boolean editUserById(User user, Boolean role){
         Optional<User> u = userRepository.findById(user.getId());
-        if(u.equals(Optional.empty())) return "une"; //user not exist
 
-        if(!u.get().getPathId().equals(user.getPathId())){
+        if (u.equals(Optional.empty()))
+            throw new IllegalArgumentException("une"); //user not exist
+        if (!u.get().getPathId().equals(user.getPathId())) {
             Optional<User> tmp = userRepository.findByPathId(user.getPathId());
-            if(!tmp.equals(Optional.empty()))
-                return "path";  //path exist
-        }
-        else if(!u.get().getUsername().equals(user.getUsername())){
+            if (!tmp.equals(Optional.empty()))
+                throw new IllegalArgumentException("path");
+        } else if (!u.get().getUsername().equals(user.getUsername())) {
             Optional<User> tmp = userRepository.findByUsername(user.getUsername());
-            if(!tmp.equals(Optional.empty()))
-                return "username";  //username exist
+            if (!tmp.equals(Optional.empty()))
+                throw new IllegalArgumentException("username"); //username exist
         }
+
         if(role)
             user.setRole(Role.ADMIN);
         else
@@ -73,7 +75,7 @@ public class UsersLogic implements UsersLogicInterface {
             userDetails.setOwnUserDetails(u.get());
         }
 
-        return "true";
+        return true;
     }
 
     public List<User> getAllUsers() {
