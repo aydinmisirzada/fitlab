@@ -1,7 +1,7 @@
 <#import "parts/common.ftl" as c>
 
 <@c.page " | " + teacher.getName() + " " + teacher.getSurname()>
-
+    <div style="height:10%"></div>
     <div class="form-container" id="cardSection">
         <div class="card shadow m-0 col-md-4">
             <h5 class="mt-4"><b>Teacher Info</b></h5>

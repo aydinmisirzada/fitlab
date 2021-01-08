@@ -3,11 +3,11 @@
 <#include "parts/security.ftl">
 
 <@c.page " | Teachers">
-
+    <div style="height:7%"></div>
     <div class="container" id="cardSection">
-
-        <div style="padding-top: 100px"></div>
-
+        <div class="input-group mb-4">
+            <input type="text" class="form-control" id="searchTeachers" placeholder="Search Teachers">
+        </div>
         <#list teacher?chunk(3) as row>
             <div class="row">
                 <#list row as t>
@@ -25,7 +25,8 @@
                                 <form action="/teachers" method="post">
                                     <input type="hidden" name="_csrf" value="${_csrf.token}"/>
                                     <input type="hidden" name="id" value="${t.getId()}"/>
-                                    <div class="form-row mb-1">
+
+                                    <div class="form-row" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
                                         <div class="col">
                                             <input type="text" name="name" class="form-control myform editable pl-1"
                                                    value="${t.getName()}"
@@ -39,6 +40,46 @@
                                                    readonly/>
                                         </div>
                                     </div>
+
+                                    <div class="form-row" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+                                        <div class="col-md-4">
+                                            <label class="card-text pl-1" >username: </label>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <input type="text" name="username" class="form-control myform editable pl-1"
+                                                   value="${t.getUsername()}"
+                                                   spellcheck="false"
+                                                   readonly/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+                                        <div class="col-md-4">
+                                            <label class="card-text pl-1" >rating: </label>
+                                        </div>
+
+                                        <#if t.getReviewList()?size gt 2>
+                                        <div class="col-md-6">
+                                            <span <#assign x = t.averageRating()>
+                                            <#if x != 0>
+                                                <#list 1..x as i>
+                                                    <span class="fa fa-star checked"></span>
+                                                </#list>
+                                            </#if>
+                                            <#list x..4 as i>
+                                            <span class="fa fa-star"></span>
+                                            </#list>
+                                            </span>
+                                        </div>
+                                        <div class="col-md-2">
+                                            ${t.averageRating()}
+                                        </div>
+                                        <#else>
+                                            <div class="col-md-8">Not rated yet</div>
+                                        </#if>
+                                    </div>
+
+                                    <div style="padding-top: 20px"></div>
 
                                     <div class="form-row p-0 mt-3" style="display: none" id="saveButton">
                                         <div class="col-4 offset-8 mb-2 p-0">
@@ -133,5 +174,30 @@
                 $('#editButton').removeClass('editMode');
             }
         });
+
+        function search() {
+            var input, filter, i, txtValue;
+            input = $('#searchTeachers');
+            filter = input.val().toUpperCase();
+            cards = $(".card");
+            for (i = 0; i < cards.length; i++) {
+                var name = $(cards[i]).find("input[name='name']").val();
+                var surname = $(cards[i]).find("input[name='surname']").val();
+                txtValue = name + surname;
+
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    $(cards[i]).parent().css('display',"");
+                } else {
+                    $(cards[i]).parent().css('display',"none");
+                }
+            }
+        }
+        $('#searchTeachers').on('keyup',search);
     </script>
+
+    <style>
+        .checked {
+            color: orange;
+        }
+    </style>
 </@c.page>
