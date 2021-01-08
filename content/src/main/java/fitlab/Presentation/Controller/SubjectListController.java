@@ -24,7 +24,8 @@ public class SubjectListController {
     SubjectLogic s_repo;
     @Autowired
     UsersLogic usersLogic;
-    /* This method is used to show subject list page
+    /**
+     * This method is used to show subject list page
      * @param model This is a variable used by the framework
      * @return This returns a subject list page
      */
@@ -36,7 +37,8 @@ public class SubjectListController {
         return "subjects";
     }
 
-    /*  This method is used to add a subject to the database
+    /**
+     *  This method is used to add a subject to the database
      * @param code This is a code of the subject written in text form
      * @param name This is a name of the subject
      * @param semester This is semester

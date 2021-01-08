@@ -28,15 +28,11 @@ public class RegistrationLogic implements RegistrationLogicInterface {
     @Value("${mail.message.activation}")
     String message;
 
-    public void addUser(User user){
+    public String addUser(User user){
         Optional<User> u = userRepository.findByUsername(user.getUsername());
-        if(!u.equals(Optional.empty()))
-            throw new IllegalArgumentException("username");
-//            return "username";
+        if(!u.equals(Optional.empty())) return "username";
         u = userRepository.findByEmail(user.getEmail());
-        if(!u.equals(Optional.empty()))
-            throw new IllegalArgumentException("email");
-//        return "email";
+        if(!u.equals(Optional.empty())) return "email";
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole(Role.USER);
@@ -48,17 +44,18 @@ public class RegistrationLogic implements RegistrationLogicInterface {
             String newMessage = String.format(message, user.getUsername(), user.getActivationCode());
             mailSender.send(user.getEmail(),newMessage, "Activation code");
         }
+        return "t";
     }
 
     public void addAdmin(User user) {
         Optional<User> u = userRepository.findByUsername(user.getUsername());
 
         if(!u.equals(Optional.empty()))
-            throw new IllegalArgumentException((u.get().isAdmin() ? "ADMIN" : "USER") + " with same username exist");
+            return;
 
         u = userRepository.findByEmail(user.getEmail());
-        if(!u.equals(Optional.empty()))
-            throw new IllegalArgumentException((u.get().isAdmin() ? "ADMIN" : "USER") + " with same email exist");
+        if(!u.equals(Optional.empty())) 
+            return;
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole(Role.ADMIN);

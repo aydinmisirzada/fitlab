@@ -31,7 +31,8 @@ public class TeacherLogic implements TeacherLogicConf {
     public void delTeacher(int  id) {
 
         Teacher teacher = repo.findById(id);
-
+        if(teacher == null)
+            throw new IllegalArgumentException("Teacher id is invaild");
         for (Review review :teacher.getReviewList())
             rev.delete(review);
 
@@ -47,6 +48,8 @@ public class TeacherLogic implements TeacherLogicConf {
     }
 
     public void addRating(int id, int rate, String text, String username) {
+        if(repo.findById(id) == null)
+            throw new IllegalArgumentException("Teacher id is invaild");
         Review r = new Review(rate, text,user.findByUsername(username).get(),repo.findById(id));
         rev.save(r);
         repo.findById(id).addReview(r);
@@ -58,6 +61,8 @@ public class TeacherLogic implements TeacherLogicConf {
     }
 
     public Teacher getTeacher(int id) {
+        if(repo.findById(id) == null)
+            throw new IllegalArgumentException("Teacher id is invaild");
         return  repo.findById(id);
     }
 
@@ -74,10 +79,29 @@ public class TeacherLogic implements TeacherLogicConf {
 
     public void editTeacherDetails(int id,String name, String surname, String username){
         if(repo.findById(id) == null)
-            return;
+            throw new IllegalArgumentException("Teacher id is invaild");
         repo.findById(id).setName(name);
         repo.findById(id).setSurname(surname);
         repo.findById(id).setUsername(username);
         repo.save(repo.findById(id));
     }
+
+
+    public void editRating (int id, int rate, String text, String username) {
+        Teacher teacher = repo.findById(id);
+        if(teacher == null)
+            throw new IllegalArgumentException("Teacher id is invaild");
+        List<Review> reviewList = teacher.getReviewList();
+        for(int i = 0; i < reviewList.size(); i++) {
+            if(reviewList.get(i).getUser().getUsername().equals(username)) {
+                reviewList.get(i).setRating(rate);
+                reviewList.get(i).setText(text);
+                rev.save(reviewList.get(i));
+                repo.save(teacher);
+                break;
+            }
+        }
+    }
+
+
 }
