@@ -17,6 +17,11 @@ public class EmailSenderController {
     public String showEmailSenderPage(){
         return "emailSender";
     }
+    /*@RequestMapping(method = RequestMethod.GET)
+    public String showEmailSenderPage(@RequestParam(required = false, name = "an") Boolean result, Model model){
+        model.addAttribute("result", result.toString().equals(null) ? "" : result.toString());
+        return "emailSender";
+    }*/
 
     @RequestMapping(value="/result", method = RequestMethod.GET)
     public String showEmailSenderResult(@RequestParam(required = true, name = "an") Boolean result, Model model){
