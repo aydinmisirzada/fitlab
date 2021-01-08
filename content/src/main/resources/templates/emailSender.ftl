@@ -7,6 +7,7 @@
     <form action="/email/send" method="post">
         <input type="hidden" name="_csrf" value="${_csrf.token}"/>
         <div class="container">
+<#--            <h5>${result}</h5>-->
             <select class="form-control form-control-sm" name="emailTo">
                 <option value="email">By email</option>
                 <option value="username">By username</option>
