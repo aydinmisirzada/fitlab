@@ -58,7 +58,7 @@ public class ReviewPageController {
         model.addAttribute("reviews",subjectLogicConf.getReviews(subject));
         model.addAttribute("user",auth.getName());
         model.addAttribute("subject",subjectRepository.findByCode(subject));
-        return "review_subject";
+        return "review";
     }
 
 

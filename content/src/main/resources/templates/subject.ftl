@@ -21,7 +21,7 @@
                         </div>
                         <div class="row col-md-12 mt-2">
                             <div class="col-md-4">
-                                <h4>Subject Name</h4>
+                                <h4>Subject Name: </h4>
                             </div>
                             <div class="col-md-3">
                                 <h4><span class="badge bg-dark p-2">${subject.getName()}</span></h4>
@@ -262,6 +262,7 @@
                                             <b>x</b></button>
                                     </div>
                                     <div class="modal-body">
+
                                         <form action="/subjects/${subject.getCode()}" method="post">
                                             <div class="form-group">
                                                 <input type="hidden" name="_csrf" value="${_csrf.token}"/>
@@ -275,29 +276,19 @@
                                             <button type="submit" class="btn btn-secondary">Add exam</button>
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
                                             </button>
+
                                         </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+
                         <br/>
+
                     </div>
-                </div>
-                <div class="card mt-3">
-                    <div class="card-body">
-                        <h5>Rating</h5>
-                        <span <#assign x = subject.averageRating()>
-                        <#if x != 0>
-                            <#list 1..x as i>
-                                <span class="fa fa-star checked"></span>
-                            </#list>
-                        </#if>
-                        <#list x..4 as i>
-                            <span class="fa fa-star"></span>
-                        </#list>
-                        </span>
-                        <a href="${'/subjects/' + subject.getCode() + '/reviews'}">See all reviews ></a>
-                    </div>
+
+
                 </div>
                 <div class="mt-3">
                     <#if assigned == false>
@@ -325,14 +316,56 @@
         <div class="col-md-2"></div>
     </div>
 
-    <style>
-        .checked {
-            color: orange;
-        }
-    </style>
 
 
 
 
 
 </@c.page>
+
+<!--
+
+
+
+<div  class="adder">
+
+ Add a Exam
+<div class="container1" style="margin-left:10%;margin-right: 10%;margin-bottom: 20px;">
+    <h3 style="text-align: center;">Exams</h3>
+
+    <ul id="myUL">
+        <#list contents as content>
+            <#if content.type.toString() == 'EXAM'>
+                <li><a href="${'/subjects/' +  subject.getCode() + '/exam/' + content.getId()}">
+                        <td >
+                            ${content.getTitle()}
+                        </td>
+                        <@form.form_template path="/subjects/${subject.getCode()}" name = "id" value = "${content.getId()}" href=""/>
+
+                    </a>
+                </li>
+            </#if>
+        </#list>
+    </ul>
+
+
+
+    <h4 style="text-align: center; margin: 10px;">Add an exam</h4>
+    <div  class="adder">
+        <form action="/subjects/${subject.getCode()}" method="post" >
+            <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+            <table width="100%">
+                <tr>
+                    <td width="10%">
+                        Add an exam:</td>
+                    <td>
+                        <input type="text"  name="title" placeholder="Title">
+                    </td>
+                </tr>
+            </table>
+            <input type="text"  name="type" value="EXAM" style="visibility: hidden">
+            <button type="submit">Add a page</button>
+        </form>
+    </div>
+
+-->
