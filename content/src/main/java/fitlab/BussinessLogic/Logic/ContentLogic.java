@@ -39,7 +39,6 @@ public class ContentLogic implements ContentLogicConf {
     }
 
     public void delContent(Content con) {
-
         List<Message> messages = con.getMessageList();
         for (int i = 0; i < messages.size(); i++)  {
             mes.delMessage(messages.get(i));

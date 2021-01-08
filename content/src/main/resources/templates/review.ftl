@@ -1,8 +1,9 @@
 <#import "parts/common.ftl" as c>
 
-<@c.page " | " + teacher.getName() + " " + teacher.getSurname()>
+<@c.page " | " >
     <div class="form-container" id="cardSection">
         <div class="card shadow m-8 col-md-4">
+            <#if teacher??>
             <div class="col-md-8 badge-right">
                 <span                     <#assign x = teacher.averageRating()>
                 <#if x != 0>
@@ -14,13 +15,14 @@
                 <span>&#9734;</span>
                 </#list></span>
             </div>
+            </#if>
             <h5 class="mt-4"><b>Your reviews</b></h5>
 
             <div class="row p-2 mt-4 border-top">
                 <ul>
                     <#list reviews as review>
                         <#if review.getUser().getUsername() == user>
-                                <td  text="${review.getUser().getName()} + ' ' + ${review.getUser().getSurname()} + ' : ' ">Name</td>
+                                <td >${review.getUser().getName()} ${review.getUser().getSurname()} :</td>
                             <td>${review.getText()}</td>
                         </#if>
                     </#list>

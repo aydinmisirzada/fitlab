@@ -24,7 +24,8 @@ public class SubjectListController {
     SubjectLogic s_repo;
     @Autowired
     UsersLogic usersLogic;
-    /* This method is used to show subject list page
+    /**
+     * This method is used to show subject list page
      * @param model This is a variable used by the framework
      * @return This returns a subject list page
      */
