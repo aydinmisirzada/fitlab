@@ -28,12 +28,3 @@ testing:
         paths:
             - target/
   
-# deploy-dev:
-#   stage: deploy
-#   only:
-#         - dev
-#   script:
-#     - mvn azure-webapp:deploy
-#   artifacts:
-#     paths:
-#         - target/
