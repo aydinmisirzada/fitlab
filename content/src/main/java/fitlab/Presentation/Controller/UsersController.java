@@ -1,6 +1,5 @@
 package fitlab.Presentation.Controller;
 
-import com.sun.javaws.exceptions.InvalidArgumentException;
 import fitlab.BussinessLogic.Logic.UsersLogic;
 import fitlab.Data.Model.Role;
 import fitlab.Data.Model.User;
