@@ -30,6 +30,12 @@ public class UsersController {
         return "allUsers";
     }
 
+    @RequestMapping(value="/passwrd",method = RequestMethod.GET)
+    public String changeUserPassword(String username, Model model){
+
+        return "changePasswordPage";
+    }
+
     @RequestMapping(value = "/{pathId}", method = RequestMethod.GET)
     public String getUserPage(@PathVariable String pathId,Integer id, Model model){
         User u;

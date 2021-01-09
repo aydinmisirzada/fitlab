@@ -3,7 +3,6 @@ package fitlab.Presentation.Controller;
 import fitlab.BussinessLogic.Logic.EmailSenderLogic;
 import fitlab.BussinessLogic.Logic.exceptions.EmailSendException;
 import fitlab.BussinessLogic.Logic.exceptions.UserNotFoundException;
-import fitlab.BussinessLogic.services.MailSenderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
