@@ -10,12 +10,13 @@
                 <form action="/users/password/change" method="post">
                     <input type="hidden" name="_csrf" value="${_csrf.token}"/>
                     <input type="hidden" name="username" value="${name}"/>
+
                     <div class="form-group">
-                        <input type="password" name="oldpassword" class="form-control" placeholder="Old Password"
+                        <input type="password" name="oldPassword" class="form-control" placeholder="Old Password"
                                id="oldpassword" required>
                     </div>
                     <div class="form-group">
-                        <input type="password" name="password" class="form-control" placeholder="Password" id="password"
+                        <input type="password" name="newPassword" class="form-control" placeholder="Password" id="password"
                                required>
                     </div>
                     <div class="form-group">
