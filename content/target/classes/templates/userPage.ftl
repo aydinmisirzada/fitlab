@@ -77,7 +77,11 @@
                                     </div>
                                 </div>
                             </div>
-
+                        </form>
+                        <form action="/users/passwrd" method="post">
+                            <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+                            <input type="hidden" name="username" value="${name}"/>
+                            <button type="submit" class="btn btn-primary" id="saveButton">Change</button>
                         </form>
                     </div>
 

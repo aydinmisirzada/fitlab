@@ -30,7 +30,7 @@ public class UsersController {
         return "allUsers";
     }
 
-    @RequestMapping(value="/passwrd",method = RequestMethod.GET)
+    @RequestMapping(value="/password",method = RequestMethod.POST)
     public String changeUserPassword(String username, Model model){
 
         return "changePasswordPage";
