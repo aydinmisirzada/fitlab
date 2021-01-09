@@ -55,10 +55,12 @@ public class UsersLogic implements UsersLogicInterface {
         if(user.equals(Optional.empty()))
             throw new UsernameNotFoundException("#User does not exist. Cannot change password");
 
-        if(!user.get().getPassword().equals(passwordEncoder.encode(oldPassword)))
+        if(!passwordEncoder.matches(oldPassword,user.get().getPassword()))
             return false;
 
         user.get().setPassword(passwordEncoder.encode(newPassword));
+
+        userRepository.save(user.get());
 
         return true;
     }

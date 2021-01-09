@@ -32,7 +32,7 @@ public class UsersController {
 
     @RequestMapping(value="/password/change",method = RequestMethod.POST)
     public String changeUserPassword(String username, String oldPassword, String newPassword, Model model){
-
+//        System.err.println(username + " " + oldPassword + " " + newPassword);
         if(usersLogic.changePassword(username, oldPassword, newPassword))
             return "redirect:/";
 
