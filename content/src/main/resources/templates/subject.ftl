@@ -122,8 +122,6 @@
                                         <li class="list-group-item d-flex justify-content-between align-items-center">
                                             <a href="${'/subjects/' + subject.getCode() + '/homework/' + content.getId()}"> ${content.getTitle()} </a>
                                             <@form.form_template path="/subjects/${subject.getCode()}" name = "id" value = "${content.getId()}" href=""/>
-
-                                            <#--                                <span class="badge bg-primary rounded-pill">14</span>-->
                                         </li>
                                     </#if>
                                 </#list>
