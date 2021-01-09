@@ -5,8 +5,6 @@
     <div style="height:7%"></div>
 
     <div class="container" id="cardSection">
-
-
         <div class="row">
             <div class="card shadow mx-auto" style="width: 50rem;">
                 <div class="row">

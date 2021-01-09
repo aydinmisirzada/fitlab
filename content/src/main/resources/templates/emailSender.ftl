@@ -1,6 +1,6 @@
 <#import "parts/common.ftl" as c>
 
-<@c.page " | Dashboard">
+<@c.page " | New Email">
     <div style="height:7%"></div>
     <div class="container" id="cardSection">
         <div class="card w-50 mx-auto">
