@@ -10,6 +10,8 @@ import fitlab.Data.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,6 +23,8 @@ public class UsersLogic implements UsersLogicInterface {
     UserRepository userRepository;
     @Autowired
     SubjectRepository subjectRepository;
+    @Autowired
+    PasswordEncoder passwordEncoder;
     OwnUserDetails oud;
 
     public User getUserByPath(String path){
@@ -43,6 +47,20 @@ public class UsersLogic implements UsersLogicInterface {
             return true;
 
         return false;
+    }
+
+    public boolean changePassword(String username, String oldPassword, String newPassword){
+        Optional<User> user = userRepository.findByUsername(username);
+
+        if(user.equals(Optional.empty()))
+            throw new UsernameNotFoundException("#User does not exist. Cannot change password");
+
+        if(!user.get().getPassword().equals(passwordEncoder.encode(oldPassword)))
+            return false;
+
+        user.get().setPassword(passwordEncoder.encode(newPassword));
+
+        return true;
     }
 
     public boolean editUserById(User user, Boolean role){
