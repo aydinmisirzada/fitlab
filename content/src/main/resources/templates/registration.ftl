@@ -125,8 +125,6 @@
                 $('#strengthText').html("");
             }
         });
-
-
     </script>
 
 </@c.page>
