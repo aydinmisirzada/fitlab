@@ -78,11 +78,7 @@
                                 </div>
                             </div>
                         </form>
-                        <form action="/users/password" method="post">
-                            <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-                            <input type="hidden" name="username" value="${name}"/>
-                            <button type="submit" class="btn btn-primary" id="saveButton">Change</button>
-                        </form>
+                        <small><a href="/users/password">Change Password</a></small>
                     </div>
 
                 </div>
