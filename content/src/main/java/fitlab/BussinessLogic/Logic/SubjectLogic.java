@@ -144,21 +144,8 @@ public class SubjectLogic implements SubjectLogicConf {
         }
         return false;
     }
-    public boolean  findDup( String code, String username ) {
-        User u = user.findByUsername(username).get();
-        List<Review> rev = repo.findByCode(code).getReviewList();
-
-        for (Review r : rev) {
-            if(r.getUser().getUsername() == u.getUsername()) return false;
-        }
-
-        return true;
-    }
 
     public void addRating(String code, int rate, String text, String username) {
-        if(findDup(code,username))
-            return;
-
         if(user.findByUsername(username).get() == null)
             throw new IllegalArgumentException("User with such username doesn't exist");
         Review r = new Review(rate, text,user.findByUsername(username).get(),repo.findByCode(code));
