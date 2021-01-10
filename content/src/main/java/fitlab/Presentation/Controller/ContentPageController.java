@@ -10,7 +10,10 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 //The class controls chat page
@@ -32,13 +35,14 @@ public class ContentPageController {
      * @return Method returns the name of the html page from templates
      */
     @RequestMapping("/subjects/{subject}/{type}/{page_id}")
-    public String page(@PathVariable String subject, @PathVariable String type, @PathVariable int page_id, Model model) {
+    public String page(@PathVariable String subject, @PathVariable String type, @PathVariable int page_id, Model model) throws IOException {
         Subject sub = c_repo.contentSubject(subject);
         List<Message> messages = c_repo.contentMessageList(page_id);
 
         if(sub == null) return "errorpage";
 
         model.addAttribute("messages",messages);
+        model.addAttribute("content",c_repo.getCon(page_id));
         model.addAttribute("subject",sub);
         return "page";
     }
@@ -52,7 +56,7 @@ public class ContentPageController {
      * @param text This is text
      * @return Method returns the name of the html page from templates ( in this case it redirects the page )
      */
-    @PostMapping("/subjects/{subject}/{type}/{page_id}")
+    @PostMapping(value = "/subjects/{subject}/{type}/{page_id}", params = {"author","text"})
     public String pageAddMessage(@PathVariable String subject, @PathVariable String type, @PathVariable int page_id, @RequestParam String author, @RequestParam String text) {
         m_repo.pageAddMessage(page_id,author,text);
         return "redirect:" + "/subjects/" + subject + "/" + type + '/' + page_id;
@@ -65,6 +69,12 @@ public class ContentPageController {
         return "redirect:/subjects/" + subject;
     }
 
+
+    @PostMapping(value = "/subjects/{subject}/{type}/{page_id}",params = "description")
+    public String editDescription(@PathVariable String subject, @PathVariable String type, @PathVariable int page_id, @RequestParam String description) {
+        c_repo.editDescription(page_id,description);
+        return "redirect:" + "/subjects/" + subject + "/" + type + '/' + page_id;
+    }
 
 
 }

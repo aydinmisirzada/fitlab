@@ -2,6 +2,25 @@
 
 <@c.page " | " + subject.getCode() + ' - ' + subject.getName()>
 
+        <div >${image}</div>
+
+    <form method="post" enctype="multipart/form-data">
+        <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+        <input type="file" name="file" />
+        <button type="submit">Add an image</button>
+    </form>
+    <div>${content.getDescription()!""}</div>
+    <form method="post">
+        <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+
+            <tr>
+                <td>
+                    <input type="text" name="description" placeholder="Text">
+                </td>
+            </tr>
+        <button type="submit">Add a description</button>
+    </form>
+
 <div id="features" class="container1" style="margin-top: 20px;">
     <ul id="myUL">
         <#list messages as message>
