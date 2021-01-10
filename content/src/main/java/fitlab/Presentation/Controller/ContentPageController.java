@@ -37,6 +37,8 @@ public class ContentPageController {
         List<Message> messages = c_repo.contentMessageList(page_id);
 
         if(sub == null) return "errorpage";
+        model.addAttribute("content",c_repo.getCon(page_id));
+
 
         model.addAttribute("messages",messages);
         model.addAttribute("subject",sub);
