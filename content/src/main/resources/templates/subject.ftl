@@ -297,9 +297,11 @@
                                 <span class="fa fa-star checked"></span>
                             </#list>
                         </#if>
-                        <#list x..4 as i>
-                            <span class="fa fa-star"></span>
-                        </#list>
+                        <#if x < 5>
+                            <#list x..4 as i>
+                                <span class="fa fa-star"></span>
+                            </#list>
+                        </#if>
                         </span>
                         <a href="${'/subjects/' + subject.getCode() + '/reviews'}">See all reviews ></a>
                     </div>
