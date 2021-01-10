@@ -31,17 +31,19 @@
                             </li>
                         </#if>
                         <li class="nav-item dropdown pb-1">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                            <button class="btn btn-secondary dropdown-toggle mt-1" type="button" id="dropdownMenuButton"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 ${name}
                             </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="/users/${pathId}">View profile</a>
-                                <form action="/logout" method="post">
-                                    <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-                                    <button class="dropdown-item">Log Out</button>
-                                </form>
-                            </div>
+                            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                                <li><a class="dropdown-item" href="/users/${pathId}">View profile</a></li>
+                                <li>
+                                    <form action="/logout" method="post">
+                                        <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+                                        <button class="dropdown-item">Log Out</button>
+                                    </form>
+                                </li>
+                            </ul>
                         </li>
                     </#if>
                 </ul>

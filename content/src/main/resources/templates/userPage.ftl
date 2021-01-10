@@ -79,7 +79,9 @@
                             </div>
                         </form>
                         <#if name==user.getUsername()>
-                            <small><a href="/users/password">Change Password</a></small>
+                            <div class="text-center">
+                                <small><a href="/users/password">Change Password</a></small>
+                            </div>
                         </#if>
                     </div>
 
