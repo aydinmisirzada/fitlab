@@ -1,29 +1,28 @@
 <#import "parts/common.ftl" as c>
 
-<@c.page " | " + teacher.getName() + " " + teacher.getSurname()>
+<@c.page " | " + subject.getCode()>
 
     <div style="height:7%"></div>
-
     <div class="container" id="cardSection">
-
-
         <div class="row">
             <div class="card shadow mx-auto" style="width: 50rem;">
                 <div class="row">
                     <div class="col-8">
                         <div class="card-body">
-                            <h5 class="card-title">${teacher.getName() + ' ' + teacher.getSurname()}</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">${teacher.getUsername()}</h6>
+                            <h5 class="card-title"><a
+                                        href="${'/subjects/' + subject.getCode()}">${subject.getCode()}</a></h5>
+                            <h6 class="card-subtitle mb-2 text-muted"><a
+                                        href="${'/subjects/' + subject.getCode()}">${subject.getName()}</a></h6>
                         </div>
                     </div>
                     <div class="col-md-1 my-auto">
                         <div class="card-body">
-                            ${teacher.averageRating()}
+                            ${subject.averageRating()}
                         </div>
                     </div>
                     <div class="col-md-3 my-auto">
 
-                        <span <#assign x = teacher.averageRating()>
+                        <span <#assign x = subject.averageRating()>
                         <#if x != 0>
                             <#list 1..x as i>
                                 <span class="fa fa-star checked"></span>
@@ -33,8 +32,6 @@
                             <span class="fa fa-star"></span>
                         </#list>
                         </span>
-
-
                     </div>
                 </div>
             </div>
@@ -44,22 +41,32 @@
         <div class="row mt-5">
             <div class="card-sm-4 shadow mx-auto text-center " style="width: 50rem;">
                 <div class="card-body">
-                    <h5 class="card-title">Review: ${teacher.getName()}</h5>
+                    <#--                    <h5 class="card-title">Review: ${teacher.getName()}</h5>-->
                     <form method="post">
 
                         <div class="star-rating">
                             <div class="star-rating__wrap">
                                 <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-                                <input class="star-rating__input" id="star-rating-5" type="radio" name="rating" value="5">
-                                <label class="star-rating__ico fa fa-star-o fa-lg" for="star-rating-5" title="5 out of 5 stars"></label>
-                                <input class="star-rating__input" id="star-rating-4" type="radio" name="rating" value="4">
-                                <label class="star-rating__ico fa fa-star-o fa-lg" for="star-rating-4" title="4 out of 5 stars"></label>
-                                <input class="star-rating__input" id="star-rating-3" type="radio" name="rating" value="3">
-                                <label class="star-rating__ico fa fa-star-o fa-lg" for="star-rating-3" title="3 out of 5 stars"></label>
-                                <input class="star-rating__input" id="star-rating-2" type="radio" name="rating" value="2">
-                                <label class="star-rating__ico fa fa-star-o fa-lg" for="star-rating-2" title="2 out of 5 stars"></label>
-                                <input class="star-rating__input" id="star-rating-1" type="radio" name="rating" value="1">
-                                <label class="star-rating__ico fa fa-star-o fa-lg" for="star-rating-1" title="1 out of 5 stars"></label>
+                                <input class="star-rating__input" id="star-rating-5" type="radio" name="rating"
+                                       value="5">
+                                <label class="star-rating__ico fa fa-star-o fa-lg" for="star-rating-5"
+                                       title="5 out of 5 stars"></label>
+                                <input class="star-rating__input" id="star-rating-4" type="radio" name="rating"
+                                       value="4">
+                                <label class="star-rating__ico fa fa-star-o fa-lg" for="star-rating-4"
+                                       title="4 out of 5 stars"></label>
+                                <input class="star-rating__input" id="star-rating-3" type="radio" name="rating"
+                                       value="3">
+                                <label class="star-rating__ico fa fa-star-o fa-lg" for="star-rating-3"
+                                       title="3 out of 5 stars"></label>
+                                <input class="star-rating__input" id="star-rating-2" type="radio" name="rating"
+                                       value="2">
+                                <label class="star-rating__ico fa fa-star-o fa-lg" for="star-rating-2"
+                                       title="2 out of 5 stars"></label>
+                                <input class="star-rating__input" id="star-rating-1" type="radio" name="rating"
+                                       value="1">
+                                <label class="star-rating__ico fa fa-star-o fa-lg" for="star-rating-1"
+                                       title="1 out of 5 stars"></label>
                             </div>
                         </div>
                         <p class="card-text">
@@ -81,7 +88,8 @@
                             <#if review.getUser().getUsername() == user>
                                 <div class="row">
                                     <div class="col-md-auto">
-                                        <h5 class="card-title">${review.getUser().getName()} ${review.getUser().getSurname()}: </h5>
+                                        <h5 class="card-title">${review.getUser().getName()} ${review.getUser().getSurname()}
+                                            : </h5>
                                     </div>
                                     <div class="col">
                                         <p class="card-text">${review.getText()}<p>
@@ -100,7 +108,8 @@
                             <#if review.getUser().getUsername() != user>
                                 <div class="row">
                                     <div class="col-md-auto">
-                                        <h5 class="card-title">${review.getUser().getName()} ${review.getUser().getSurname()}: </h5>
+                                        <h5 class="card-title">${review.getUser().getName()} ${review.getUser().getSurname()}
+                                            : </h5>
                                     </div>
                                     <div class="col">
                                         <p class="card-text">${review.getText()}<p>
