@@ -1,0 +1,6 @@
+fitlab/BussinessLogic/Logic/UsersLogicTest.class
+fitlab/BussinessLogic/Logic/RegistrationLogicTest.class
+fitlab/BussinessLogic/Logic/TeacherLogicTest.class
+fitlab/BussinessLogic/services/MailSenderServiceTest.class
+fitlab/BussinessLogic/services/UserDetailServiceTest.class
+fitlab/BussinessLogic/Logic/SubjectLogicTest.class
