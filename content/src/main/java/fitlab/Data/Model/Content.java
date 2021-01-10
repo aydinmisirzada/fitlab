@@ -21,6 +21,17 @@ public class Content {
     @JoinColumn(name = "subject_id")
     private Subject subject;
 
+    @Lob
+    private  String description;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
 
 
     private String title;
