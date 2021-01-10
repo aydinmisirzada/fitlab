@@ -35,9 +35,11 @@
                                     &#9733;
                                 </#list>
                             </#if>
-                            <#list x..4 as i>
-                                &#9734;
-                            </#list>
+                            <#if x < 5>
+                                <#list x..4 as i>
+                                    &#9734;
+                                </#list>
+                            </#if>
                         </span>
                         <#else>
                             Not rated yet

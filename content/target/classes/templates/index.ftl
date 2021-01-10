@@ -68,8 +68,30 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <a href="subjects/${s.getCode()}"><h5 class="card-title">${s.getCode()}</h5></a>
-                            <p class="card-text">${s.getName()}</p>
+                            <div class="row">
+                                <div class="col-md-auto">
+                                    <a href="subjects/${s.getCode()}"><h5 class="card-title">${s.getCode()}</h5></a>
+                                </div>
+                                <div class="col text-right">
+                                    <span <#assign x = s.averageRating()>
+                                    <#if x != 0>
+                                        <#list 1..x as i>
+                                            <span class="fa fa-star checked"></span>
+                                        </#list>
+                                    </#if>
+                                    <#if x < 5>
+                                        <#list x..4 as i>
+                                            <span class="fa fa-star"></span>
+                                        </#list>
+                                    </#if>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p class="card-text">${s.getName()}</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </#list>
@@ -129,5 +151,11 @@
         });
     </script>
 
+    <style>
+        .checked {
+            color: orange;
+        }
+
+    </style>
 
 </@c.page>

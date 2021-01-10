@@ -126,9 +126,11 @@
                                                     <span class="fa fa-star checked"></span>
                                                 </#list>
                                             </#if>
-                                            <#list x..4 as i>
-                                            <span class="fa fa-star"></span>
-                                            </#list>
+                                            <#if x < 5>
+                                                <#list x..4 as i>
+                                                    <span class="fa fa-star"></span>
+                                                </#list>
+                                            </#if>
                                             </span>
                                         </div>
                                         <div class="col-md-2">
