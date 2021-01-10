@@ -29,28 +29,40 @@
                                 </div>
                             </div>
                             <div class="form-row">
+                                <div class="col pt-2">
+                                    <label class="my-auto" for="username"><span class="text-muted">Username</span></label>
+                                </div>
                                 <div class="col">
                                     <input type="text" id="username" class="form-control myform editable"
                                            name="username"
-                                           value="${user.getUsername()}" style="text-align: center" readonly>
+                                           value="${user.getUsername()}" readonly>
                                 </div>
                             </div>
                             <div class="form-row">
+                                <div class="col pt-2">
+                                    <label class="my-auto" for="email"><span class="text-muted">Email</span></label>
+                                </div>
                                 <div class="col">
                                     <input type="text" id="email" class="form-control myform" name="email"
-                                           value="${user.getEmail()}" style="text-align: center" readonly>
+                                           value="${user.getEmail()}" readonly>
                                 </div>
                             </div>
                             <div class="form-row">
+                                <div class="col pt-2">
+                                    <label class="my-auto" for="phone"><span class="text-muted">Phone</span></label>
+                                </div>
                                 <div class="col">
                                     <input type="text" id="phone" class="form-control myform" name="phone"
-                                           value="${user.getPhone()}" style="text-align: center" readonly>
+                                           value="${user.getPhone()}" readonly>
                                 </div>
                             </div>
                             <div class="form-row">
+                                <div class="col pt-2">
+                                    <label class="my-auto" for="path"><span class="text-muted">URL</span></label>
+                                </div>
                                 <div class="col">
                                     <input type="text" id="path" class="form-control myform editable" name="pathId"
-                                           value="${user.getPathId()}" style="text-align: center" readonly>
+                                           value="${user.getPathId()}" readonly>
                                 </div>
                             </div>
                             <div class="form-row" id="isAdmin" style="display: none;" <#if !isAdmin> hidden </#if> >
@@ -138,15 +150,6 @@
                 $('#isAdmin').css('display', 'none');
                 $('#editButton').removeClass('editMode');
             }
-        });
-
-        $(document).ready(function () {
-            $('#username').tooltip({'trigger': 'manual', 'title': 'Username', 'placement': 'left'}).tooltip('show');
-            $('#email').tooltip({'trigger': 'manual', 'title': 'Email', 'placement': 'left'}).tooltip('show');
-            ;
-            $('#phone').tooltip({'trigger': 'manual', 'title': 'Phone', 'placement': 'left'}).tooltip('show');
-            ;
-            $('#path').tooltip({trigger: 'manual', title: 'URL', placement: 'left'}).tooltip('show');
         });
 
 
