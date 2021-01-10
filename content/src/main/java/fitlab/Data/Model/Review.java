@@ -11,6 +11,7 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     float rating;
+    @Lob
     String text;
 
     @ManyToOne
