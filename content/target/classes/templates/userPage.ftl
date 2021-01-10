@@ -18,7 +18,6 @@
 
                             <div class="form-row mb-1">
                                 <div class="col">
-
                                     <input type="text" name="name" class="form-control myform nameform editable"
                                            value="${user.getName()}"
                                            spellcheck="false" style="text-align: right;" readonly/>
@@ -29,7 +28,7 @@
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="col pt-2">
+                                <div class="col-4 pt-2">
                                     <label class="my-auto" for="username"><span class="text-muted">Username</span></label>
                                 </div>
                                 <div class="col">
@@ -39,7 +38,7 @@
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="col pt-2">
+                                <div class="col-4 pt-2">
                                     <label class="my-auto" for="email"><span class="text-muted">Email</span></label>
                                 </div>
                                 <div class="col">
@@ -48,7 +47,7 @@
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="col pt-2">
+                                <div class="col-4 pt-2">
                                     <label class="my-auto" for="phone"><span class="text-muted">Phone</span></label>
                                 </div>
                                 <div class="col">
@@ -57,7 +56,7 @@
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="col pt-2">
+                                <div class="col-4 pt-2">
                                     <label class="my-auto" for="path"><span class="text-muted">URL</span></label>
                                 </div>
                                 <div class="col">
