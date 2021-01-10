@@ -30,6 +30,22 @@ public class UsersController {
         return "allUsers";
     }
 
+    @RequestMapping(value="/password/change",method = RequestMethod.POST)
+    public String changeUserPassword(String username, String oldPassword, String newPassword, Model model){
+//        System.err.println(username + " " + oldPassword + " " + newPassword);
+        if(usersLogic.changePassword(username, oldPassword, newPassword))
+            return "redirect:/";
+
+        model.addAttribute("result", "false");
+        return "changePasswordPage";
+    }
+
+    @RequestMapping(value="/password",method = RequestMethod.GET)
+    public String showChangePassword(Model model){
+        model.addAttribute("result", "true");
+        return "changePasswordPage";
+    }
+
     @RequestMapping(value = "/{pathId}", method = RequestMethod.GET)
     public String getUserPage(@PathVariable String pathId,Integer id, Model model){
         User u;
