@@ -8,9 +8,7 @@ import fitlab.Data.Repository.SubjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -55,11 +53,5 @@ public class ContentLogic implements ContentLogicConf {
     public void changeTitle(int id,String title) {
         repo.findById(id).setTitle(title);
         repo.save(repo.findById(id));
-    }
-
-    public void editDescription(int id, String description) {
-        Content content = repo.findById(id);
-        content.setDescription(description);
-        repo.save(content);
     }
 }
