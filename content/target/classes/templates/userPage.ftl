@@ -7,7 +7,6 @@
 
             <div class="col-4">
                 <div class="card mx-auto align-items-center shadow mb-5 bg-white rounded" id="formCard">
-                    <button class="btn btn-secondary ml-auto m-2" id="editButton">Edit</button>
                     <br/>
                     <img src="images/user.svg" style="max-height: 80px; max-width: 80px;">
                     <div class="card-body w-100">
@@ -29,7 +28,8 @@
                             </div>
                             <div class="form-row">
                                 <div class="col-4 pt-2">
-                                    <label class="my-auto" for="username"><span class="text-muted">Username</span></label>
+                                    <label class="my-auto" for="username"><span
+                                                class="text-muted">Username</span></label>
                                 </div>
                                 <div class="col">
                                     <input type="text" id="username" class="form-control myform editable"
@@ -66,7 +66,7 @@
                             </div>
                             <div class="form-row" id="isAdmin" style="display: none;" <#if !isAdmin> hidden </#if> >
                                 <div class="col" style="text-align: center">
-                                    <input type="checkbox" class="form-check-input"  id="userRole" name="userRole"
+                                    <input type="checkbox" class="form-check-input" id="userRole" name="userRole"
                                            <#if user.isAdmin()>checked </#if> disabled>
                                     <label class="form-check-label" for="userRole">Admin</label>
                                 </div>
@@ -99,29 +99,34 @@
                 </div>
             </div>
             <div class="col-8">
-                <div class="card mx-auto align-items-center shadow p-3 mb-5 bg-white rounded">
+                <div class="card shadow p-3 mb-5 bg-white rounded">
                     <div class="card-body">
                         <h5 class="card-title">My Subjects</h5>
                         <div class="row">
                             <#list user.getSubjects() as subject>
-                            <div class="col">
-                                <div class="card shadow-sm p-1 mb-2 bg-white rounded">
-                                    <div class="card-body">
-                                        <h5 class="card-title">${subject.getName()}</h5>
+                                <div class="col">
+                                    <div class="card shadow-sm p-1 mb-2 bg-white rounded">
+                                        <div class="card-body">
+                                            <a href="${'/subjects/' + subject.getCode()}"><h5
+                                                        class="card-title">${subject.getCode()}</h5></a>
+                                            <form action="/users/${user.getPathId()}" method="post">
+                                                <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+                                                <input type="hidden" name="id" value="${subject.getId()}">
+                                                <button type="submit" class="btn btn-secondary delButton"
+                                                        style="display: none">del
+                                                </button>
+                                            </form>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                                <div>
-                                    <form action="/users/${user.getPathId()}" method="post">
-                                        <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-                                        <input type="hidden" name="id" value="${subject.getId()}">
-                                        <button type="submit" class="btn btn-secondary">del</button>
-                                    </form>
                                 </div>
                             </#list>
                         </div>
                     </div>
                 </div>
+                <div class="text-center">
+                    <button class="btn btn-secondary ml-auto m-2 mx-auto w-25" id="editButton">Edit Profile</button>
+                </div>
+
             </div>
         </div>
 
@@ -132,6 +137,7 @@
             //enable editing mode
             if ($('.nameform').attr("readonly")) {
                 $('#saveButton').css('visibility', 'visible');
+                $('.delButton').css('display', '');
                 $('.editable').attr("readonly", false);
                 $('input[name="userRole"]').attr("disabled", false);
                 $('.editable').css({'border-bottom': '1px solid grey', 'border-radius': '0'});
@@ -145,6 +151,7 @@
                 $('.editable').css('border', 'none transparent');
                 $('.nameform').css({'font-weight': '600', 'padding-left': '0', 'margin-left': '0'});
                 $('#saveButton').css('visibility', 'hidden');
+                $('.delButton').css('display', 'none');
                 $('input[name="name"]').css('text-align', 'right');
                 $('#isAdmin').css('display', 'none');
                 $('#editButton').removeClass('editMode');

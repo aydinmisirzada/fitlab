@@ -69,6 +69,7 @@
                     <div class="card">
                         <div class="card-body">
                             <a href="subjects/${s.getCode()}"><h5 class="card-title">${s.getCode()}</h5></a>
+                            <p>${s.averageRating()} stars</p>
                             <p class="card-text">${s.getName()}</p>
                         </div>
                     </div>
