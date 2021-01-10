@@ -90,7 +90,7 @@
                     <div class="star-rating">
                         <div class="star-rating__wrap">
                             <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-                            <input class="star-rating__input" id="star-rating-5" type="radio" name="rating" value="5">
+                            <input class="star-rating__input" id="star-rating-5" type="radio" name="rating" value="5" required>
                             <label class="star-rating__ico fa fa-star-o fa-lg" for="star-rating-5" title="5 out of 5 stars"></label>
                             <input class="star-rating__input" id="star-rating-4" type="radio" name="rating" value="4">
                             <label class="star-rating__ico fa fa-star-o fa-lg" for="star-rating-4" title="4 out of 5 stars"></label>

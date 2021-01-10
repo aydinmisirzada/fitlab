@@ -61,6 +61,7 @@
                                     <select name="semester" class="custom-select">
                                         <option value="SUMMER">Summer</option>
                                         <option value="WINTER">Winter</option>
+                                        <option value="WINTER_SUMMER">Both</option>
                                     </select>
                                 </div>
                             </div>
