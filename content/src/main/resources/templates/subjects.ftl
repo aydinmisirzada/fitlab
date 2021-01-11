@@ -139,7 +139,7 @@
                                                 <p class="card-text pl-1">Winter Semester</p>
                                             </#if>
                                             <#assign sem>${s.getSemester()}</#assign>
-                                            <select form="subject" name="semester" style="display: none">
+                                            <select  name="semester" style="display: none">
                                                 <option value="0">Summer</option>
                                                 <option value="1">Winter</option>
                                                 <option value="2">Both</option>
